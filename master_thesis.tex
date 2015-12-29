@@ -1,4 +1,6 @@
-% Santiago Morante
+% Template by - Santiago Morante
+% Slightly modified by - David Estevez
+
 \documentclass[11pt,a4paper,twoside]{book}
 \usepackage[pdftex]{hyperref}
 \usepackage{graphicx}
@@ -7,7 +9,7 @@
 \usepackage{fancyhdr}
 \usepackage{invuc3mlib}
 \usepackage{url}
-\usepackage{apacite}
+%\usepackage{apacite}
 \usepackage[nottoc,notlof,notlot]{tocbibind}%was commented out.
 \usepackage{palatino}
 \usepackage[Lenny]{fncychap}
@@ -37,12 +39,17 @@
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}%
 \cleardoublepage}}
 
+% Define a command for comments
+\usepackage{color}
+\newcommand{\comment}[1]{\textbf{\color{cyan} #1}}
+\newcommand{\warning}[1]{\textbf{\color{red} #1}}
+
 \begin{document}
-	\title{\textbf{Title}}
-	\author{Author}
+	\title{\textbf{\warning{Folding Clothes with a Robotic Slave}}}
+	\author{David Estevez Fernandez}
 	 
-	\tutor{Prof. One}
-  \stutor{Prof. Two}
+	\tutor{Juan G. Victores}
+  \stutor{Carlos Balaguer \warning{(?)}}
 
         \primerjurado{Dr./Dra.}
         \segundojurado{Dr./Dra.}
@@ -50,8 +57,8 @@
 		
     \dedicate{
 \begin{flushright}
-   ``The true knowledge is ...''\\    
-    Daniel
+   \warning{``It's better to have loved and lost than to have to do forty pounds of laundry a week.''\\    
+    Laurence J. Peter}
 \end{flushright}
     }
 
@@ -80,12 +87,12 @@ This thesis develops ...
 	\rhead[\fancyplain{}{\bfseries\leftmark}] {\fancyplain{}{\bfseries\thepage}}
 	\cfoot{}
 	
-%	\input{chapter1}
-%	\input{chapter2}
-%	\input{chapter3}
+	\input{introduction}
+	\input{state_of_the_art}
+	\input{architecture}
 	\input{chapter4}
-%	\input{chapter5}
-%	\input{conclusion}
+	\input{experiments_and_results}
+	\input{conclusions_and_future_work}
 
 \bibliographystyle{apacite}
 \bibliography{library}
