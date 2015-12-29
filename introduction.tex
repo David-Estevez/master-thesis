@@ -3,6 +3,24 @@
 
 \section{Introduction}
 \label{intro_introduction}
+Folding clothes is a common and necessary, but tedious, task for humans. Additionally, due to the increasing aging of the world population, a growing need exists for robots to be able to help us with laundry.
+However, working with non-rigid objects such as clothes is a difficult task for robots, due to the complexity of modeling and manipulating deformable, thin objects. Clothes can be easily entangled when doing laundry, and recognizing individual garments and their category just from color or depth image analysis becomes an almost impossible task, due to occlusions amongst the cluttered clothes. Another challenging aspect when working with deformable objects is how to bring the object into a known configuration from an arbitrary initial state.
+
+The pipeline for folding clothes followed throughout robotic literature is based on how it is performed by humans. This allows these tasks to be executed in the same environments as humans, aiming towards a fully-automated or collaborative fashion. Garments are extracted from the washing or drying machine forming a pile, and an iterative process begins. First, an individual clothing article is picked from the pile. Then, the garment is extended in the air or assisted by a flat surface, during which unfolding and wrinkle removing procedures may be performed for aiding the posterior classification and manipulation of the garment. A classification procedure is applied to fit clothing article within a certain garment category. Finally, a standard manipulation sequence specific to its category is applied to fold the garment for storage. This iterative process is repeated until there are no clothes left on the pile.
+
+Extensive work can be found in literature about automated clothes folding once the garment category has been identified, as well as for modeling the garment for fold/wrinkle removal or selecting the most suitable grasping point/strategy. For this reason, our work focuses on how to unfold a clothing article that has been picked up from a pile of clothes and is placed on a flat surface.
+
+The main contribution of our work is an algorithm that can estimate the grasping and release points for a deformable object so that a manipulator robot can iteratively unfold a garment for determining its garment category and the folding sequence to apply.
+%To the best of our knowledge, 
+This algorithm presents the following advantages:
+
+\begin{itemize}
+	\item It provides a general method of detecting folds in deformable objects without a prior model of the garment to be unfolded.
+	\item It estimates the best position of the grasping point, direction of movement, and release point in order to unfold the detected fold.
+	\item As it uses depth image information, it is independent of the color or patterns present in the garment, except for background extraction.
+\end{itemize}
+
+This system has been tested with thick pieces of cloth such as towels and blankets. These results can be extrapolated to thinner garments provided the depth sensor provides sufficient resolution.
 
 \section{Objectives}
 \label{intro_objectives}
