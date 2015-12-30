@@ -1,2 +1,54 @@
 \chapter{Global Architecture}
 \label{architecture}
+
+In this paper we present a garment-agnostic algorithm to unfold clothes using 3D sensor data. Our work differs with most of the state of the art in the fact that garment models are not used. Our approach uses information extracted from a depth map to detect folds in a garment. The most suitable grasping position, unfolding direction, and release point are computed.
+
+It is assumed that a clothing article has already been separated from the rest of the clothes to fold and placed on a flat surface. The garment could have been placed on that surface either by a robot or by a human coworker, allowing a collaborative folding pipeline in which a human and a robot can perform different parts of the folding process.
+As our algorithm is not based on a geometrical model of the garment to be unfolded, it is general enough to be used with any category of garment, from towels and blankets to trousers or shirts, and with any number of folds. 
+
+The algorithm can be divided into three main stages. First, the background is extracted from the image and the contour of the garment is approximated. Then, a height analysis is performed in order to estimate overlapping regions. Finally, the information obtained in the previous analysis is used to determine if there are any folds present and how to interact with the garment to unfold it. The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
+
+\subsection{Background Extraction and Contour Detection}
+
+Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment.
+Based on the assumption that the clothing article is placed on top of a flat white surface, the garment is segmented by a threshold operation on the saturation and value channels of the HSV space. Another potential approach is to remove the horizontal plane of the table. This approach can be further improved by combining the results obtained with the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
+
+Once the background is extracted, the contour of the garment is extracted and approximated to a polygon using the Ramer-Douglas-Peucker algorithm. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
+
+
+\subsection{Heightmap Analysis}
+
+Once the garment has been identified, garment regions with similar height points must be labeled. For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} to the depth image. 
+
+The watershed algorithm treats pixels values, in a grayscale image, as heights. The algorithm floods basins (low regions), until basins attributed to different regions meet on watershed lines. 
+
+%The original grayscale elevation image (a type of 2.5D image) is denoised, using total variation denoising, to remove the sensor noise.
+%
+%Denoised image -> 	markers (Rank filters are non-linear filters using the local gray-level ordering to compute the filtered value. This ensemble of filters share a common base: the local gray-level histogram is computed on the neighborhood of a pixel (defined by a 2-D structuring element).  morphological gradient, is the difference between the dilation and the erosion of a given image. ), we select areas with low gradient, then each isolated region is marked with a label. each region is supposed to have the height.  An array marking the basins with the values to be assigned in the label matrix. Zero means not a marker. This array should be of an integer type.
+%
+%Original image -> Rank filters are non-linear filters using the local gray-level ordering to compute the filtered value. This ensemble of filters share a common base: the local gray-level histogram is computed on the neighborhood of a pixel (defined by a 2-D structuring element).  morphological gradient, is the difference between the dilation and the erosion of a given image.         Data array where the lowest value points are labeled first.
+
+The image returned by the watershed algorithm is labeled by regions of similar heights, Fig. \ref{colour_garment}. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments.
+
+On the labeled watershed image, we calculate the average height value of each region, and assign this average value to all points in the region. The region with the highest average height is selected for further analysis. 
+
+\subsection{Path Detection}
+
+The next step, after having labeled the similar-height regions and found the highest region, is to find the unfold direction. The assumption made here is that the fold has at least one contour edge which is also a border of the garment. 
+
+A set of candidate paths is generated, all of them starting at the centroid of the highest region, and ending in each contour segment midpoint. Each candidate path is analyzed and assigned a \textit{bumpiness} value $B$. This value is calculated by penalizing the changes in the height of the path, Eq. \eqref{bumpiness}.
+
+\begin{equation}\label{bumpiness}
+B = \sum_{i=1}^{n} | \textrm{path}(i)- \textrm{path}(i-1) | 
+\end{equation}
+
+Where $n$ is the number of points composing the path. The path with the lowest bumpiness value, which corresponds to the path with the less and smallest height changes, is selected as the unfold direction, Fig. \ref{candidate_paths}.
+
+
+\subsection{Pick and Place Points}
+
+Up to here, we have detected the most promising direction to unfold. Finally, we need to define is the exact point where the robot has to pick the garment, and the place point. 
+
+For this, we extend the previously selected direction line. The garment pick point is chosen at the intersection of the direction line with the inner region border. To find this point, we compute the intersection between the line and the region contour, and select the point furthest to the garment border.
+
+On the other side, the place point is selected by computing the symmetric point of the pick point with respect to the garment edge intersection point. The unfold directions, departing from the pick point and arriving at the place point of a set of clothes, is shown in Fig. \ref{directions}.

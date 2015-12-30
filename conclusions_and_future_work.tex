@@ -1,5 +1,22 @@
 \chapter{Conclusions and future work}
 \label{conclusions_and_future_work}
 
+In this paper we have presented a model-free garment-agnostic process to unfold clothes. Results show that our approach is promising to be included in a complete pipeline of clothes folding. The main contribution of our work is its analysis of the garment not dependent of a prior model. The process core resides in the segmentation of the grayscale image representing the heights.
+
+Though the results are acceptable, two aspects of the algorithm can be improved.
+Contour detection currently trims some areas of the garment, which at times results in an incorrect polygon approximation that affects the functionality of the system.
+The garment pick point, the unfolding direction, and the place point have been chosen in a somewhat arbitrary manner. While the selected points may serve as a rule-of-thumb for robotic system developers, further experiments with robotic systems are required to determine whether a better pick and place strategy exists. For instance, the highest garment point or highest region centroid could be used as alternatives to the current pick point.
+% which can be considered the optimal pick and place strategy. 
+%It is clear through experiments presented (and not) in the paper that two aspects of the algorithm can be perfected: 
+%Future work 
+%shold focus 
+%- Extracción de contorno
+%- Forma de desdoblar
+%Other segmentation algorithms (such as Simple Linear Iterative Clustering) have been tested, with unsatisfactory results. However, we are confident that other segmentation algorithms may improve the results.
+
+
+%One of the short-term future works is to implement a method to select more than one unfolding direction. Currently, the direction with the smallest bumpiness value is selected. In some cases, several directions share a very small value. This fact make us think that an interpolation between these directions may improve the final result. 
+%Despite we have not tested our approach on a physical robot, we have prepared the results to be useful for its integration with the robot. 
+
 \input{conclusions}
 \input{future_work}
