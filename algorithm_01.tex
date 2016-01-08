@@ -4,3 +4,22 @@ This chapter is devoted to the first part of our algorithm, extracting the garme
 
 \section{Data adquisition}
 The starting point of our algorithm is the data adquisition process. Data is obtained as a point cloud from a ASUS Xtion Live sensor. Then, data is converted to a depth map image for its later analysis. 
+
+This conversion is done by simply using the z component of each point as the depth value for each pixel of the depth image. This depth image could also be recovered from the point cloud using the instrinsic and extrinsic paramters of the sensor. But, as the sensor is placed on top of the garment, perpendicular to the surface on which the clothing article rests, both methods yield almost very similar results.
+
+\comment{Here I should put a nice figure of the point cloud and the depth image} 
+
+The RGB values are also recorded for each depth image, obtaining an RBG-D image.
+
+\section{Garment segmentation}
+The RGB-D image obtained in the previous step contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a segmentation process is required to classify whether a pixel represents the garment or the table.
+
+For this purpose, many methods could have been chosen, based on both color and depth information. But, as the main focus of our work is unfolding clothes, a simple color-based method was selected. 
+
+We work under the assumption that the garment has been placed over a flat clear surface, as opposed to the garment which is much more colorful (saturated). First, the RGB image was converted to the HSV space. Working in the HSV space gives us direct information about our magnitudes of interest: saturation and intensity. As preprocessing, to reduce the effect of the noise on the segmentation process, a convolution with a 5x5 Gaussian kernel with $\sigma=1.1$ is computed on the saturation (S) and value (V) channels of the HSV image.
+
+A thresholding operation is then applied to the filtered image, using Otsu's algorithm \comment{(ref, maybe?)} to obtain the optimal threshold values. Pixels with low amount of saturation, and a high values are classified as being part of the table, as opposed to dark or saturated pixels.
+
+Finally, some morphological transformations are applied to the resulting mask to reduce noise due to false positives/negatives. A 5x5 squared kernel is used in several closing operations, followed by a similar number of opening operations.
+
+\comment{Again, I should put here a picture of the resulting mask}
