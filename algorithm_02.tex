@@ -13,3 +13,5 @@ Due to noise, sometimes some small blobs appear in segmentation masks, so the ex
 After obtaining the garment contour, it is processed, as we want to obtain a further simplified garment outline. We assume the fold line has a very high probability of lying in the garment outline. Therefore, this contour will represent all the candidate segments that \comment{could be folds.} The Ramer–Douglas–Peucker algorithm \comment{[ref to article]} is applied to obtain the simplified outline. This algorithm recursively divides the contour in segments by choosing the \comment{...}
 
 \section{Watershed segmentation}
+
+Watershed algorithm works ... As in practise flooding using local minima as makers leads to over-segmentation, an enhanced version of this algorithm allows the user to specify other criteria for selecting the seed points.
