@@ -10,6 +10,8 @@ Our approach consisted in using a depth image from a single point of view to fin
 
 The algorithm can be divided into three main stages. First, the background is extracted from the image and the contour of the garment is approximated. Then, a height analysis is performed in order to estimate overlapping regions. Finally, the information obtained in the previous analysis is used to determine if there are any folds present and how to interact with the garment to unfold it. The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
 
+\comment{Put a nice figure of the whole pipeline block diagram}
+
 \section{Background Extraction and Contour Detection}
 Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment.
 Based on the assumption that the clothing article is placed on top of a flat white surface, the garment is segmented by a threshold operation on the saturation and value channels of the HSV space. Another potential approach is to remove the horizontal plane of the table. This approach can be further improved by combining the results obtained with the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.

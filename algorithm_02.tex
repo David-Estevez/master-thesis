@@ -1,1 +1,15 @@
-\chapter{Path Detection}
+\chapter{Garment Analysis}
+\label{garment_analysis}
+
+This chapter explains in detail the gament analysis that our algorithm performs to the garment data previously segmented. The contour of the garment is extracted, and a Watershed segmentation algorithm is applied to find the different overlapped patches.
+
+\section{Contour extraction}
+From the mask obtained in the previous step (section \ref{garment_segmentation_mask}) a blob labeling algorithm is applied to detect the garment outline. This outline will be used in later steps to obtain the candidates to be a fold.
+
+The contour extraction method used is a Topological Analysis by Border Following algorithm developed by Suzuki and Abe\comment{[ref to suzuki85]}. This is a widely used algorithm for connected-component labeling and countour finding. Only external contours were retrieved. A simple chain approximation was then applied to reduce the number of points that describe the contours, storing only the endpoints of the different segments.
+
+Due to noise, sometimes some small blobs appear in segmentation masks, so the extracted contour with the highest area was selected as garment. This way, those small blobs were discarded.
+
+After obtaining the garment contour, it is processed, as we want to obtain a further simplified garment outline. We assume the fold line has a very high probability of lying in the garment outline. Therefore, this contour will represent all the candidate segments that \comment{could be folds.} The Ramer–Douglas–Peucker algorithm \comment{[ref to article]} is applied to obtain the simplified outline. This algorithm recursively divides the contour in segments by choosing the \comment{...}
+
+\section{Watershed segmentation}
