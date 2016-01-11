@@ -16,7 +16,14 @@ After obtaining the garment contour, it is processed, as we want to obtain a fur
 
 Watershed is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item.
 
-\comment{(Here it would be great to add a figure of the example, such as opencv's coins)}
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.7
+    \textwidth]{figures/placeholder2.png}
+    \caption{\comment{(Here it would be great to add a figure of the example, such as opencv's coins)}}
+    \label{watershed_example}
+\end{figure}
+
 
 As in practise flooding using local minima as makers leads to over- segmentation, an enhanced version of this algorithm allows the user to specify other criteria for selecting the seed points. In this work, the gradient of the greyscale depth-image was calculated and regions where the gradient has a low value were selected. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
 

@@ -9,7 +9,13 @@ The starting point of our algorithm is the data adquisition process. Data is obt
 
 This conversion is done by simply using the z component of each point as the depth value for each pixel of the depth image. This depth image could also be recovered from the point cloud using the instrinsic and extrinsic paramters of the sensor. But, as the sensor is placed on top of the garment, perpendicular to the surface on which the clothing article rests, both methods yield almost very similar results.
 
-\comment{Here I should put a nice figure of the point cloud and the depth image} 
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.7
+    \textwidth]{figures/placeholder2.png}
+    \caption{\comment{Here I should put a nice figure of the point cloud and the depth image}}
+    \label{fig:point_cloud_and_depth_image}
+\end{figure}
 
 The RGB values are also recorded for each depth image, obtaining an RBG-D image.
 
@@ -26,7 +32,14 @@ A thresholding operation is then applied to the filtered image, using Otsu's alg
 
 Finally, some morphological transformations are applied to the resulting mask to reduce noise due to false positives/negatives. A 5x5 squared kernel is used in several closing operations, followed by a similar number of opening operations.
 
-\comment{Again, I should put here a picture of the resulting mask}
+
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.48
+    \textwidth]{figures/placeholder.png}
+    \caption{\comment{Again, I should put here a picture of the resulting mask}}
+    \label{fig:segmentation_mask}
+\end{figure}
 
 \section{Depth image preprocessing}
 \label{depth_image_preprocessing}
