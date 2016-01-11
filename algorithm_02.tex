@@ -14,4 +14,8 @@ After obtaining the garment contour, it is processed, as we want to obtain a fur
 
 \section{Watershed segmentation}
 
-Watershed algorithm works ... As in practise flooding using local minima as makers leads to over-segmentation, an enhanced version of this algorithm allows the user to specify other criteria for selecting the seed points.
+Watershed is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item.
+
+\comment{(Here it would be great to add a figure of the example, such as opencv's coins)}
+
+As in practise flooding using local minima as makers leads to over-segmentation, an enhanced version of this algorithm allows the user to specify other criteria for selecting the seed points.
