@@ -19,3 +19,10 @@ Watershed is a segmentation algorithm that considers a greyscale image as a topo
 \comment{(Here it would be great to add a figure of the example, such as opencv's coins)}
 
 As in practise flooding using local minima as makers leads to over- segmentation, an enhanced version of this algorithm allows the user to specify other criteria for selecting the seed points. In this work, the gradient of the greyscale depth-image was calculated and regions where the gradient has a low value were selected. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
+
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.38\textwidth]{figures/colour_garment.pdf}
+    \caption{On the left side, the grayscale images are shown. The grey level is related to the height of the point as detected by the RGB-D sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
+    \label{colour_garment}
+\end{figure}
