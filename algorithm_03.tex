@@ -34,8 +34,6 @@ Where $n$ is the number of points composing the path. The path with the lowest b
 
 For performing the \textit{bumpiness} value calculation, the path was discretized  in constant-lenght segments, and the depth image was sampled at those discrete points. Then, equation \ref{eq:bumpiness} was applied to the sampled values.
 
-
-
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=0.48\textwidth]{figures/candidate_paths.pdf}
@@ -45,6 +43,12 @@ For performing the \textit{bumpiness} value calculation, the path was discretize
 
 \section{Pick and place points}
 \label{pick_and_place}
+Once the most promising path for unfolding has been identified, the last step is to obtain pick and place points for the robot to perform the unfold action.
+
+The most suitable grasping point for the picking action is located in the  intersection between the unfolding path direction line and the highest garment region border. This point is obtained by calculating the intersection between the selected path line and the highest region contour, selecting the point which is furthest to the garment border.
+
+The other point is used as axis for a point reflection. To find the placing point, a reflection transformation is applied to the picking point using the aforementioned point as axis. Figure \ref{fig:directions} shows the unfold directions for several clothes, departing at the picking points and arriving to the placing points.
+
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=0.45\textwidth]{figures/directions.pdf}
