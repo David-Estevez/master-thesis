@@ -1,4 +1,4 @@
-\chapter{Unfolding Algorithm}
+\chapter{\MyTitle}
 \label{architecture}
 
 This chapter presents an overview of a garment-agnostic algorithm to unfold clothes using depth sensor data, that will be extended in later chapters. Our work differs with most of the state of the art in the fact that garment models are not used. Our approach uses depth information captured with a depth sensor to detect folds in a garment. The most suitable grasping position, unfolding direction, and release point are computed.
@@ -37,7 +37,7 @@ The image returned by the watershed algorithm is labeled by regions of similar h
 
 This process is developed in more detail in chapter \ref{garment_analysis}.
 
-\section{Pick and Place Points}
+\section{Garment Pick and Place Points}
 On the labeled watershed image, we calculate the average height value of each region, and assign this average value to all points in the region. The region with the highest average height is selected for further analysis. 
 
 The next step, after having labeled the similar-height regions and found the highest region, is to find the unfold direction. The assumption made here is that the fold has at least one contour edge which is also a border of the garment. 
