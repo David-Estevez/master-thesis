@@ -3,12 +3,7 @@
 
 This chapter presents an overview of a garment-agnostic algorithm to unfold clothes using depth sensor data, that will be extended in later chapters. Our work differs with most of the state of the art in the fact that garment models are not used. Our approach uses depth information captured with a depth sensor to detect folds in a garment. The most suitable grasping position, unfolding direction, and release point are computed.
 
-It is assumed that a clothing article has already been separated from the rest of the clothes to be folded, and placed on a flat surface. The garment could have been placed on that surface either by a robot or by a human coworker, allowing a collaborative folding pipeline in which a human and a robot can perform different parts of the folding process.
-As our algorithm is not based on a geometrical model of the garment to be unfolded, it is general enough to be used with any category of garment, from towels and blankets to trousers or shirts, and with any number of folds. 
-
-Our approach consisted in using a depth image from a single point of view to find regions of the garment overlapping other regions, which we considered to be folds. Then, we studied all the possible candidate paths to determine the unfolding direction. 
-
-The algorithm can be divided into three main stages. First, garment data is obtained from the depth sensor and the background is extracted from the image. Then, the contour of the garment is approximated, and a height analysis is performed to estimate overlapping regions. Finally, the information obtained in the previous analysis is used to determine if there are any folds present and how to interact with the garment to unfold it. The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
+The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block_diagram}). First, garment data is obtained from the depth sensor and the background is extracted from the image. Then, the contour of the garment is approximated, and a height analysis is performed to estimate overlapping regions. Finally, the information obtained in the previous analysis is used to determine if there are any folds present and how to interact with the garment to unfold it. The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
 
 \begin{figure}[thpb]
     \centering
@@ -20,18 +15,23 @@ The algorithm can be divided into three main stages. First, garment data is obta
 
 \section{Garment Segmentation}
 Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment.
-Based on the assumption that the clothing article is placed on top of a flat white surface, the garment is segmented by a threshold operation on the saturation and value channels of the HSV space. Another potential approach is to remove the horizontal plane of the table. This approach can be further improved by combining the results obtained with the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
+Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color.
 
-Based on the garment segmentation, the depth-image is preprocessed to contain only normalized garment data.
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.8
+    \textwidth]{figures/placeholder2.png}
+    \caption{\comment{A nice figure of a generic Garment Segmentation}}
+    \label{fig:generic_garment_segmentation}
+\end{figure}
 
-This process is further explained in chapter \ref{garment_segmentation}.
+This can be performed by threshold operations on the red, green, blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Another potential approach is to remove the horizontal plane of the table. This approach can be further improved by combining the results obtained with the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
+The segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
 \section{Garment Analysis}
 Once the background is extracted, the contour of the garment is extracted and approximated to a polygon using the Ramer-Douglas-Peucker algorithm. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
 
 When the garment has been identified, garment regions with similar height points must be labeled. For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} \comment{(add ref to watershed paper?)} to the depth image. 
-
-\comment{The watershed algorithm treats pixels values, in a grayscale image, as heights. The algorithm floods basins (low regions), until basins attributed to different regions meet on watershed lines.} \warning{$\leftarrow$ Likely to be removed}
 
 The image returned by the watershed algorithm is labeled by regions of similar heights, Fig. \ref{colour_garment}. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments.
 
