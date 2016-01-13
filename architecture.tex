@@ -25,14 +25,18 @@ Based on the assumption that the clothing article is placed on top of a flat whi
     \label{fig:generic_garment_segmentation}
 \end{figure}
 
-This can be performed by threshold operations on the red, green, blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Another potential approach is to remove the horizontal plane of the table. This approach can be further improved by combining the results obtained with the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
+Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \reftodo, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
 
-Once the background is extracted, the contour of the garment is extracted and approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \comment{(ref to paper)}. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
+Another potential approach is to remove the horizontal plane of the table using depth information. This approach can be further improved by combining the results obtained by the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
+
+Once the background is extracted, the contour of the garment has to be determined. Several methods exist for this purpose. The Topological Analysis by Border Following algorithm developed by Suzuki and Abe \comment{[ref to suzuki85]} is a widely used algorithm for connected-component labeling and countour finding. A Marching Squares \reftodo
+
+[...] is extracted and approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \reftodo. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
 
 The segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
 \section{Garment Depth Map Clustering}
-When the garment has been identified, garment regions with similar height points must be labeled. \comment{For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} \comment{(add ref to watershed paper?)} to the depth image. }
+When the garment has been identified, garment regions with similar height points must be labeled. \comment{For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} \reftodo to the depth image. }
 
 \begin{figure}[thpb]
     \centering
