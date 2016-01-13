@@ -1,26 +1,8 @@
 \chapter{Garment Segmentation}
 \label{garment_segmentation}
+\comment{
 This chapter is devoted to the first part of our algorithm, extracting the garment data from the sensor data. Data is obtained as a point cloud, and then converted to a depth image. Then, garment segmentation is perfomed.
-
-
-\section{Data adquisition}
-\label{data_adquisition}
-
-\warning{(Not here $\rightarrow$ Experimental setup) }
-
-The starting point of our algorithm is the data adquisition process. Data is obtained as a point cloud from a ASUS Xtion Live sensor. Then, data is converted to a depth map image for its later analysis. 
-
-This conversion is done by simply using the z component of each point as the depth value for each pixel of the depth image. This depth image could also be recovered from the point cloud using the instrinsic and extrinsic paramters of the sensor. But, as the sensor is placed on top of the garment, perpendicular to the surface on which the clothing article rests, both methods yield almost very similar results.
-
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.7
-    \textwidth]{figures/placeholder2.png}
-    \caption{\comment{Here I should put a nice figure of the point cloud and the depth image}}
-    \label{fig:point_cloud_and_depth_image}
-\end{figure}
-
-The RGB values are also recorded for each depth image, obtaining an RBG-D image.
+}
 
 \section{Garment segmentation}
 \label{garment_segmentation_mask}
@@ -44,7 +26,14 @@ Finally, some morphological transformations are applied to the resulting mask to
     \label{fig:segmentation_mask}
 \end{figure}
 
-\section{Depth image preprocessing}
-\label{depth_image_preprocessing}
+\section{Contour extraction}
+From the mask obtained in the previous step (section \ref{garment_segmentation_mask}) a blob labeling algorithm is applied to detect the garment outline. This outline will be used in later steps to obtain the candidates to be a fold.
 
-Once the garment mask has been calculated, it is applied to the depth image of the garment to discard the information related to the table. The garment depth data is then normalized to prepare it for posterior analysis steps.
+The contour extraction method used is the Topological Analysis by Border Following algorithm developed by Suzuki and Abe\comment{[ref to suzuki85]}. This is a widely used algorithm for connected-component labeling and countour finding. Only external contours were retrieved. A simple chain approximation was then applied to reduce the number of points that describe the contours, storing only the endpoints of the different segments.
+
+Due to noise, sometimes some small blobs appear in segmentation masks, so the extracted contour with the highest area was selected as garment. This way, those small blobs were discarded.
+After obtaining the garment contour, it is processed, as we want to obtain a further simplified garment outline. We assume the fold line has a very high probability of lying in the garment outline and, therefore, this contour will represent all the candidate segments to be a fold. 
+
+To obtain the simplified outline, the Ramer–Douglas–Peucker algorithm \comment{[ref to article]} is applied. This algorithm recursively divides the contour in segments by choosing the first and last points of the curve and drawing a line. Then, it checks whether that point is closer to that line than a threshold $\epsilon > 0$ or not. If it is closer, all points not marked to be kept can be discarded, otherwise, if it is greater than $\epsilon$, that point is marked to be kept and the procedure is repeated cosidering the last marked point as ending point. If there are no points left at one stage, the last point of the contour becomes the ending point again. The previous ending point becomes then the new starting point.
+
+The parameter $\epsilon$ is calculated from the magnitude of the contour perimeter, considering it to be 1\% of that value. The greater this value is, the more simplified the resulting contour will be.

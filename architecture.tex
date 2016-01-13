@@ -26,11 +26,12 @@ Based on the assumption that the clothing article is placed on top of a flat whi
 \end{figure}
 
 This can be performed by threshold operations on the red, green, blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Another potential approach is to remove the horizontal plane of the table. This approach can be further improved by combining the results obtained with the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
-The segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
-\section{Garment Analysis}
 Once the background is extracted, the contour of the garment is extracted and approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \comment{(ref to paper)}. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
 
+The segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
+
+\section{Garment Depth Map Clustering}
 When the garment has been identified, garment regions with similar height points must be labeled. \comment{For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} \comment{(add ref to watershed paper?)} to the depth image. }
 
 \begin{figure}[thpb]
@@ -41,9 +42,9 @@ When the garment has been identified, garment regions with similar height points
     \label{fig:generic_superpixels}
 \end{figure}
 
-The image returned by the watershed algorithm is labeled by regions of similar heights, Fig. \ref{colour_garment}. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments.
+\comment{The image returned by the watershed algorithm is labeled by regions of similar heights, Fig. \ref{fig:color_garment}. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments.}
 
-The garment analysis process used in this thesis is developed in more detail in chapter \ref{garment_analysis}.
+The garment depth map clustering process used in this thesis is developed in more detail in chapter \ref{garment_clustering}.
 
 \section{Garment Pick and Place Points}
 On the labeled watershed image, we calculate the average height value of each region, and assign this average value to all points in the region. The region with the highest average height is selected for further analysis. 
