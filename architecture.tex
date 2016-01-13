@@ -14,7 +14,7 @@ The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block
 \end{figure}
 
 \section{Garment Segmentation}
-Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment.
+Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment. 
 
 
 \begin{figure}[thpb]
@@ -33,10 +33,14 @@ Once the background is extracted, the contour of the garment has to be determine
 
 After the contour is extracted, it is then approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \reftodo. Alternative algorithms exist, such as the Teh-Chin algorithm to find Dominant Points \reftodo \comment{(Teh-Chin89)}. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
 
-The segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
+The garment segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
 \section{Garment Depth Map Clustering}
-When the garment has been identified, garment regions with similar height points must be clustered and labeled. \comment{For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} \reftodo to the depth image. }
+When the garment has been identified, garment regions with similar height points must be clustered and labeled. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments. Many algorithms exist to perform this clustering step.
+
+For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means, Mean Shift or DBSCAN are some examples of clustering algorithms that can be applied to group pixels with similar depth.
+
+A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \reftodo is a local region of the image with similar characteristics, such as color, texture, etc. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC \reftodo, Quickshift \reftodo, Turbopixels \reftodo and Normalized Cuts \reftodo.
 
 \begin{figure}[thpb]
     \centering
@@ -46,7 +50,7 @@ When the garment has been identified, garment regions with similar height points
     \label{fig:generic_superpixels}
 \end{figure}
 
-\comment{The image returned by the watershed algorithm is labeled by regions of similar heights, Fig. \ref{fig:color_garment}. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments.}
+\juansays{Furthermore, clustering preprocessing algorithms can also be used, with other classical segmentation algorithms such as Watershed \reftodo } \comment{[...]}
 
 The garment depth map clustering process used in this thesis is developed in more detail in chapter \ref{garment_clustering}.
 
