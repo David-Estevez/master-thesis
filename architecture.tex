@@ -3,7 +3,7 @@
 
 This chapter presents an overview of a garment-agnostic algorithm to unfold clothes using depth sensor data, that will be extended in later chapters. Our work differs with most of the state of the art in the fact that garment models are not used. Our approach uses depth information captured with a depth sensor to detect folds in a garment. The most suitable grasping position, unfolding direction, and release point are computed.
 
-The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block_diagram}). First, garment data is obtained from the depth sensor and the background is extracted from the image. Then, the contour of the garment is approximated, and a height analysis is performed to estimate overlapping regions. Finally, the information obtained in the previous analysis is used to determine if there are any folds present and how to interact with the garment to unfold it. The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
+The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block_diagram}). First, the  background is extracted from the image and the contour of the garment is approximated. Then, a depth map clustering process is performed to estimate overlapping regions. Finally, the information obtained in the previous process is used to determine if there are any folds present and how to interact with the garment to unfold it. The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
 
 \begin{figure}[thpb]
     \centering
@@ -15,7 +15,7 @@ The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block
 
 \section{Garment Segmentation}
 Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment.
-Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color.
+
 
 \begin{figure}[thpb]
     \centering
@@ -29,14 +29,14 @@ Based on the assumption that the clothing article is placed on top of a flat whi
 
 Another potential approach is to remove the horizontal plane of the table using depth information. This approach can be further improved by combining the results obtained by the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
 
-Once the background is extracted, the contour of the garment has to be determined. Several methods exist for this purpose. The Topological Analysis by Border Following algorithm developed by Suzuki and Abe \comment{[ref to suzuki85]} is a widely used algorithm for connected-component labeling and countour finding. A Marching Squares \reftodo
+Once the background is extracted, the contour of the garment has to be determined. Several methods exist for this purpose. The Topological Analysis by Border Following algorithm developed by Suzuki and Abe \reftodo \comment{(suzuki85)} is a widely used algorithm for connected-component labeling and countour finding. A Marching Squares \reftodo algorithm can be also applied to find constant valued contours in an image.
 
-[...] is extracted and approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \reftodo. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
+After the contour is extracted, it is then approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \reftodo. Alternative algorithms exist, such as the Teh-Chin algorithm to find Dominant Points \reftodo \comment{(Teh-Chin89)}. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
 
 The segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
 \section{Garment Depth Map Clustering}
-When the garment has been identified, garment regions with similar height points must be labeled. \comment{For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} \reftodo to the depth image. }
+When the garment has been identified, garment regions with similar height points must be clustered and labeled. \comment{For this task we apply the watershed algorithm\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} \reftodo to the depth image. }
 
 \begin{figure}[thpb]
     \centering
