@@ -55,14 +55,12 @@ When working with images, the clustering process of finding regions both compact
 The garment depth map clustering process used in this thesis is developed in more detail in chapter \ref{garment_clustering}.
 
 \section{Garment Pick and Place Points}
-On the labeled watershed image, we calculate the average height value of each region, and assign this average value to all points in the region. The region with the highest average height is selected for further analysis. 
+\label{garment_PnP_points}
 
-The next step, after having labeled the similar-height regions and found the highest region, is to find the unfold direction. The assumption made here is that the fold has at least one contour edge which is also a border of the garment. 
+\comment{Objective $\rightarrow$ find fold location to unfold}
 
-A set of candidate paths is generated, all of them starting at the centroid of the highest region, and ending in each contour segment midpoint. Each candidate path is analyzed and assigned a value calculated by penalizing the changes in the height of the path.
+\comment{Some methods}
 
-Up to here, we have detected the most promising direction to unfold. Finally, we need to define is the exact point where the robot has to pick the garment, and the place point. 
+\comment{Finally $\rightarrow$ choose good PnP points}
 
-For this, we extend the previously selected direction line. The garment pick point is chosen at the intersection of the direction line with the inner region border. To find this point, we compute the intersection between the line and the region contour, and select the point furthest to the garment border.
-
-On the other side, the place point is selected by computing the symmetric point of the pick point with respect to the garment edge intersection point. The unfold directions, departing from the pick point and arriving at the place point of a set of clothes, is shown in Fig. \ref{fig:directions}.
+\comment{Border vs centroid vs other choices}
