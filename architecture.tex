@@ -57,14 +57,20 @@ The garment depth map clustering process used in this thesis is developed in mor
 \section{Garment Pick and Place Points}
 \label{garment_PnP_points}
 
-\comment{Objective $\rightarrow$ find fold location to unfold}
-
 Once we have clustered the depth image in regions of similar height, we can proceed to analyze those regions. The objective is to find which parts of the region outline correspond to the fold line, which is physically connected to the rest of the garment. Once the fold line has been detected, pick and place points have to be found for the robot to perform the unfolding operation.
 
-\comment{Some methods}
+If grouping of certain segmented regions is required, i.e. there are small superpixels with similar characteristics, a merging algorithm has to be performed. A graph-based approach could be used for both merging clusters and determining which clusters are physically connected, either by the fold line or because they belong to the same garment region.
 
-If grouping of certain segmented regions is required, i.e. there are small superpixels with similar characteristics, a \comment{grouping algorithm} has to be performed. A graph-based approach could be used for both merging clusters and determining which clusters are physically connected, either by the fold line or because they belong to the same garment region.
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.8
+    \textwidth]{figures/placeholder2.png}
+    \caption{\comment{A nice figure explaining this 'picking points' section}}
+    \label{fig:generic_superpixels}
+\end{figure}
 
-\comment{Finally $\rightarrow$ choose good PnP points}
 
-\comment{Border vs centroid vs other choices}
+Once the overlapping fold is identified, and the fold line is known, we select pick and place points for performing the unfold operation. This operation, that will be executed by a robot, has to take the garment from the original state to a more ``unfolded'' state.
+
+\comment{(Border vs centroid vs other choices)} Several choices exist for 
+
