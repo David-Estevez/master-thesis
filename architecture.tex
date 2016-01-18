@@ -1,9 +1,11 @@
 \chapter{\MyTitle}
 \label{architecture}
 
-This chapter presents an overview of a garment-agnostic algorithm to unfold clothes using depth sensor data, that will be extended in later chapters. Our work differs with most of the state of the art in the fact that garment models are not used. Our approach uses depth information captured with a depth sensor to detect folds in a garment. The most suitable grasping position, unfolding direction, and release point are computed.
+This chapter presents an overview of a garment-agnostic algorithm to unfold clothes using depth sensor data, that will be extended in later chapters. Our work differs with most of the state of the art in the fact that garment models are not used. Our approach uses depth information captured with an RGB-D sensor to detect folds in a garment. The most suitable grasping position, unfolding direction, and release point are computed.
 
-The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block_diagram}). First, the  background is extracted from the image and the contour of the garment is approximated. Then, a depth map clustering process is performed to estimate overlapping regions. Finally, the information obtained in the previous process is used to determine if there are any folds present and how to interact with the garment to unfold it. The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
+The algorithm can be divided into three main stages, shown in Figure \ref{fig:pipeline_block_diagram}. First, the  background is extracted from the image and the contour of the garment is approximated. Then, a depth map clustering process is performed to estimate overlapping regions. Finally, the information obtained in the previous process is used to determine if there are any folds present and how to interact with the garment to unfold it. The whole unfolding pipeline is an iterative process, that should be repeated again until the garment is completely extended.
+
+The algorithm has been open sourced and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
 
 \begin{figure}[thpb]
     \centering
@@ -15,18 +17,19 @@ The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block
 
 \section{Garment Segmentation}
 \label{architecture:garment_segmentation}
-Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment. 
+
+The objective of this garment segmentation stage is to substract the background from the input RGB-D image to obtain only the resulting garment data, as well as to extract the simplified garment contour. Figure \ref{fig:generic_garment_segmentation} depicts a generic sample of this background substraction and contour extraction process.
 
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=0.8
     \textwidth]{figures/placeholder2.png}
-    \caption{\comment{A nice figure of a generic Garment Segmentation}}
+    \caption{\comment{A nice figure of a generic Background substraction and contour extraction}}
     \label{fig:generic_garment_segmentation}
 \end{figure}
 
-Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \reftodo, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
+Prior to any further analysis, a background substraction step has to be performed in order to remove all information not related to the garment. Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \reftodo, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
 
 Another potential approach is to remove the horizontal plane of the table using depth information. This approach can be further improved by combining the results obtained by the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
 
@@ -42,7 +45,7 @@ When the garment has been identified, garment regions with similar height points
 
 For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means, Mean Shift \reftodo or DBSCAN \reftodo are some examples of clustering algorithms that can be applied to group pixels with similar depth.
 
-A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \reftodo is a local region of the image with similar characteristics, such as color, texture, etc. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC \reftodo, Quickshift \reftodo, Turbopixels \reftodo and Normalized Cuts \reftodo.
+A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \reftodo is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC \reftodo, Quickshift \reftodo, Turbopixels \reftodo and Normalized Cuts \reftodo.
 
 \begin{figure}[thpb]
     \centering
@@ -59,21 +62,20 @@ The garment depth map clustering process used in this thesis is developed in mor
 \section{Garment Pick and Place Points}
 \label{garment_PnP_points}
 
-Once we have clustered the depth image in regions of similar height, we can proceed to analyze those regions. The objective is to find which parts of the region outline correspond to the fold line, which is physically connected to the rest of the garment. Once the fold line has been detected, pick and place points have to be found for the robot to perform the unfolding operation.
-
-If grouping of certain segmented regions is required, i.e. there are small superpixels with similar characteristics, a merging algorithm has to be performed. A graph-based approach could be used for both merging clusters and determining which clusters are physically connected, either by the fold line or because they belong to the same garment region.
+Once we have clustered the depth image in regions of similar height, we can proceed to analyze those regions. The objective is to find which parts of the region outline correspond to the fold line, which is physically connected to the rest of the garment. Once the fold line has been detected, pick and place points have to be found for the robot to perform the unfolding operation. Figure \ref{fig:picking_points} displays an example of this unfolding operation, with its pick and place points marked.
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=0.8
     \textwidth]{figures/placeholder2.png}
     \caption{\comment{A nice figure explaining this 'picking points' section}}
-    \label{fig:generic_superpixels}
+    \label{fig:picking_points}
 \end{figure}
+
+
+If grouping of certain segmented regions is required, i.e. there are small superpixels with similar characteristics, a merging algorithm has to be performed. A graph-based approach could be used for both merging clusters and determining which clusters are physically connected, either by the fold line or because they belong to the same garment region.
 
 
 Once the overlapping fold is identified, and the fold line is known, we select pick and place points for performing the unfold operation. This operation, that will be executed by a robot, has to take the garment from the original state to a more ``unfolded'' state.
 
 Several choices exist for pick points, as well as for place points. To pick the garment, one can assume that the highest points in the overlapped region are good candidates, as they probably are easier for the robot to grasp, and they will be separated from the underlying garment. Other potential choices are the points that belong to the border of the overlapping region, except for those which belong to the fold line. These approaches are typically followed by humans when performing unfolding tasks. For place points, the points should be far enough from the garment to completely unfold the overlapping region, but not far enough for the garment to be dragged with the movement. It is also convenient to choose points that lie on the oposite side of the folding line with respect to the pick point, otherwise is almost impossible to perform the unfold operation.
-
-The whole unfolding pipeline is an iterative process, that should be repeated again until the garment is completely extended.
