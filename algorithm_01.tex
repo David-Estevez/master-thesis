@@ -1,26 +1,27 @@
 \chapter{Garment Segmentation}
 \label{garment_segmentation}
 
-This chapter is devoted to the first part of our algorithm, extracting the garment data from the whole sensor data. The input data is an RGB image with depth information (RGB-D image). Garment segmentation is perfomed over this image, and the garment contour is then extracted and simplified, ready to be used in later steps.
+This chapter is devoted to the first stage of our algorithm, segmenting the garment data from the whole sensor data. The input data is an RGB image with depth information (RGB-D image). Garment segmentation is perfomed over this image, and the garment contour is then extracted and simplified, ready to be used in later stages.
 
 
-\section{Garment segmentation}
-\label{garment_segmentation_mask}
+\section{Background Substraction}
+\label{background_substraction}
 
-The RGB-D image obtained in the previous step contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a segmentation process is required to classify whether a pixel represents the garment or the table.
+The RGB-D image obtained from the robot sensor contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a background substraction step is required to classify whether a pixel represents the garment or the table.
 
 For this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. But, as the main focus of our work is unfolding clothes, a simple color-based method was selected. 
 
-We work under the assumption that the garment has been placed over a flat clear surface, as opposed to the garment which is much more colorful (higher saturation values). 
+We work under the assumption that the garment has been placed over a flat white surface, as opposed to the garment which is much more colorful (higher saturation values). 
 
-First, the RGB image was converted to the HSV space. Working in the HSV space gives us direct information about our magnitudes of interest: saturation and intensity. We are not interested in detecting a particular color, but to detect a colored item, so HSV is a more sensible choice of color space than RGB. As preprocessing, to reduce the effect of the noise on the segmentation process, a convolution with a 5x5 Gaussian kernel with $\sigma=1.1$ is computed on the saturation (S) and value (V) channels of the HSV image.
+First, the RGB image was converted to the HSV space. Working in the HSV space gives us direct information about our magnitudes of interest: saturation and intensity. We are not interested in detecting a particular color, but to detect a colored item, so HSV is a more sensible choice of color space than RGB. A  preprocessing process was added to increase robustness and reduce the effect of the noise on the background substraction. For that purpose, a convolution with a 5x5 Gaussian kernel with $\sigma=1.1$ is computed on the saturation (S) and value (V) channels of the HSV image.
 
-GrabCut \reftodo was a good alternative, but was discarded as it requires user input to select background and foreground samples, and it is computationally expensive compared with simple thresholding methods.
+GrabCut \reftodo was a good alternative for background substraction, but was discarded as it requires user input to select background and foreground samples, and it is computationally expensive compared with simple thresholding methods.
 
-A thresholding operation is then applied to the filtered image, using Otsu's algorithm \reftodo to obtain the optimal threshold values. Pixels with low amount of saturation, and a high values are classified as being part of the table, as opposed to dark or saturated pixels.
+Once the image is converted to the HSV color space, a thresholding operation is then applied to the filtered image, using Otsu's algorithm \reftodo to obtain the optimal threshold values. Pixels with low amount of saturation, and high values are classified as being part of the table, as opposed to dark or saturated pixels.
 
 Finally, some morphological transformations are applied to the resulting mask to reduce noise due to false positives/negatives. A 5x5 square kernel is used in several closing operations, followed by a similar number of opening operations.
 
+The output of this step, a binary mask with background pixels represented as black and garment pixels represented as white, can be seen in Figure \ref{fig:segmentation_mask}.
 
 \begin{figure}[thpb]
     \centering
@@ -31,7 +32,7 @@ Finally, some morphological transformations are applied to the resulting mask to
 \end{figure}
 
 \section{Contour extraction}
-From the mask obtained in the previous step (section \ref{garment_segmentation_mask}) a blob labeling algorithm is applied to detect the garment outline. This outline will be used in later steps to obtain the candidates to be a fold.
+From the mask obtained in the previous step (section \ref{background_substraction}) a blob labeling algorithm is applied to detect the garment outline. This outline will be used in later stages to obtain the candidates to be a fold.
 
 The contour extraction method used is the Topological Analysis by Border Following algorithm developed by Suzuki and Abe \reftodo \comment{(suzuki85)}. It was selected as it is a widely used algorithm for connected-component labeling and countour finding. Other algorithms, such as Marching Cubes \reftodo work under the assumption that contours are isolines\footnote{Curves along which a  function has a constant value.}, which is not the case for binary masks, so they were not suitable. Only external contours were retrieved. A simple chain approximation was then applied to reduce the number of points that describe the contours, storing only the endpoints of the different segments.
 
@@ -41,3 +42,13 @@ After obtaining the garment contour, it is processed, as we want to obtain a fur
 To obtain the simplified outline, the Ramer–Douglas–Peucker algorithm \reftodo was applied. It was selected as it is efficient and a reliable implementation is available in the OpenCV\footnote{\comment{website}} libraries used to implement this work. This algorithm recursively divides the contour in segments by choosing the first and last points of the curve and drawing a line. Then, it checks whether that point is closer to that line than a threshold $\epsilon > 0$ or not. If it is closer, all points not marked to be kept can be discarded, otherwise, if it is greater than $\epsilon$, that point is marked to be kept and the procedure is repeated cosidering the last marked point as ending point. If there are no points left at one stage, the last point of the contour becomes the ending point again. The previous ending point becomes then the new starting point.
 
 The parameter $\epsilon$ is calculated from the magnitude of the contour perimeter, considering it to be 1\% of that value. The greater this value is, the more simplified the resulting contour will be.
+
+Figure \ref{fig:contour_and_simplified_contour} shows the garment contour before and after the simplification process.
+
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.9
+    \textwidth]{figures/placeholder2.png}
+    \caption{\comment{Contour vs simplified contour}}
+    \label{fig:contour_and_simplified_contour}
+\end{figure}
