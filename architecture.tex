@@ -14,6 +14,7 @@ The algorithm can be divided into three main stages (Fig \ref{fig:pipeline_block
 \end{figure}
 
 \section{Garment Segmentation}
+\label{architecture:garment_segmentation}
 Prior to any cloth analysis, a background extraction has to be performed in order to remove all information not related to the garment. 
 
 
@@ -36,6 +37,7 @@ After the contour is extracted, it is then approximated to a polygon, e.g. using
 The garment segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
 \section{Garment Depth Map Clustering}
+\label{architecture:depth_map_clustering}
 When the garment has been identified, garment regions with similar height points must be clustered and labeled. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments. Many algorithms exist to perform this clustering step.
 
 For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means, Mean Shift \reftodo or DBSCAN \reftodo are some examples of clustering algorithms that can be applied to group pixels with similar depth.
