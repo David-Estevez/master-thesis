@@ -1,15 +1,18 @@
 \chapter{Garment Depth Map Clustering}
 \label{garment_clustering}
 
-This chapter explains in detail the gament analysis that our algorithm performs to the garment data previously segmented. The contour of the garment is extracted, and a Watershed segmentation algorithm is applied to find the different overlapped patches.
+This chapter explains in detail the garment depth map clustering stage that our algorithm performs to the garment data previously segmented. This stage prepares the depth image data using the segmentation results from the previous stage to remove all depth data not related to the garment. Then, it applies a Watershed transform algorithm to find the different overlapped garment regions, that will be analyzed in the last stage to select the most suitable manipulation points to unfold the garment.
 
 \section{Depth image preprocessing}
 \label{depth_image_preprocessing}
 
-Once the garment mask has been calculated, it is applied to the depth image of the garment to discard the information related to the table. The garment depth data is then normalized to prepare it for posterior analysis steps.
+The raw depth image data obtained from the robot sensor requires some treatment before it can be processed in the next step (section \ref{garment_clustering_watershed}). This step takes the garment mask calculated in the previous stage, and applies it to the depth image of the garment. The objective is to discard the information related to the table. 
+
+As the next step will treat the depth data as a greyscale image, the remaining garment depth data is normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
 
 
-\section{Watershed segmentation}
+\section{Similar-Height Region Clustering}
+\label{garment_clustering_watershed}
 
 Watershed\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item.
 
