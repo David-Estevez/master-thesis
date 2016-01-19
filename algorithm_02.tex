@@ -1,7 +1,7 @@
 \chapter{Garment Depth Map Clustering}
 \label{garment_clustering}
 
-This chapter explains in detail the garment depth map clustering stage that our algorithm performs to the garment data previously segmented. This stage prepares the depth image data using the segmentation results from the previous stage to remove all depth data not related to the garment. Then, it applies a Watershed transform algorithm to find the different overlapped garment regions, that will be analyzed in the last stage to select the most suitable manipulation points to unfold the garment.
+This chapter explains in detail the garment depth map clustering stage that our algorithm performs to the garment data previously segmented. In this stage, the depth image data is preprocessed using the segmentation results from the previous stage to remove all depth data not related to the garment. Then, it applies a Watershed transform algorithm to find the different similar-height regions, that will be analyzed in the last stage to select the most suitable manipulation points to unfold the garment.
 
 \section{Depth Image Preprocessing}
 \label{depth_image_preprocessing}
@@ -9,6 +9,16 @@ This chapter explains in detail the garment depth map clustering stage that our 
 The raw depth image data obtained from the robot sensor requires some treatment before it can be processed in the next step (section \ref{garment_clustering_watershed}). This step takes the garment mask calculated in the previous stage, and applies it to the depth image of the garment. The objective is to discard the information related to the table. 
 
 As the next step will treat the depth data as a greyscale image, the remaining garment depth data is normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
+
+Figure \ref{fig:depth_map_preprocessing} \comment{[...]}
+
+\begin{figure}[thpb]
+    \centering
+    \includegraphics[width=0.7
+    \textwidth]{figures/placeholder2.png}
+    \caption{\comment{(Figure representing this preprocessing step)}}
+    \label{fig:depth_map_preprocessing}
+\end{figure}
 
 
 \section{Similar-Height Region Clustering}
