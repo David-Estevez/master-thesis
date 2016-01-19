@@ -18,7 +18,7 @@ Once the garment depth data is separated from the table depth data and normalize
 
 Grouping points according to a common feature such as height is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. Some of the superpixel segmentation algorithms were tested during the development of this work, but finally we selected a Watershed algorithm to perform the clustering. This algorithm is faster than other superpixel approaches, \comment{[...]}
 
-Watershed\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item.
+Watershed\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item. Figure \ref{fig:watershed_example} shows an example of applying the Watershed algorithm to segment coins.
 
 \begin{figure}[thpb]
     \centering
@@ -28,14 +28,13 @@ Watershed\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_wate
     \label{fig:watershed_example}
 \end{figure}
 
+A denoising process is performed before the clustering process. We use a total variation filter \reftodo{\comment{[chambolle]}}, to produce a smoother image, while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
 
-In the context of this work, the Watershed segmentation algorithm is applied to the depth image of the garment to locate the different parts that are overlapping each other. This regions are related to folded parts, that rest on top of other parts of the garment. 
+The Watershed segmentation algorithm is then applied to the depth image of the garment to locate the different parts that are overlapping each other. This regions are related to folded parts, that rest on top of other parts of the garment. 
 
-As in practise flooding using local minima as makers leads to over- segmentation, an enhanced version of this algorithm allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image was calculated for this work, and regions where the gradient has a low value were selected. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
+As in practise flooding using local minima as makers leads to over- segmentation, an enhanced version of this algorithm allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image was calculated for this work, and regions where the gradient has a low value were selected as these seed points. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
 
-\comment{To prepare it for the Watershed segmentation, the depth image was normalized and converted to a greyscale image.} A denoising step was also performed, using a total variation filter \comment{(ref chambolle)}, to produce a smoother image, while maintaining the edges sharp. The total variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
-
-The different garment regions obtained with watershed were labeled and used as input for the next step. Figure \ref{fig:watershed_labels} shows the result of this process.
+The different garment regions obtained with Watershed were labeled and used as input for the next step. Figure \ref{fig:watershed_labels} shows the result of this process.
 
 \begin{figure}[thpb]
     \centering
