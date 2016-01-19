@@ -5,4 +5,6 @@
 *.out
 *.synctex.gz
 *.toc
+*.bbl
+*.blg
 master_thesis.pdf
