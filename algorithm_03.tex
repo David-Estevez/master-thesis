@@ -1,6 +1,6 @@
 \chapter{Garment Pick and Place Points}
 \label{pick_and_place}
-This chapter explains the last steps in our algorithm, in which we use the data obtained in the previous depth map clustering (chapter \ref{garment_clustering}) to determine the next unfold pick and place points for the humanoid robot.\juansays{(Referenciar figura)}
+This chapter explains the last stage of our algorithm, in which the pick and place points required for unfolding the current fold are determined. These points will be later sent to the humanoid robot to perform the unfolding operation. This stage has as input the clustered depth map obtained in the clustering stage (described in chapter \ref{garment_clustering}), and the garment approximated polygon (calculated in section \ref{segmentation_approximated_polygon}). Figure \ref{fig:garment_pnp_points_blocks} shows the block diagram of the different steps that are performed in this stage.
 
 \begin{figure}[thpb]
     \centering
@@ -13,9 +13,13 @@ This chapter explains the last steps in our algorithm, in which we use the data 
 \section{Candidate Unfold Paths}
 \label{unfold_paths}
 
-The next step in our algorithm is to create a set of paths from the highest point in the garment to the midpoint of each contour segment. This is the set of candidate unfold paths, based in the assumption that when a garment has an overlapping fold, the fold line will rest in the garment contour, and the folded surface with have lower depth values (i.e. closer to the depth sensor).
+Based in the assumption that when a garment has an overlapping fold, the fold line will rest in the garment contour, and the folded surface will have lower depth values (i.e. closer to the depth sensor), the next step in our algorithm is to create a set of paths from the highest point in the garment to the midpoint of each contour segment. These paths will be later analyzed using the clusters previously found in the depth image to select the path with less height variation.
 
-These paths are checked so that they are located entirely inside the garment, paths that go outside the garment contour are considered invalid. Figure \ref{fig:candidate_paths} shows both the initial path candidates set and the candidates set without the invalid paths.
+To find the highest point in the garment, the clusters previously found with the Watershed algorithm are averaged using the median value for each cluster. Then, the region with the lowest depth value, which is closer to the camera and therefore higher in the garment, is selected as overlapping fold based on the previous assumption. The centroid of the selected cluster is the point selected as highest point. Using this method instead of selecting directly the highest point from the depth image increases the robustness of the algorithm against outliers and noise present in the depth image.
+
+The midpoint of each segment of the garment approximated polygon is then calculated, and a set of paths departing from the highest point and arriving to the midpoints is created.
+
+These paths are checked so that they are located entirely inside the garment, paths that go outside the garment approximated polygon are considered invalid. Figure \ref{fig:candidate_paths} shows both the initial paths set and the unfold candidate paths set, without the invalid paths.
 
 \begin{figure}[thpb]
     \centering
@@ -26,7 +30,6 @@ These paths are checked so that they are located entirely inside the garment, pa
 \end{figure}
 
 
-To find the highest point in the garment, regions found with the watershed algorithm are first averaged using the median value for each region. Then, the region with the lowest depth value, which is closer to the camera and therefore higher in the garment, is selected. The centroid of the selected cluster is the point selected as highest point. Using these method instead of selecting directly the highest point from the depth image increases the robustness of the algorithm against outliers and noise present in the depth image.
 
 
 \section{Bumpiness}
