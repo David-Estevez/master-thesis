@@ -29,21 +29,21 @@ These paths are checked so that they are located entirely inside the garment, pa
     \label{fig:candidate_paths}
 \end{figure}
 
-
-
-
 \section{Bumpiness}
 \label{bumpiness}
+Each of the candidate paths calculated using the method explained in the previous section has to be analyzed in this step to determine the best unfolding path. 
 
-Each of the candidate paths calculated using the method explained in the previous section was then analized to determine the best unfolding path. The differences in height between the overlapping fold region and the rest of the clothing article are assumed to be greater that the diferences in height amongst the fold region points. Under that assumption, the metric to evaluate the best path was a \textit{bumpiness} value \textit{B}, calcutated by penalizing the changes in height of the candidate path as show in Eq \ref{eq:bumpiness}
+Prior to this analysis, each of the candidate paths is discretized in constant-length segments, and the depth image is sampled at those discrete points. This results in several n-dimensional vectors of depth samples to be analyzed. As the different paths may differ in length, the amount of sampled points and, therefore, the length of each of the vectors (i.e. $n$) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample vector corresponding to each candidate path for a certain garment example.
+
+The differences in depth between the overlapping fold region and the rest of the clothing article are assumed to be greater than the diferences in depth within the fold region \comment{points}. Under that assumption, the metric to evaluate the best path is a \textit{bumpiness} value \textit{B}, which is calculated by penalizing the changes in depth along each of the candidate sample vectors, as shown in Equation \ref{eq:bumpiness}.
 
 \begin{equation}\label{eq:bumpiness}
 B = \sum_{i=1}^{n} | \textrm{path}(i)- \textrm{path}(i-1) | 
 \end{equation}
 
-Where $n$ is the number of points composing the path. The path with the lowest bumpiness value, which corresponds to the path with the less and smallest height changes, is selected as the unfold direction, Fig. \ref{fig:paths_with_bumpiness}.
+\comment{(Using path in the formula may confuse the reader, since we are using the sampled values and not the path itself)}
 
-For performing the \textit{bumpiness} value calculation, the path was discretized  in constant-lenght segments, and the depth image was sampled at those discrete points. Then, equation \ref{eq:bumpiness} was applied to the sampled values.
+Where $n$ is the number of points composing the path. The path with the lowest bumpiness value, which corresponds to the path with the least and smallest height changes, is selected as the unfold direction, as shown in Figure \ref{fig:paths_with_bumpiness}.
 
 \begin{figure}[thpb]
     \centering
