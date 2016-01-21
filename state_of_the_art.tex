@@ -1,11 +1,17 @@
 \chapter{State of the Art}
 \label{state_of_the_art}
 
-\section{\juansays{Part A}}
-\section{\juansays{Part B}}
-\section{\juansays{Part C}}
+In this chapter the current state of the art regarding garment folding is presented. Different approaches when working with garments can be found in the literature.
 
-\comment{Thesifize this}
+Some approaches use 3D computer vision algorithms to create models of the garments of to fit captured gament data to a predefined model. These garment models are used then to apply folding algorithms or to select the best points for manipulation. Some of these models are borrowed from the Computer Graphics community, where garment representation and simulation has been widely worked to achieve realistic clothing behavior in Computer Graphics scenes.
+
+In other approaches, the problem of garment folding is solved through interaction with the garment. By regrasping and changing the garment configuration, the garment category and current pose is detected, and \comment{[...]}
+
+Finally, the european project CloPeMa \comment{(Clothes and Pepinos Manipulation)} is \comment{mentioned [...]}.
+
+\comment{Model-less(?)}
+
+\section{\juansays{Garment Modelling-Based Approaches}}
 
 A significant amount of work conducted in this topic has been focused on modeling the different garment categories for both unfolded, extended garments and for grasped garments. The computer vision community has contributed with extensive work on the specifics of clothes modeling \cite{Chen2009}. 
 
@@ -17,6 +23,7 @@ A method for classifying and estimating the poses of deformable objects is prese
 
 The previous method was improved in \cite{Li2014IROS}, by extracting the features directly from the 3D data, dividing the hanging garment in different cells via layers, rings and sectors of the bounding cylinder. Each of the sectors becomes a binary feature, using the Signed Distance Function to check if the cell is inside the voxel where the center of the cell belongs, and is then arranged in a feature vector. A Hamming distance, whose weights are learned from the simulated dataset merged with some models reconstructed from real word Kinect point clouds, is used to estimate the object category and pose given an input reconstructed mesh model.
 
+\section{\juansays{Garment Manipulation-Based Approaches}}
 Based on the previous recognition algorithm, Li presents in \cite{Li2015ICRA} a method for unfolding deformable objects with a bi-manipulator robot. With this method, the robot is capable of taking a clothing article from an unknown state to a known state by iterative regrasping, detecting the most suitable grasping points in each state to achieve its goal. For locating the most suitable grasping points, the 3D point cloud obtained by the robot is matched to the mesh model, that incorporates the information about the best regions to grasp in order to unfold the garment.
 
 The method introduced by Cusumano-Towner et al. in \cite{Cusumano-Towner2011} allows a bi-manipulator robot to identify a clothing article, estimate its current state and achieve a desired configuration, generalizing to previously unseen garments. For that purpose, the robot uses a Hidden Markov Model (HMM) throughout a sequence of manipulations and observations, in conjunction with a relaxation of a strain-limiting finite element model for cloth simulation that can be solved via convex optimization.
@@ -25,9 +32,12 @@ Clothing article manipulation is another field in which extensive work has been 
 
 To detect the best grasping points for a clothing article, Ramisa \cite{Ramisa2012} performs the identification in a single step, even with highly wrinkled clothes. This detector is based in a Bag of Features detector, using as input a combination of appearance and 3D geometric features.
 
+\section{\juansays{CloPeMa European Project}}
 CloPeMa\footnote{\url{http://www.clopema.eu/}} is a recent EU-FP7 research project (2012-2015) whose objective is to advance the state of the art in perception and manipulation of fabric, textiles and garments. As part of the CloPeMa project, a method to detect single folds has been presented by Mariolis et al. in \cite{Mariolis2013, Mariolis2015}. In order to detect such folds, a database of unfolded clothes templates is built in the first place. These templates are later used to perform a shape matching between the folded garment shape, obtained by the camera, and the unfolded garment model. This process is iterative, and the initial results are feedbacked to adapt the model for a better fit. Stria et al. propose in \cite{Stria2014, Stria2014IROS} a polygon-based model for clothes configuration recognition using the estimated position of the most important landmarks in the clothing article. Once identified, these landmarks can be used for automated folding using a robotic manipulator. The clothes contour is extracted from a RGB image and processed using a modified grabcut algorithm and dynamic programming methods are used to fit it to the polygonal model. Doumanoglou et al. follow in \cite{Doumanoglou2014ECCV} an approach based on Active Random Forests to recognize clothing articles from depth images. This classifier allows the robot to perform actions to collect extra information in order to disambiguate the current hypotheses, such as changing the viewpoint. In \cite{Doumanoglou2014ICRA} they extend this approach to detect the optimal grasping points to unfold the garment.
 
 %\comment{(pseudo-unfolding -> remove wrinkles)}
 %\warning{Some work on wrinkles removal has been made by Sun et al. \cite{Sun2015} with a stereo vision system and a dual manipulator robot. Wrinkles are first identified  using a depth map of the cloth, which is later B-spline smoothed and parsed by shape and topology into different wrikle structures, that are later ranked by size and removed.}
+
+\section{\juansays{Model-less (?) Approaches}}
 
 The most similar work we can find in the related literature is the method for unfolding clothes presented by Willimon et al. in \cite{Willimon2011}. Their method, which also focuses in clothes unfolding prior to automated folding, use several features obtained from a depth image, such as peak regions and corners location, to determine the location and orientation most suitable for interaction with the garment. Two main steps are performed: first, the clothing article is flattened using RGB information from the camera and, then, depth information is used to extract the features used to estimate how to unfold the garment.
