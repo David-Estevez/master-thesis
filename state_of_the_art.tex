@@ -1,25 +1,23 @@
 \chapter{State of the Art}
 \label{state_of_the_art}
 
-In this chapter the current state of the art regarding garment folding is presented. Different approaches when working with garments can be found in the literature, and will be described in this chapter.
+In this chapter, the current state of the art regarding garment folding is presented. Different approaches when working with garments can be found in the literature, and they will be described in this chapter.
 
-Some approaches use 3D computer vision algorithms to create models of the garments of to fit captured gament data to a predefined model. These garment models are used then to apply folding algorithms or to select the best points for manipulation. Some of these models are borrowed from the Computer Graphics community, where garment representation and simulation has been widely studied to achieve realistic clothes behavior in Computer Graphics scenes.
+Some approaches use 3D computer vision algorithms to create models of the garments or to fit captured gament data to a predefined model. These garment models are used then to apply folding algorithms or to select the best points for manipulation. Some of these models are borrowed from the Computer Graphics community, where garment representation and simulation has been widely studied to achieve realistic clothes behavior in Computer Graphics scenes. This will be covered in section \ref{sota:garment_model_based}.
 
-In other approaches, the problem of garment folding is solved through robot interaction with the garment. By regrasping and changing the garment configuration, the garment category and current pose is detected, and the garment can be [...] to a target pose.
+In other approaches, the problem of garment folding is solved through robot interaction with the garment. By regrasping and changing the garment configuration, the garment category and current pose is detected, and the garment can be led to a target pose. These approaches will be seen in section \ref{sota:garment_manipulation_based}.
 
-Finally, the european project CloPeMa (Clothes Perception and Manipulation), devoted to perception and manipulation of fabric, textiles and garments, is mentioned. Their most relevant \comment{(to our research)} work is explained in this last section.
+Finally, the european project CloPeMa (Clothes Perception and Manipulation), devoted to perception and manipulation of fabric, textiles and garments, is described. Their research most relevant to this thesis is explained in the last section \ref{sota:clopema}.
 
-\comment{Model-less(?) - Not sure where to put this}
-
-\section{\juansays{Garment Modeling-Based Approaches}}
-
+\section{Garment Modeling-Based Approaches}
+\label{sota:garment_model_based}
 A significant amount of work conducted in this topic has been focused on modeling the different garment categories for both unfolded, extended garments and for grasped garments. The computer graphics community has also contributed with extensive work on the specifics of clothes modeling due to their need for realistic representation of fabrics and garments. A review of these modeling methods can be found in \cite{Chen2009}. 
 
 Kita et al. propose a method that uses a deformable model to calculate the state of hanging clothes based on 3D observed data \cite{Kita2004, Kita2009}. This calculation is performed by generating a set of candidate shapes predicted by physical simulations of hanging clothes and later comparison of them with the observed data. To fit the observed 3D data better, each generated shape is further deformed and the shape that is more consistent with the observed data is selected. 
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.7
+    \includegraphics[width=0.95
     \textwidth]{figures/SOTA_Kita_2009.png}
     \caption{\comment{(Kita thing)}}
     \label{fig:SOTA_Kita_2009}
@@ -47,7 +45,8 @@ The previous method was improved in \cite{Li2014IROS}, by extracting the feature
     \label{fig:SOTA_Li_2014}
 \end{figure}
 
-\section{\juansays{Garment Manipulation-Based Approaches}}
+\section{Garment Manipulation-Based Approaches}
+\label{sota:garment_manipulation_based}
 Clothing article manipulation is another field in which extensive work has been done. Based on the previous recognition algorithm, Li presents in \cite{Li2015ICRA} a method for unfolding deformable objects with a bi-manipulator robot. With this method, the robot is capable of taking a clothing article from an unknown state to a known state by iterative regrasping, detecting the most suitable grasping points in each state to achieve its goal. For locating the most suitable grasping points, the 3D point cloud obtained by the robot is matched to the mesh model, that incorporates the information about the best regions to grasp in order to unfold the garment.
 
 \begin{figure}[thpb]
@@ -70,17 +69,22 @@ Osawa et al. propose in \cite{Osawa2006} a method to unfold garments in order to
 
 To detect the best grasping points for a clothing article, Ramisa \cite{Ramisa2012} performs the identification in a single step, even with highly wrinkled clothes. This detector is based in a Bag of Features detector, using as input a combination of appearance and 3D geometric features.
 
-\section{\juansays{CloPeMa European Project}}
+The most similar work we can find in the related literature is the method for unfolding clothes presented by Willimon et al. in \cite{Willimon2011}. Their method, which also focuses in clothes unfolding prior to automated folding, use several features obtained from a depth image, such as peak regions and corners location, to determine the location and orientation most suitable for interaction with the garment. Two main steps are performed: first, the clothing article is flattened using RGB information from the camera and, then, depth information is used to extract the features used to estimate how to unfold the garment.
+
+\section{CloPeMa European Project}
+\label{sota:clopema}
+
+CloPeMa\footnote{\url{http://www.clopema.eu/}} is a recent EU-FP7 research project (2012-2015) whose objective is to advance the state of the art in perception and manipulation of fabric, textiles and garments.
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=0.7
     \textwidth]{figures/SOTA_CloPeMa_logo.png}
-    \caption{\warning{(This might look like a joke...because it is a joke)}}
-    \label{fig:SOTA_Stria_2014}
+    \caption{\comment{(Nice description)}}
+    \label{fig:SOTA_CloPeMa_logo}
 \end{figure}
 
-CloPeMa\footnote{\url{http://www.clopema.eu/}} is a recent EU-FP7 research project (2012-2015) whose objective is to advance the state of the art in perception and manipulation of fabric, textiles and garments. As part of the CloPeMa project, a method to detect single folds has been presented by Mariolis et al. in \cite{Mariolis2013, Mariolis2015}. In order to detect such folds, a database of unfolded clothes templates is built in the first place. These templates are later used to perform a shape matching between the folded garment shape, obtained by the camera, and the unfolded garment model. This process is iterative, and the initial results are feedbacked to adapt the model for a better fit. 
+ As part of the CloPeMa project, a method to detect single folds has been presented by Mariolis et al. in \cite{Mariolis2013, Mariolis2015}. In order to detect such folds, a database of unfolded clothes templates is built in the first place. These templates are later used to perform a shape matching between the folded garment shape, obtained by the camera, and the unfolded garment model. This process is iterative, and the initial results are feedbacked to adapt the model for a better fit. 
 
 \begin{figure}[thpb]
     \centering
@@ -112,9 +116,4 @@ Doumanoglou et al. follow in \cite{Doumanoglou2014ECCV} an approach based on Act
 \end{figure}
 
 
-%\comment{(pseudo-unfolding -> remove wrinkles)}
-%\warning{Some work on wrinkles removal has been made by Sun et al. \cite{Sun2015} with a stereo vision system and a dual manipulator robot. Wrinkles are first identified  using a depth map of the cloth, which is later B-spline smoothed and parsed by shape and topology into different wrikle structures, that are later ranked by size and removed.}
-
-\section{\juansays{Model-less (?) Approaches}}
-
-The most similar work we can find in the related literature is the method for unfolding clothes presented by Willimon et al. in \cite{Willimon2011}. Their method, which also focuses in clothes unfolding prior to automated folding, use several features obtained from a depth image, such as peak regions and corners location, to determine the location and orientation most suitable for interaction with the garment. Two main steps are performed: first, the clothing article is flattened using RGB information from the camera and, then, depth information is used to extract the features used to estimate how to unfold the garment.
+%Some work on wrinkles removal has been made by Sun et al. \cite{Sun2015} with a stereo vision system and a dual manipulator robot. Wrinkles are first identified  using a depth map of the cloth, which is later B-spline smoothed and parsed by shape and topology into different wrikle structures, that are later ranked by size and removed.
