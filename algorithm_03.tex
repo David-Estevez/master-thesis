@@ -33,32 +33,35 @@ These paths are checked so that they are located entirely inside the garment. Pa
 \label{bumpiness}
 Each of the candidate paths calculated using the method explained in the previous section has to be analyzed in this step to determine the best unfolding path. 
 
-Prior to this analysis, each of the $n$ candidate paths of length $L$ is discretized in segments with a constant length $l$. The depth image $\mathcal{D}(u,v)$ is sampled at those discrete points. This results in $n$ vectors $S=\{s_1,...,s_m\}$ of depth samples to be analyzed, where:
+We can represent each of the $n$ candidate paths obtained as a 2D parametric line ($\mathbb{R} \to \mathbb{R}^2$) depending on a parameter $r$, the radial distance to the highest point:
 
 \begin{equation}
-s_i = \mathcal{D}(u,v), i=\{1,...,m\}
-
+\textrm{path}(r) = \left[u(r), v(r)\right]
 \end{equation}
 
+Where $u$ and $v$ are pixel coordinates in the image frame of reference.
 
-As the different paths may differ in length $L$, the amount of sampled points and the length of each of the vectors ($m$) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample vector corresponding to each candidate path for a certain garment example.
+Prior to the analysis, each of the paths of length $L$ is discretized in segments with a constant length $l$. The depth image $\mathcal{D}(u,v)$ is sampled at those discrete points. This results in $n$ ordered sets $S=\{ s_1,...,s_m\}$ of depth samples to be analyzed, where:
 
 
+\begin{equation}
+s_i = \mathcal{D}(path(i \cdot l)), \quad  i=0,1,2,..., m
+\end{equation}
 
-The differences in depth between the overlapping fold region and the rest of the clothing article are assumed to be greater than the diferences in depth within the fold region \comment{points}. Under that assumption, the metric to evaluate the best path is a \textit{bumpiness} value \textit{B}, which is calculated by penalizing the changes in depth along each of the candidate sample vectors, as shown in Equation \ref{eq:bumpiness}.
+As the different paths may differ in length $L$, the amount of sampled points ($m=${\Large$\lfloor\frac{L}{l}\rfloor$}) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample set $S$ corresponding to each candidate path for a certain garment example.
+
+The differences in depth between the overlapping fold region and the rest of the clothing article are assumed to be greater than the diferences in depth within the fold region points. Under that assumption, the metric to evaluate the best path is a \textit{bumpiness} value \textit{B}, which is calculated by penalizing the changes in depth along each of the $n$ candidate sample sets $S$, as shown in Equation \ref{eq:bumpiness}.
 
 \begin{equation}\label{eq:bumpiness}
-B = \sum_{i=1}^{n} | \textrm{path}(i)- \textrm{path}(i-1) | 
+B = \sum_{i=2}^{m} | s_i- s_{i-1} | 
 \end{equation}
 
-\comment{(Using path in the formula may confuse the reader, since we are using the sampled values and not the path itself)}
-
-Where $n$ is the number of points composing the path. The path with the lowest bumpiness value, which corresponds to the path with the least and smallest height changes, is selected as the unfold direction, as shown in Figure \ref{fig:paths_with_bumpiness}. \comment{(Figure referenced twice)}
+The candidate set with the lowest bumpiness value, which corresponds to the path with the least and smallest height changes, is selected as the unfold direction, as shown in Figure \ref{fig:paths_with_bumpiness}.
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]{figures/candidate_paths.pdf}
-    \caption{On the left side, the candidate paths are shown. On the right side, the height profile of each path is shown. Notice that the depth sensor computes the distance to the object from itself, so that a low value in the bar plot means a closer object to the sensor, so it is a region with more height with respect to the table.}
+    \caption{\comment{On the left side, the candidate paths are shown. On the right side, the height profile of each path is shown. Notice that the depth sensor computes the distance to the object from itself, so that a low value in the bar plot means a closer object to the sensor, so it is a region with more height with respect to the table.}}
     \label{fig:paths_with_bumpiness}
 \end{figure}
 
