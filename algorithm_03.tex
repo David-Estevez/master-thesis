@@ -13,13 +13,13 @@ This chapter explains the last stage of our algorithm, in which the pick and pla
 \section{Candidate Unfold Paths}
 \label{unfold_paths}
 
-Based in the assumption that when a garment has an overlapping fold, the fold line will rest in the garment contour, and the folded surface will have lower depth values (i.e. closer to the depth sensor), the next step in our algorithm is to create a set of paths from the highest point in the garment to the midpoint of each contour segment. These paths will be later analyzed using the clusters previously found in the depth image to select the path with less height variation.
+Based on the assumption that when a garment has an overlapping fold, the fold line will rest on the garment contour, and the folded surface will have lower depth values (i.e. closer to the depth sensor), the next step in our algorithm is to create a set of paths from the highest point of the garment to the midpoint of each contour segment. These paths will be later analyzed using the clusters previously found in the depth image to select the path with less height variation.
 
-To find the highest point in the garment, the clusters previously found with the Watershed algorithm are averaged using the median value for each cluster. Then, the region with the lowest depth value, which is closer to the camera and therefore higher in the garment, is selected as overlapping fold based on the previous assumption. The centroid of the selected cluster is the point selected as highest point. Using this method instead of selecting directly the highest point from the depth image increases the robustness of the algorithm against outliers and noise present in the depth image.
+To find the highest point in the garment, the clusters previously found with the Watershed algorithm are averaged using the median value for each cluster. Then, the region with the lowest depth value, which is closest to the camera and therefore highest in the garment, is selected as overlapping fold based on the previous assumption. The centroid of the selected cluster is the point selected as the highest point. Using this method instead of selecting directly the highest point from the depth image increases the robustness of the algorithm against outliers and noise present in the depth image.
 
 The midpoint of each segment of the garment approximated polygon is then calculated, and a set of paths departing from the highest point and arriving to the midpoints is created.
 
-These paths are checked so that they are located entirely inside the garment, paths that go outside the garment approximated polygon are considered invalid. Figure \ref{fig:candidate_paths} shows both the initial paths set and the unfold candidate paths set, without the invalid paths.
+These paths are checked so that they are located entirely inside the garment. Paths that go outside the garment approximated polygon are considered invalid. Figure \ref{fig:candidate_paths} shows both the initial paths set and the unfold candidate paths set, without the invalid paths.
 
 \begin{figure}[thpb]
     \centering
@@ -33,7 +33,17 @@ These paths are checked so that they are located entirely inside the garment, pa
 \label{bumpiness}
 Each of the candidate paths calculated using the method explained in the previous section has to be analyzed in this step to determine the best unfolding path. 
 
-Prior to this analysis, each of the candidate paths is discretized in constant-length segments, and the depth image is sampled at those discrete points. This results in several n-dimensional vectors of depth samples to be analyzed. As the different paths may differ in length, the amount of sampled points and, therefore, the length of each of the vectors (i.e. $n$) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample vector corresponding to each candidate path for a certain garment example.
+Prior to this analysis, each of the $n$ candidate paths of length $L$ is discretized in segments with a constant length $l$. The depth image $\mathcal{D}(u,v)$ is sampled at those discrete points. This results in $n$ vectors $S=\{s_1,...,s_m\}$ of depth samples to be analyzed, where:
+
+\begin{equation}
+s_i = \mathcal{D}(u,v), i=\{1,...,m\}
+
+\end{equation}
+
+
+As the different paths may differ in length $L$, the amount of sampled points and the length of each of the vectors ($m$) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample vector corresponding to each candidate path for a certain garment example.
+
+
 
 The differences in depth between the overlapping fold region and the rest of the clothing article are assumed to be greater than the diferences in depth within the fold region \comment{points}. Under that assumption, the metric to evaluate the best path is a \textit{bumpiness} value \textit{B}, which is calculated by penalizing the changes in depth along each of the candidate sample vectors, as shown in Equation \ref{eq:bumpiness}.
 
