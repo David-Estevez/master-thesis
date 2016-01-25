@@ -1,26 +1,9 @@
 \chapter{Experiments and results}
 \label{experiments_and_results}
 
+The algorithm presented in this work was implemented and several experiments with a simple garment dataset were conducted. This chapter explains the implementation and experimental setup, as well as the results obtained through those experiments.
+
 \input{experiments}
-
-\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} 
-
-\section{Data adquisition}
-\label{data_adquisition}
-
-The starting point of our algorithm is the data adquisition process. Data is obtained as a point cloud from a ASUS Xtion Pro Live sensor. Then, data is converted to a depth map image for its later analysis. 
-
-This conversion is done by simply using the z component of each point as the depth value for each pixel of the depth image. This depth image could also be recovered from the point cloud using the instrinsic and extrinsic paramters of the sensor. But, as the sensor is placed on top of the garment, perpendicular to the surface on which the clothing article rests, both methods yield almost very similar results.
-
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.7
-    \textwidth]{figures/placeholder2.png}
-    \caption{\comment{Here I should put a nice figure of the point cloud and the depth image}}
-    \label{fig:point_cloud_and_depth_image}
-\end{figure}
-
-The RGB values are also recorded for each depth image, obtaining an RBG-D image.
 
 \input{results}
 
