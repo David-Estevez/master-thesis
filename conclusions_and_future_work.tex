@@ -1,16 +1,24 @@
 \chapter{Conclusions and future work}
 \label{conclusions_and_future_work}
 
-This chapter will describe the main contributions made to the state of the art by this work, as well as the challenges that appeared along the development of this work and during the experiments. Finally, future work lines to address those challenges and to improve further the state of the art will be proposed.
+This chapter will describe the main contributions made to the state of the art by this work. Along the development of this work and during the experiments some challenges appeared, and they will be covered after the main contributions. Finally, future work lines to address those challenges and to  further improve the state of the art will be proposed.
 
-\comment{Results show that our approach is promising to be included in a complete pipeline of clothes folding.}
- 
- 
+
 \section {Main contributions}
 \label{conclusions:contributions}
 
-The main contribution of our work is its analysis of the garment not dependent of a prior model. The process core resides in the segmentation of the grayscale image representing the heights.
+This section is dedicated to explain the main contributions of this work, and develop them in detail according to the different steps in our unfolding algorithm.
 
+The main contribution of our work is its analysis of the garment not dependent of a prior model. The process core resides in the segmentation of the grayscale image representing the heights. \comment{Results show that our approach is promising to be included in a complete pipeline of clothes folding.}
+
+\begin{enumerate}
+	\item \textbf{Garment Segmentation:} ---
+	\item \textbf{Garment Depth Map Clustering:} ---
+	\item \textbf{Garment Pick and Place Points:} ---
+\end{enumerate}
+
+\section {Possible improvements}
+\label{conclusions:improvements}
 Though the results are acceptable, two aspects of the algorithm can be improved.
 Contour detection currently trims some areas of the garment, which at times results in an incorrect polygon approximation that affects the functionality of the system.
 The garment pick point, the unfolding direction, and the place point have been chosen in a somewhat arbitrary manner. While the selected points may serve as a rule-of-thumb for robotic system developers, further experiments with robotic systems are required to determine whether a better pick and place strategy exists. For instance, the highest garment point or highest region centroid could be used as alternatives to the current pick point.
@@ -21,9 +29,6 @@ The garment pick point, the unfolding direction, and the place point have been c
 %- Extracción de contorno
 %- Forma de desdoblar
 %Other segmentation algorithms (such as Simple Linear Iterative Clustering) have been tested, with unsatisfactory results. However, we are confident that other segmentation algorithms may improve the results.
-
-\section {Possible improvements}
-\label{conclusions:improvements}
 
 \section{Future Work}
 \label{conclusions:future_work}
