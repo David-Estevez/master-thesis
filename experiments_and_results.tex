@@ -1,9 +1,7 @@
 \chapter{Experiments and results}
 \label{experiments_and_results}
 
-The algorithm presented in this work was implemented and several experiments with a simple garment dataset were conducted. This chapter explains the implementation and experimental setup, as well as the results obtained through those experiments.
-
-\comment{This section is devoted to explain the experiments performed using the algorithm presented in this thesis. It includes the implementation details, the experimental setup and the experiments themselves.}
+The algorithm presented in this work was implemented and several experiments with a simple garment dataset were conducted. This chapter is devoted to explain the experiments performed using the algorithm presented in this thesis. It includes the implementation details, the experimental setup and the experiments themselves, as well as the results obtained through those experiments.
 
 \section{Implementation details}
 \label{experiments:implementation}
@@ -16,7 +14,7 @@ The whole unfolding algorithm implementation is Open Source, and is available on
 \section{Experimental Setup}
 \label{experiments:expermimental_setup}
 
-The algorithm was tested at our lab. The experimental setup consisted of several elements: a table, a depth sensor and a humanoid robot. The garment was placed on a white, flat surface, parallel to the floor. Over the garment, an ASUS Xtion PRO LIVE depth sensor was attached to a structure to capture data from a top view. The unfolding operation was performed by our humanoid robot TEO \cite{martinez2012teo}. Figure \ref{fig:experimental_setup} depicts this setup.
+The algorithm was tested at our lab. The experimental setup consisted of several elements: a table, a depth sensor and a humanoid robot. The garment was placed on a white, flat surface, parallel to the floor. Over the garment, an ASUS Xtion PRO LIVE depth sensor was attached to a structure to capture data from a top view. The unfolding operation was performed by our full-body humanoid robot TEO \cite{martinez2012teo}. Figure \ref{fig:experimental_setup} depicts this setup.
 
 \comment{[...]}
 
@@ -52,18 +50,13 @@ In the present work we are using thick blankets and towels, to cope with the lim
 %
 These results show that the algorithm generates acceptable unfolding directions.
 
+However, when analyzing the experimental results, one can see that the candidate paths for unfolding are created using the garment contour segment midpoint. This fact can warp the most intuitive direction, which would be the closest between the highest region and the garment contour.
 
-\comment{(This is future work, I think)}
-
-%However, when analyzing the experimental results, one can see that the candidate paths for unfolding are created using the garment contour segment midpoint. This fact can warp the most intuitive direction, which would be the closest between the highest region and the garment contour.
-
-According to the results, an interpolation between the best two directions could result in a better solution. The best directions for the set of clothes are shown in Fig. \ref{directions_several}. %The arrow's directions make us believe that a combined directions by averaging them could provide better results.
+According to the results, an interpolation between the best two directions could result in a better solution. The best directions for the set of clothes are shown in Fig. \ref{directions_several}. The arrow's directions make us believe that a combined directions by averaging them could provide better results.
 
 %\warning{In \cite{Li2015IROS}, Li et al. present a method for folding deformable objects such as clothes. }
 
 A final demonstration of the current algorithm has been performed using the full-size humanoid robot TEO. Depth sensor coordinates are converted to the robot root frame, and a standard pick and place operation is performed with the given points. Figure \ref{setup} depicts this scenario.
-
-
 
 \begin{figure}[thpb]
     \centering
