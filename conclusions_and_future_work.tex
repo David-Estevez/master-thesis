@@ -9,27 +9,33 @@ This chapter will describe the main contributions made to the state of the art b
 
 This section is dedicated to explain the main contributions of this work, and develop them in detail according to the different steps in our unfolding algorithm.
 
-The main contribution of our work is its analysis of the garment not dependent of a prior model. The process core resides in the segmentation of the grayscale image representing the heights. \comment{Results show that our approach is promising to be included in a complete pipeline of clothes folding.}
+The main contribution of our work is its analysis of the garment not dependent of a prior model. The process core resides in the segmentation of the grayscale image representing the heights. Results show that our approach is promising to be included in a complete pipeline of clothes folding.
 
 \begin{enumerate}
-	\item \textbf{Garment Segmentation:} ---
-	\item \textbf{Garment Depth Map Clustering:} ---
-	\item \textbf{Garment Pick and Place Points:} ---
+	\item \textbf{Garment Segmentation:} Regarding garment segmentation, our main contribution is a segmentation stage that is independent of the shape and color of the garment. This stage works as long as the table that holds the garment is white or grey and the garment is more colorful than the table. The segmentation stage, additionally, requires no user input to label background/foreground samples.
+	\item \textbf{Garment Depth Map Clustering:} Our algorithm improves existing approaches by using Watershed as clustering algoritm, so that a threshold value for labelling contiguous regions is not required. This absence of threshold value also avoids breaking similar height regions into different label regions due to large wrinkles. 
+	\item \textbf{Garment Pick and Place Points:} The pick and place points selection is independent of the garment category \comment{[...]}
 \end{enumerate}
-
-\section {Possible improvements}
-\label{conclusions:improvements}
-Though the results are acceptable, two aspects of the algorithm can be improved.
-Contour detection currently trims some areas of the garment, which at times results in an incorrect polygon approximation that affects the functionality of the system.
-The garment pick point, the unfolding direction, and the place point have been chosen in a somewhat arbitrary manner. While the selected points may serve as a rule-of-thumb for robotic system developers, further experiments with robotic systems are required to determine whether a better pick and place strategy exists. For instance, the highest garment point or highest region centroid could be used as alternatives to the current pick point.
-% which can be considered the optimal pick and place strategy. 
-%It is clear through experiments presented (and not) in the paper that two aspects of the algorithm can be perfected: 
-%Future work 
-%shold focus 
-%- Extracción de contorno
-%- Forma de desdoblar
-%Other segmentation algorithms (such as Simple Linear Iterative Clustering) have been tested, with unsatisfactory results. However, we are confident that other segmentation algorithms may improve the results.
 
 \section{Future Work}
 \label{conclusions:future_work}
-One of the short-term future works is to implement a method to select more than one unfolding direction. Currently, the direction with the smallest bumpiness value is selected. In some cases, several directions share a very small value. This fact make us think that an interpolation between these directions may improve the final result. 
+\comment{Though the results are acceptable, some aspects of the algorithm can be improved.}
+
+\begin{enumerate}
+	\item \textbf{Garment Segmentation:} As garment segmentation depends on color, it sometimes trims some areas of the garment due to ilumination of a wrong white balance of the RGB camera. This segmentation problem may result in an incorrect polygon approximation that affects the functionality of the system.
+	\item \textbf{Garment Depth Map Clustering:} In general, we have found that working with a single point of view is a very limiting factor, as occlusions sometimes make folds ambiguous. As our approach does not depend on garment models, dissambiguating those situations is very challenging. For that reason, we strongly think that moving to an approach that uses a 3D point cloud of the garment as input data would have more information available to solve those ambiguous situations in a better way.
+
+	\item \textbf{Garment Pick and Place Points:} While the selected points may serve as a rule-of-thumb for robotic system developers, further experiments with robotic systems are required to determine whether a better pick and place strategy exists:
+	
+	For instance, the highest garment point or highest region centroid could be used as alternatives to the current pick point.
+
+\juansays{axis of symmetry (related to place point)}	
+
+\juansays{trajectory}	
+
+\juansays{something else related to place point?}	
+	
+\end{enumerate}
+
+\comment{Use a larger dataset?}
+

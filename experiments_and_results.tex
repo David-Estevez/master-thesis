@@ -45,11 +45,7 @@ The final experiments using the current algorithm have been performed using an A
 
 In the present work we are using thick blankets and towels, to cope with the limitations of the resolution of the depth sensor. A set of six samples with one or two folds were presented to the system for analysis. The results are shown in Figure \ref{directions}.
 
-When analyzing the experimental results, one can see that the candidate paths for unfolding are created using the garment contour segment midpoint. This fact can warp the most intuitive direction, which would be the closest between the highest region and the garment contour.
-
-According to the results, an interpolation between the best two directions could result in a better solution. The best directions for the set of clothes are shown in Figure \ref{directions_several}. The arrow's directions make us believe that a combined directions by averaging them could provide better results.
-
-%\warning{In \cite{Li2015IROS}, Li et al. present a method for folding deformable objects such as clothes. }
+When analyzing the experimental results, one can see that the candidate paths for unfolding are created using the garment contour segment midpoint. This fact can warp the most intuitive direction, which would be the closest between the highest region and the garment contour. Currently, the direction with the smallest bumpiness value is selected. In some cases, several directions share a very small value. This fact make us think that an interpolation between these directions may improve the final result. Figure \ref{directions_several} shows the best directions for the set of clothes, and the arrow's directions make us believe that a combined directions by averaging them could provide better results.
 
 A final demonstration of the current algorithm has been performed using the full-size humanoid robot TEO. Depth sensor coordinates are converted to the robot root frame, and a standard pick and place operation is performed with the given points. Figure \ref{setup} depicts this scenario.
 
@@ -59,5 +55,8 @@ A final demonstration of the current algorithm has been performed using the full
     \caption{Best directions calculated for each garment provided to the system. The direction with the smallest bumpiness value is shown in blue. The second best direction is shown in yellow. The bisector is shown in green. The arrows are for demonstrative purpose only, and their starting and ending point do not represent the pick and place point. The watershed computed regions are additionally overlaid upon the original image.}
     \label{directions_several}
 \end{figure}
+
+
+%\warning{In \cite{Li2015IROS}, Li et al. present a method for folding deformable objects such as clothes. }
 
 The final results show that the algorithm generates acceptable unfolding directions.
