@@ -19,7 +19,7 @@ The main contribution of our work is its analysis of the garment not dependent o
 
 \section{Future Work}
 \label{conclusions:future_work}
-\comment{Though the results are acceptable, some aspects of the algorithm can be improved.}
+Despite the satisfactory results of our work, some opportunities exist to further develop and improve this work, regarding each of the stages that form our algorithm. This section will introduce those current issues and possible solutions to address them.
 
 \begin{enumerate}
 	\item \textbf{Garment Segmentation:} As garment segmentation depends on color, it sometimes trims some areas of the garment due to ilumination of a wrong white balance of the RGB camera. This segmentation problem may result in an incorrect polygon approximation that affects the functionality of the system.
@@ -28,15 +28,14 @@ The main contribution of our work is its analysis of the garment not dependent o
 	\item \textbf{Garment Pick and Place Points:} While the selected points may serve as a rule-of-thumb for robotic system developers, further experiments with robotic systems are required to determine whether a better pick and place strategy exists:
 	
 \begin{itemize}
-\item For instance, the highest garment point or highest region centroid could be used as alternatives to the current pick point.
+\item For instance, the highest garment point or highest region centroid could be used as alternative to the current pick point, \comment{under the assumption that that point would correspond to an overlapped garment region not attached to the garment regions underneath}.
 
-\item \juansays{axis of symmetry (related to place point)}	
+\item Other place points could also be chosen depending on a different criteria. For example, the place point could be calculated using the fold line as axis of symmetry, or determined based on the unfolding trajectory selected.	
 
-\item The trajectory used to unfold the garment is a simple one, which follow a straight line connecting the pick point, a point above the pick point, a point above the place point and the place point. More elaborated trajectories (e.g. splines, curves).
+\item The trajectory used to unfold the garment is a simple one, which follows a straight line connecting the pick point, a point above the pick point, a point above the place point and the place point. More elaborated trajectories, such as splines or curves, could be used instead, such the one Li et al. present in their method for folding deformable objects \cite{Li2015IROS}.
 
-\item \juansays{something else related to place point?}	
 \end{itemize}
 \end{enumerate}
 
-\comment{Use a larger dataset?}
+Finally, the experiments were performed using data gathered from just a few garments on our lab. Using a larger dataset would provide more feedback and benchmarking about the performance of our algorithm, specially if the dataset selected is widely used by other researches belonging to the clothes folding community.
 
