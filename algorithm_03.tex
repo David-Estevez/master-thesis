@@ -67,11 +67,9 @@ The candidate set with the lowest bumpiness value, which corresponds to the path
 
 \section{Pick and Place Points}
 \label{pick_and_place}
-Once the most promising path for unfolding has been identified, the last step is to obtain pick and place points for the robot to perform the unfold action.
+Once the most promising path for unfolding has been identified, the last step is to obtain pick and place points for the robot to perform the unfold action. Due to the absence of a cuantitative metric for determining the suitability of those points, the point selection criteria has been selected using intuition from all possible choices.
 
-\comment{elegidos arbitrariamente (de forma intuitiva)}
-
-The most suitable grasping point for the picking action is located at the  intersection between the unfolding path direction line and the highest garment region border. This point is obtained by calculating the intersection between the selected path line and the highest region contour. This operation results in two intersection points, from which the furthest to the garment border is selected.
+The selected grasping point for the picking action is located at the intersection between the unfolding path direction line and the highest garment region border. This point is obtained by calculating the intersection between the selected path line and the highest region contour. This operation results in two intersection points, from which the furthest to the garment border is selected.
 
 The other point is used as axis for a point reflection. To find the placing point, a reflection transformation is applied to the picking point using the aforementioned point as axis. Figure \ref{fig:directions} shows the unfold directions for several clothes, departing at the picking points and arriving to the placing points.
 
