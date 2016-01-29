@@ -1,7 +1,7 @@
 \chapter{Conclusions and future work}
 \label{conclusions_and_future_work}
 
-This chapter will describe the main contributions made to the state of the art by this work. Along the development of this work and during the experiments some challenges appeared, and they will be covered after the main contributions. Finally, future work lines to address those challenges and to  further improve the state of the art will be proposed.
+This chapter will describe the main contributions made to the state of the art by this work. Along the development of this work and during the experiments some challenges appeared. They will be covered after the main contributions along with future work lines that address those challenges and  further improve the state of the art.
 
 
 \section {Main contributions}
@@ -9,7 +9,7 @@ This chapter will describe the main contributions made to the state of the art b
 
 This section is dedicated to explain the main contributions of this work, and develop them in detail according to the different steps in our unfolding algorithm.
 
-The main contribution of our work is its analysis of the garment not dependent of a prior model. The process core resides in the segmentation of the grayscale image representing the heights. Results show that our approach is promising to be included in a complete pipeline of clothes folding.
+The main contribution of our work is that its analysis of the garment is not dependent of a prior model. The process core resides in the segmentation of the grayscale image representing the heights. Results show that our approach is promising to be included in a complete pipeline of clothes folding.
 
 \begin{enumerate}
 	\item \textbf{Garment Segmentation:} Regarding garment segmentation, our main contribution is a segmentation stage that is independent of the shape and color of the garment. This stage works as long as the table that holds the garment is white or grey and the garment is more colorful than the table. The segmentation stage, additionally, requires no user input to label background/foreground samples.
@@ -19,13 +19,13 @@ The main contribution of our work is its analysis of the garment not dependent o
 
 \section{Future Work}
 \label{conclusions:future_work}
-Despite the satisfactory results of our work, some opportunities exist to further develop and improve this work, regarding each of the stages that form our algorithm. This section will introduce those current issues and possible solutions to address them.
+Some opportunities exist to further develop and improve this work, despite the presented satisfactory results. This section will introduce those current issues and possible solutions to address them, regarding each of the stages that compose our algorithm.
 
 \begin{enumerate}
-	\item \textbf{Garment Segmentation:} As garment segmentation depends on color, it sometimes trims some areas of the garment due to ilumination of a wrong white balance of the RGB camera. This segmentation problem may result in an incorrect polygon approximation that affects the functionality of the system.
-	\item \textbf{Garment Depth Map Clustering:} In general, we have found that working with a single point of view is a very limiting factor, as occlusions sometimes make folds ambiguous. As our approach does not depend on garment models, dissambiguating those situations is very challenging. For that reason, we strongly think that moving to an approach that uses a 3D point cloud of the garment as input data would have more information available to solve those ambiguous situations in a better way.
+	\item \textbf{Garment Segmentation:} As our garment segmentation stage currently depends on color, it sometimes trims some areas of the garment due to ilumination or a wrong white balance of the RGB camera. This segmentation problem may result in an incorrect polygon approximation that affects the functionality of the system.
+	\item \textbf{Garment Depth Map Clustering:} In general, we have found that working with a single point of view is a very limiting factor, as occlusions sometimes make folds ambiguous. As our approach does not depend on garment models, dissambiguating those situations is very challenging. For that reason, the author strongly believes that moving to an approach that uses a 3D point cloud of the garment as input data would have more information available to solve those ambiguous situations in a better way.
 
-	\item \textbf{Garment Pick and Place Points:} While the selected points may serve as a rule-of-thumb for robotic system developers, further experiments with robotic systems are required to determine whether a better pick and place strategy exists:
+	\item \textbf{Garment Pick and Place Points:} While the selected points may serve as a rule-of-thumb for robotic system developers, further experiments with robotic systems are required to determine whether a better pick and place strategy exists: \comment{validación experimental en ausencia de métrica}
 	
 \begin{itemize}
 \item For instance, the highest garment point or highest region centroid could be used as alternative to the current pick point, \comment{under the assumption that that point would correspond to an overlapped garment region not attached to the garment regions underneath}.
@@ -37,5 +37,4 @@ Despite the satisfactory results of our work, some opportunities exist to furthe
 \end{itemize}
 \end{enumerate}
 
-Finally, the experiments were performed using data gathered from just a few garments on our lab. Using a larger dataset would provide more feedback and benchmarking about the performance of our algorithm, specially if the dataset selected is widely used by other researches belonging to the clothes folding community.
-
+Finally, as the experiments were performed using data gathered from a limited set of garments in our laboratory environment, the statistical relevance of the results is also limited. Future works should include the use of datasets of garments shared and used among other laboratories and research groups to promote fair benchmarking through repeatable experiments.
