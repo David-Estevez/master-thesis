@@ -1,0 +1,5 @@
+Background-segmentation-01.png -> http://cs.brown.edu/people/ren/publications/cvpr2013/cvpr2013_teaser.png
+Background-segmentation-02.jpg -> https://vision.in.tum.de/_media/spezial/bib/nieuwenhuis-cremers-pami12_2.jpg
+Background-segmentation-03.png -> http://cse.snu.ac.kr/sites/default/files/styles/largest/public/node--lab/ai1.png
+Superpixels-02.jpg -> http://ivrl.epfl.ch/files/content/sites/ivrg/files/research/images/RK_SLICSuperpixels/comparison/bound_lk/118035.jpg
+Superpixels-03.gif -> http://doi.ieeecomputersociety.org/cms/Computer.org/dl/trans/tp/2012/11/figures/ttp20121122741.gif

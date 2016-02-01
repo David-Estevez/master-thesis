@@ -3,13 +3,32 @@
 
 Folding clothes is a common and necessary, but tedious, task for humans. Additionally, due to the increasing aging of the world population, a growing need exists for 
 \juansays{automated solutions}
-to be able to help us with laundry. Current automated solutions, shown in figure \ref{fig:current_solutions}, are bulky, expensive, and require a large dedicated space, as they are intented to be used in an industrial environment. Also, due to the complexity of the garment manipulation task,  these solutions are designed to be integrated in an \comment{industrial chain}, with several machines chained to perform the whole process. Therefore, they are not suitable for domestic use. The proposed alternative is to use a robot to perform these \comment{laundry manipulation} tasks. A humanoid robot, designed to work in human environments, and to have human-like locomotion and manipulation capabilities seems to be a sensible choice.
+to be able to help us with laundry. Current automated solutions, shown in figure \ref{fig:current_solutions}, are bulky, expensive, and require a large dedicated space, as they are intented to be used in an industrial environment. Also, due to the complexity of the garment manipulation task,  these solutions are designed to be integrated into an \juansays{assembly line}, with several machines chained to perform the whole process. Therefore, they are not suitable for domestic use. The proposed alternative is to use a robot to perform these \comment{laundry manipulation} tasks. A humanoid robot, designed to work in human environments, and to have human-like locomotion and manipulation capabilities seems to be a sensible choice.
+
+%\begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/placeholder2.png}
+%    \caption{\comment{Current clothes folding solutions}}
+%    \label{fig:current_solutions}
+%\end{figure}
 
 \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/placeholder2.png}
-    \caption{\comment{Current clothes folding solutions}}
-    \label{fig:current_solutions}
+		\centering
+        \begin{subfigure}[l]{0.42\textwidth}
+            \centering
+    		\includegraphics[width=\textwidth]
+    		{figures/Intro_japan_folding.jpg}
+			\caption{Human-based folding} %http://www.japantimes.co.jp/news/2012/12/19/reference/firms-move-some-eggs-out-of-china-basket/
+        \end{subfigure}
+        ~
+        \begin{subfigure}[r]{0.56\textwidth}
+	        \centering
+    		\includegraphics[width=\textwidth]
+    		{figures/Intro_industrial_folding.png}
+		    \caption{Automatic folding}        
+		\end{subfigure} 
+		\caption{\comment{Current clothes folding solutions}}
+		\label{fig:global_conf_discovery_tripod}
 \end{figure}
 
 Working with non-rigid objects such as clothes is a difficult task for robots, due to the complexity of modeling and manipulating deformable, thin objects. Clothes can be easily entangled when doing laundry, and recognizing individual garments and their category just from color or depth image analysis becomes an almost impossible task, due to occlusions amongst the cluttered clothes. Another challenging aspect when working with deformable objects is how to bring the object into a known configuration from an arbitrary initial state.

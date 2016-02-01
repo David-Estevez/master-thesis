@@ -38,13 +38,31 @@ Grouping points according to a common feature such as height is a clustering pro
 
 The Watershed transform is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item. Figure \ref{fig:watershed_example} shows an example of applying the Watershed algorithm to segment coins.
 
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.7
-    \textwidth]{figures/placeholder2.png}
+%\begin{figure}[thpb]
+%    \centering
+%    \includegraphics[width=0.7
+%    \textwidth]{figures/placeholder2.png}
+%    \caption{\comment{(Here it would be great to add a figure of the example, such as opencv's coins)}}
+%    \label{fig:watershed_example}
+%\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+    \begin{subfigure}[l]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/Watershed-02.jpg}
+	\end{subfigure}
+	~
+    \begin{subfigure}[r]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/Watershed-03.jpg}
+	\end{subfigure} 
     \caption{\comment{(Here it would be great to add a figure of the example, such as opencv's coins)}}
     \label{fig:watershed_example}
 \end{figure}
+
 
 A denoising process is performed before applying the Watershed transform, which is the actual clustering process. We use a Total Variation filter \reftodo{\comment{[chambolle]}} to produce a smoother image while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
 

@@ -11,8 +11,8 @@ The algorithm has been open sourced and is available online\footnote{\url{https:
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.8
-    \textwidth]{figures/placeholder2.png}
+    \includegraphics[width=\textwidth]
+    {figures/Main_diagram.pdf}
     \caption{\comment{A nice figure of the whole pipeline block diagram}}
     \label{fig:pipeline_block_diagram}
 \end{figure}
@@ -23,13 +23,32 @@ The algorithm has been open sourced and is available online\footnote{\url{https:
 The objective of this garment segmentation stage is to substract the background from the input RGB-D image to obtain only the resulting garment data, as well as to extract the simplified garment contour. Figure \ref{fig:generic_garment_segmentation} depicts a generic sample of this background substraction and contour extraction process.
 
 
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.8
-    \textwidth]{figures/placeholder2.png}
+%\begin{figure}[thpb]
+%    \centering
+%    \includegraphics[width=0.8
+%    \textwidth]{figures/placeholder2.png}
+%    \caption{\comment{A nice figure of a generic Background substraction and contour extraction}}
+%    \label{fig:generic_garment_segmentation}
+%\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering
+    \begin{subfigure}[l]{0.49\textwidth}
+        \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/Background-segmentation-01.png}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[r]{0.49\textwidth}
+	        \centering
+    		\includegraphics[width=\textwidth]
+    		{figures/Background-segmentation-02.jpg}
+		\end{subfigure} 
     \caption{\comment{A nice figure of a generic Background substraction and contour extraction}}
     \label{fig:generic_garment_segmentation}
 \end{figure}
+
 
 Prior to any further analysis, a background substraction step has to be performed in order to remove all information not related to the garment. Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \reftodo, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
 
@@ -49,12 +68,29 @@ For general purpose clustering over any set of unlabeled data we can find severa
 
 A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \reftodo is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC \reftodo, Quickshift \reftodo, Turbopixels \reftodo and Normalized Cuts \reftodo.
 
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.8
-    \textwidth]{figures/placeholder2.png}
-    \caption{\comment{A nice figure of a generic Superpixels}}
-    \label{fig:generic_superpixels}
+%\begin{figure}[thpb]
+%    \centering
+%    \includegraphics[width=\textwidth]{figures/Superpixels-01.png}
+%    \caption{\comment{A nice figure of a generic Superpixels}}
+%    \label{fig:generic_superpixels}
+%\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering
+    \begin{subfigure}[l]{0.51\textwidth}
+        \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/Superpixels-02.jpg}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[r]{0.47\textwidth}
+	        \centering
+    		\includegraphics[width=\textwidth]
+    		{figures/Superpixels-03.png}
+		\end{subfigure} 
+    \caption{\comment{A nice figure of a generic Background substraction and contour extraction}}
+    \label{fig:generic_garment_segmentation}
 \end{figure}
 
 When working with images, the clustering process of finding regions both compact and with homogeneous characteristics is known as segmentation. Many image segmentation algorithms exist based on similar regions and closed contours. One of these algorithms, widely used, is the Watershed transform algorithm \reftodo, which interprets the image as a topological surface, filling the image with water from several point sources until they merge, and creating walls in those intersection contours. The regions isolated by these walls are the segmented regions.
