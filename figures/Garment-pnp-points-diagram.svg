@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="39cm" height="16cm" viewBox="163 154 778 302" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #bcd5ff" x="347.002" y="156" width="450.004" height="297" rx="40" ry="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="347.002" y="156" width="450.004" height="297" rx="40" ry="40"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="378" y="210" width="131.05" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="378" y="210" width="131.05" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="443.525" y="231.9">
+      <tspan x="443.525" y="231.9">Candidate Unfold</tspan>
+      <tspan x="443.525" y="247.9">Paths Calculation</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" points="240.198,236.55 240.198,236 373.528,236 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="365.764,241 375.764,236 365.764,231 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="509.05,236 526.006,236 526.006,236 532.528,236 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="524.764,241 534.764,236 524.764,231 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="537" y="210" width="91.4" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="537" y="210" width="91.4" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="582.7" y="231.9">
+      <tspan x="582.7" y="231.9">Bumpiness</tspan>
+      <tspan x="582.7" y="247.9">Calculation</tspan>
+    </text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="238.5" y="437">
+    <tspan x="238.5" y="437"></tspan>
+    <tspan x="238.5" y="453">Depth Map</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="572.004" y="304.5">
+    <tspan x="572.004" y="304.5"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="572.004" y="304.5">
+    <tspan x="572.004" y="304.5"></tspan>
+  </text>
+  <text font-size="20.32" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="378.004" y="434">
+    <tspan x="378.004" y="434">Garment Pick and Place Points</tspan>
+  </text>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="306,386.374 306,386 443.524,386 443.524,266.472 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="448.524,274.236 443.524,264.236 438.524,274.236 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="238.632" y="301">
+    <tspan x="238.632" y="301">Garment Approximated</tspan>
+    <tspan x="238.632" y="317">Polygon</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="443.524" y="236">
+    <tspan x="443.524" y="236"></tspan>
+  </text>
+  <g>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="170" y="334.75" width="137" height="103.25"/>
+    <image x="171" y="335.75" width="135" height="101.25" xlink:href="file:///home/def/Research/master-thesis/figures/labels-01.png"/>
+  </g>
+  <g>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="173.264" y="186.1" width="133.867" height="100.9"/>
+    <image x="174.264" y="187.1" width="131.867" height="98.9" xlink:href="file:///home/def/Research/master-thesis/figures/polygon-approx-01.png"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="582.7" y="236">
+    <tspan x="582.7" y="236"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="653.506" y="202.1" width="111.65" height="68" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="653.506" y="202.1" width="111.65" height="68" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="709.331" y="224">
+      <tspan x="709.331" y="224">Pick and Place</tspan>
+      <tspan x="709.331" y="240">Points</tspan>
+      <tspan x="709.331" y="256">Calculation</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="628.4,236 641.006,236 641.006,236.1 649.034,236.1 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="641.27,241.1 651.27,236.1 641.27,231.1 "/>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="830.006,195 928.406,195 940.406,207 940.406,277 830.006,277 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="830.006,195 928.406,195 940.406,207 940.406,277 830.006,277 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="928.406,195 928.406,207 940.406,207 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="837.006" y="219.9">
+      <tspan x="837.006" y="219.9">Manipulation</tspan>
+      <tspan x="837.006" y="235.9">Trajectories</tspan>
+      <tspan x="837.006" y="251.9"></tspan>
+      <tspan x="837.006" y="267.9"></tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="765.156,236.1 797.581,236.1 797.581,236 825.534,236 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="817.77,241 827.77,236 817.77,231 "/>
+  </g>
+</svg>
