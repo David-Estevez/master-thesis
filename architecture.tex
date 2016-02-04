@@ -20,14 +20,14 @@ The algorithm has been open sourced and is available online\footnote{\url{https:
 \section{Garment Segmentation}
 \label{architecture:garment_segmentation}
 
-The objective of this garment segmentation stage is to substract the background from the input RGB-D image to obtain only the resulting garment data, as well as to extract the simplified garment contour. Figure \ref{fig:generic_garment_segmentation} depicts a generic sample of this background substraction and contour extraction process.
+The objective of this garment segmentation stage is to substract the background from the input RGB-D image to obtain only the resulting garment data, as well as to extract the simplified garment contour. Figure \ref{fig:generic_garment_segmentation} depicts a generic sample of this background subtraction and contour extraction process.
 
 
 %\begin{figure}[thpb]
 %    \centering
 %    \includegraphics[width=0.8
 %    \textwidth]{figures/placeholder2.png}
-%    \caption{\comment{A nice figure of a generic Background substraction and contour extraction}}
+%    \caption{\comment{A nice figure of a generic Background subtraction and contour extraction}}
 %    \label{fig:generic_garment_segmentation}
 %\end{figure}
 
@@ -45,12 +45,12 @@ The objective of this garment segmentation stage is to substract the background 
     		\includegraphics[width=\textwidth]
     		{figures/Background-segmentation-02.jpg}
 		\end{subfigure} 
-    \caption{\comment{A nice figure of a generic Background substraction and contour extraction}}
+    \caption{\comment{A nice figure of a generic Background subtraction and contour extraction}}
     \label{fig:generic_garment_segmentation}
 \end{figure}
 
 
-Prior to any further analysis, a background substraction step has to be performed in order to remove all information not related to the garment. Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \reftodo, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
+Prior to any further analysis, a background subtraction step has to be performed in order to remove all information not related to the garment. Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \reftodo, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
 
 Another potential approach is to remove the horizontal plane of the table using depth information. This approach can be further improved by combining the results obtained by the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
 
@@ -89,7 +89,7 @@ A particular case of clustering algorithms are those which are applied to obtain
     		\includegraphics[width=\textwidth]
     		{figures/Superpixels-03.png}
 		\end{subfigure} 
-    \caption{\comment{A nice figure of a generic Background substraction and contour extraction}}
+    \caption{\comment{A nice figure of a generic Background subtraction and contour extraction}}
     \label{fig:generic_garment_segmentation}
 \end{figure}
 

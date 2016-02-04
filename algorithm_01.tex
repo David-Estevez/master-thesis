@@ -12,26 +12,26 @@ This chapter is devoted to the first stage of our algorithm, segmenting the garm
 \end{figure}
 
 
-\section{Background Substraction}
-\label{background_substraction}
+\section{Background Subtraction}
+\label{background_subtraction}
 
-The RGB-D image obtained from the robot sensor contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a background substraction step is required to classify whether a pixel represents the garment or the table. Figure \ref{fig:background_substration_processes} shows an overview of the different processes involved in this step.
+The RGB-D image obtained from the robot sensor contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a background subtraction step is required to classify whether a pixel represents the garment or the table. Figure \ref{fig:background_substration_processes} shows an overview of the different processes involved in this step.
 
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=0.9
     \textwidth]{figures/placeholder2.png}
-    \caption{\comment{Background substraction processes}}
+    \caption{\comment{Background subtraction processes}}
     \label{fig:background_substration_processes}
 \end{figure}
 
-For this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background substraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 
+For this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background subtraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 
 
 
 We work under the assumption that the garment has been placed over a flat white surface, as opposed to the garment which is much more colorful (higher Saturation). Therefore, the RGB image is converted to the HSV space. Working in the HSV space gives us direct information about our magnitudes of interest: Saturation (S) and Value (V). We are not interested in detecting a particular color, but to detect a colored item, so HSV is a more sensible choice of color space than RGB. 
 
-A filtering process is added to increase robustness and reduce the effect of the noise on the background substraction. This process is achieved using a convolution with a 5x5 and $\sigma=1.1$ Gaussian kernel computed on the Saturation and Value channels of the HSV image.
+A filtering process is added to increase robustness and reduce the effect of the noise on the background subtraction. This process is achieved using a convolution with a 5x5 and $\sigma=1.1$ Gaussian kernel computed on the Saturation and Value channels of the HSV image.
 
 Once the image is converted to the HSV color space and filtered, a thresholding operation is then applied to the filtered image, using Otsu's algorithm \reftodo to obtain the optimal threshold values. Pixels with low amount of Saturation, and high Value are classified as being part of the table, as opposed to saturated or dark pixels.
 
@@ -49,7 +49,7 @@ The output of this background substraction step, a binary mask with background p
 
 \section{Garment Approximated Polygon Computation}
 \label{segmentation_approximated_polygon}
-From the binary mask obtained in the previous step (section \ref{background_substraction}) a blob labeling algorithm is applied to detect the garment outline. This outline will be approximated to a simple polygon, and used in later stages to obtain the candidates to be a fold.
+From the binary mask obtained in the previous step (section \ref{background_subtraction}) a blob labeling algorithm is applied to detect the garment outline. This outline will be approximated to a simple polygon, and used in later stages to obtain the candidates to be a fold.
 
 \begin{figure}[thpb]
     \centering
