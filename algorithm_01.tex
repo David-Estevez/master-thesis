@@ -5,8 +5,8 @@ This chapter is devoted to the first stage of our algorithm, segmenting the garm
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.7
-    \textwidth]{figures/placeholder2.png}
+    \includegraphics[width=\textwidth]
+    {figures/Garment-segmentation-diagram.pdf}
     \caption{\comment{(Block diagram for Garment Segmentation chapter)}}
     \label{fig:garment_segmentation_blocks}
 \end{figure}
@@ -15,18 +15,17 @@ This chapter is devoted to the first stage of our algorithm, segmenting the garm
 \section{Background Subtraction}
 \label{background_subtraction}
 
-The RGB-D image obtained from the robot sensor contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a background subtraction step is required to classify whether a pixel represents the garment or the table. Figure \ref{fig:background_substration_processes} shows an overview of the different processes involved in this step.
+The RGB-D image obtained from the robot sensor contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a background subtraction step is required to classify whether a pixel represents the garment or the table. Figure \ref{fig:background_subtration_processes} shows an overview of the different processes involved in this step.
 
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.9
-    \textwidth]{figures/placeholder2.png}
+    \includegraphics[width=0.6\textwidth]
+    {figures/Garment-segmentation-process-diagram.pdf}
     \caption{\comment{Background subtraction processes}}
-    \label{fig:background_substration_processes}
+    \label{fig:background_subtration_processes}
 \end{figure}
-
-For this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background subtraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 
+or this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background subtraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 
 
 
 We work under the assumption that the garment has been placed over a flat white surface, as opposed to the garment which is much more colorful (higher Saturation). Therefore, the RGB image is converted to the HSV space. Working in the HSV space gives us direct information about our magnitudes of interest: Saturation (S) and Value (V). We are not interested in detecting a particular color, but to detect a colored item, so HSV is a more sensible choice of color space than RGB. 
@@ -37,15 +36,36 @@ Once the image is converted to the HSV color space and filtered, a thresholding 
 
 Finally, some morphological transformations are applied to the resulting mask to reduce noise due to false positives/negatives. A 5x5 square kernel is used in several closing operations, followed by a similar number of opening operations. \juansays{"Ya veremos si explicarlo"}
 
-The output of this background substraction step, a binary mask with background pixels represented as black and garment pixels represented as white, can be seen in Figure \ref{fig:segmentation_mask}.
+The output of this background subtraction step, a binary mask with background pixels represented as black and garment pixels represented as white, can be seen in Figure \ref{fig:segmentation_mask}.
 
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.48
-    \textwidth]{figures/placeholder.png}
+%\begin{figure}[thpb]
+%    \centering
+%    \includegraphics[width=0.48
+%    \textwidth]{figures/placeholder.png}
+%    \caption{\comment{Again, I should put here a picture of the resulting mask}}
+%    \label{fig:segmentation_mask}
+%\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+    \begin{subfigure}[l]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/segmentation_original.png}
+    	\caption{Original RGB image}
+	\end{subfigure}
+	~
+    \begin{subfigure}[r]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/segmentation_mask.png}
+    	\caption{Segmentation mask}
+	\end{subfigure} 
     \caption{\comment{Again, I should put here a picture of the resulting mask}}
     \label{fig:segmentation_mask}
 \end{figure}
+
+
 
 \section{Garment Approximated Polygon Computation}
 \label{segmentation_approximated_polygon}
@@ -53,8 +73,8 @@ From the binary mask obtained in the previous step (section \ref{background_subt
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.9
-    \textwidth]{figures/placeholder2.png}
+    \includegraphics[width=\textwidth]
+    {figures/Garment-polygon-diagram.pdf}
     \caption{\comment{Garment Polygon calculation processes}}
     \label{fig:garment_polygon_processes}
 \end{figure}
@@ -69,10 +89,36 @@ The parameter $\epsilon$ is calculated from the magnitude of the outline perimet
 
 Figure \ref{fig:contour_and_simplified_contour} shows a comparison between the garment contour, the garment outline and the final approximated polygon.
 
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.9
-    \textwidth]{figures/placeholder2.png}
+%\begin{figure}[thpb]
+%    \centering
+%    \includegraphics[width=0.9
+%    \textwidth]{figures/placeholder2.png}
+%    \caption{\comment{Contour vs outline vs polygon}}
+%    \label{fig:contour_and_simplified_contour}
+%\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+    \begin{subfigure}[l]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/polygon-contour-01.png}
+    	\caption{Garment Contour}
+	\end{subfigure}
+	~
+    \begin{subfigure}[c]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/polygon-outline-01.png}
+    	\caption{Garment Outline}
+	\end{subfigure}
+	~
+    \begin{subfigure}[r]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/polygon-approx-01.png}
+    	\caption{Garment Approximated Polygon}
+	\end{subfigure} 
     \caption{\comment{Contour vs outline vs polygon}}
     \label{fig:contour_and_simplified_contour}
 \end{figure}

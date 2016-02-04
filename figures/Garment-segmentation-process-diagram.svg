@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="23cm" height="41cm" viewBox="306 -186 456 805" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffa1a1" x="308" y="-68.2279" width="453.695" height="541.278" rx="40" ry="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="308" y="-68.2279" width="453.695" height="541.278" rx="40" ry="40"/>
+  </g>
+  <g>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="487.763" y="-165.832" width="102" height="77.0001"/>
+    <image x="488.763" y="-164.832" width="100" height="75.0001" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_original.png"/>
+  </g>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539.5" y="-173.757">
+    <tspan x="539.5" y="-173.757">RGB image</tspan>
+  </text>
+  <image x="472.5" y="494.1" width="133.5" height="100.125" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_mask.png"/>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="487.5" y="600">
+    <tspan x="487.5" y="600"></tspan>
+    <tspan x="487.5" y="616">Segmentation mask</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="495" y="-43" width="87.55" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="495" y="-43" width="87.55" height="52" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.775" y="-21.1">
+      <tspan x="538.775" y="-21.1">Convert to</tspan>
+      <tspan x="538.775" y="-5.1">HSV</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="424.5" y="74.1" width="94.75" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="424.5" y="74.1" width="94.75" height="52" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="471.875" y="96">
+      <tspan x="471.875" y="96">Filter </tspan>
+      <tspan x="471.875" y="112">(Channel S)</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="563.5" y="74.1" width="95.35" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="563.5" y="74.1" width="95.35" height="52" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="611.175" y="96">
+      <tspan x="611.175" y="96">Filter </tspan>
+      <tspan x="611.175" y="112">(Channel V)</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="424.5" y="168.1" width="94.75" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="424.5" y="168.1" width="94.75" height="52" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="471.875" y="190">
+      <tspan x="471.875" y="190">Threshold </tspan>
+      <tspan x="471.875" y="206">(Channel S)</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="563.5" y="168.1" width="95.35" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="563.5" y="168.1" width="95.35" height="52" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="611.175" y="190">
+      <tspan x="611.175" y="190">Threshold </tspan>
+      <tspan x="611.175" y="206">(Channel V)</tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="539" cy="277" rx="19" ry="18"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="539" cy="277" rx="19" ry="18"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="525.565" y1="264.272" x2="552.435" y2="289.728"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="525.565" y1="289.728" x2="552.435" y2="264.272"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="538.775,9 538.775,41.55 471.875,41.55 471.875,69.6279 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="466.875,61.8639 471.875,71.8639 476.875,61.8639 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="538.775,9 538.775,41.55 611.175,41.55 611.175,69.6279 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="606.175,61.8639 611.175,71.8639 616.175,61.8639 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="471.875,126.1 471.875,136.1 471.875,158.1 471.875,163.628 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="466.875,155.864 471.875,165.864 476.875,155.864 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="611.175,127.107 611.175,137.107 611.175,158.1 611.175,163.628 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="606.175,155.864 611.175,165.864 616.175,155.864 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="471.875,220.1 471.875,277 515.528,277 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="507.764,282 517.764,277 507.764,272 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="611.175,220.1 611.175,277 562.472,277 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="570.236,272 560.236,277 570.236,282 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="499" y="321.95" width="80" height="36" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="499" y="321.95" width="80" height="36" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539" y="343.85">
+      <tspan x="539" y="343.85">Closing</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="499" y="384.95" width="80" height="36" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="499" y="384.95" width="80" height="36" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539" y="406.85">
+      <tspan x="539" y="406.85">Opening</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="539,295 539,308.95 539,308.95 539,317.478 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534,309.714 539,319.714 544,309.714 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="539,357.95 539,375.05 539,375.05 539,380.478 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534,372.714 539,382.714 544,372.714 "/>
+  </g>
+  <text font-size="20.3197" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="323.832" y="407.235">
+    <tspan x="323.832" y="407.235">Garment </tspan>
+    <tspan x="323.832" y="432.635">Segmentation </tspan>
+    <tspan x="323.832" y="458.035">Process</tspan>
+  </text>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="538.763,-89.8316 538.763,-77.55 538.775,-77.55 538.775,-47.4721 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="533.775,-55.2361 538.775,-45.2361 543.775,-55.2361 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="539,420.95 539,456.025 539.25,456.025 539.25,489.628 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.25,481.864 539.25,491.864 544.25,481.864 "/>
+  </g>
+</svg>

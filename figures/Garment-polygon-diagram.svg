@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="39cm" height="13cm" viewBox="201 149 779 257" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffa1a1" x="346" y="151" width="473" height="254" rx="40" ry="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="346" y="151" width="473" height="254" rx="40" ry="40"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="372" y="231" width="85.35" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="372" y="231" width="85.35" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="414.675" y="252.9">
+      <tspan x="414.675" y="252.9">Contour </tspan>
+      <tspan x="414.675" y="268.9">Extraction</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="490" y="231" width="106.85" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="490" y="231" width="106.85" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="543.425" y="252.9">
+      <tspan x="543.425" y="252.9">Outline</tspan>
+      <tspan x="543.425" y="268.9">Simplification</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="625" y="231" width="170.25" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="625" y="231" width="170.25" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="710.125" y="252.9">
+      <tspan x="710.125" y="252.9">Garment Approximated</tspan>
+      <tspan x="710.125" y="268.9"> Polygon Calculation</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" points="457.35,257 478,257 478,257 485.528,257 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="477.764,262 487.764,257 477.764,252 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="596.85,257 615,257 615,257 620.528,257 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="612.764,262 622.764,257 612.764,252 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="323.001,256.5 340,256.5 340,257 367.528,257 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="359.764,262 369.764,257 359.764,252 "/>
+  </g>
+  <g>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="839.5" y="208.1" width="129" height="97.25"/>
+    <image x="840.5" y="209.1" width="127" height="95.25" xlink:href="file:///home/def/Research/master-thesis/figures/polygon-approx-01.png"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="795.25,257 814,257 814,256.725 836.028,256.725 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="828.264,261.725 838.264,256.725 828.264,251.725 "/>
+  </g>
+  <image x="204.334" y="212" width="118.667" height="89" xlink:href="file:///home/def/Research/master-thesis/figures/polygon-mask-01.png"/>
+  <text font-size="20.32" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="584" y="355">
+    <tspan x="584" y="355">Garment Approximated Polygon </tspan>
+    <tspan x="584" y="380.4">Calculation Process</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="201" y="315">
+    <tspan x="201" y="315">Segmentation mask</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="904" y="324">
+    <tspan x="904" y="324">Garment Approximated</tspan>
+    <tspan x="904" y="340">Polygon</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="414.675" y="257">
+    <tspan x="414.675" y="257"></tspan>
+  </text>
+</svg>

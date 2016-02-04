@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="29cm" height="27cm" viewBox="158 147 563 537" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffa1a1" x="317" y="149" width="236" height="534" rx="40" ry="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="317" y="149" width="236" height="534" rx="40" ry="40"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="367" y="237" width="140.5" height="36" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="367" y="237" width="140.5" height="36" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="437.25" y="258.9">
+      <tspan x="437.25" y="258.9">Contour Extraction</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="358" y="373" width="157.2" height="36" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="358" y="373" width="157.2" height="36" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="436.6" y="394.9">
+      <tspan x="436.6" y="394.9">Outline Simplification</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="352" y="501" width="170.25" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="352" y="501" width="170.25" height="52" rx="10" ry="10"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="437.125" y="522.9">
+      <tspan x="437.125" y="522.9">Garment Approximated</tspan>
+      <tspan x="437.125" y="538.9"> Polygon Calculation</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="583.5" y="488.1" width="129" height="97.25"/>
+    <image x="584.5" y="489.1" width="127" height="95.25" xlink:href="file:///home/def/Research/master-thesis/figures/polygon-approx-01.png"/>
+  </g>
+  <image x="162.333" y="193" width="118.667" height="89" xlink:href="file:///home/def/Research/master-thesis/figures/polygon-mask-01.png"/>
+  <text font-size="20.3197" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="264.25" y="643">
+    <tspan x="264.25" y="643">Garment Approximated Polygon </tspan>
+    <tspan x="264.25" y="668.4">Calculation Process</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="158" y="306">
+    <tspan x="158" y="306">Segmentation mask</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="645" y="610">
+    <tspan x="645" y="610">Garment Approximated</tspan>
+    <tspan x="645" y="626">Polygon</tspan>
+  </text>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="437.25,273 437.25,323 436.6,323 436.6,368.528 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="431.6,360.764 436.6,370.764 441.6,360.764 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="436.6,409 436.6,454.497 437.125,454.497 437.125,495.521 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="432.125,487.757 437.125,497.757 442.125,487.757 "/>
+  </g>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="764" y="627.5">
+    <tspan x="764" y="627.5"></tspan>
+  </text>
+</svg>

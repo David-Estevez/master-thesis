@@ -21,13 +21,26 @@ The midpoint of each segment of the garment approximated polygon is then calcula
 
 These paths are checked so that they are located entirely inside the garment. Paths that go outside the garment approximated polygon are considered invalid. Figure \ref{fig:candidate_paths} shows both the initial paths set and the unfold candidate paths set, without the invalid paths.
 
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.7
-    \textwidth]{figures/placeholder2.png}
+
+\begin{figure}[htbp]
+	\centering
+    \begin{subfigure}[l]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/paths_candidate.png}
+    	\caption{Set of candidate paths}
+	\end{subfigure}
+	~
+    \begin{subfigure}[r]{0.49\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/paths_valid.png}
+    	\caption{Set of valid paths}
+	\end{subfigure} 
     \caption{\comment{(Figure that shows both the initial path candidate set and the candidate set without the invalid paths)}}
     \label{fig:candidate_paths}
 \end{figure}
+
 
 \section{Bumpiness}
 \label{bumpiness}
