@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="31cm" height="14cm" viewBox="232 157 620 272" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="26cm" height="14cm" viewBox="288 157 516 269" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #ffa1a1" x="233.836" y="181.703" width="170.3" height="36" rx="10" ry="10"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="233.836" y="181.703" width="170.3" height="36" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="318.986" y="203.603">
-      <tspan x="318.986" y="203.603">Garment Segmentation</tspan>
+    <rect style="fill: #ffa1a1" x="289.836" y="173.703" width="110" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="289.836" y="173.703" width="110" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="344.836" y="195.603">
+      <tspan x="344.836" y="195.603">Garment </tspan>
+      <tspan x="344.836" y="211.603">Segmentation</tspan>
     </text>
   </g>
   <g>
     <rect style="fill: #ddffd8" x="461" y="174" width="154.45" height="52" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="461" y="174" width="154.45" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.225" y="195.9">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.225" y="195.9">
       <tspan x="538.225" y="195.9">Garment Depth Map </tspan>
       <tspan x="538.225" y="211.9">Clustering</tspan>
     </text>
   </g>
   <g>
-    <rect style="fill: #bcd5ff" x="679.055" y="174.055" width="171.95" height="52" rx="10" ry="10"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="679.055" y="174.055" width="171.95" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="765.03" y="195.955">
-      <tspan x="765.03" y="195.955">Garment Pick and Place</tspan>
-      <tspan x="765.03" y="211.955">Points</tspan>
+    <rect style="fill: #bcd5ff" x="669.054" y="174.055" width="133.85" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="669.054" y="174.055" width="133.85" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="735.979" y="195.955">
+      <tspan x="735.979" y="195.955">Garment Pick and</tspan>
+      <tspan x="735.979" y="211.955">Place Points</tspan>
     </text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="404.136,199.703 432.568,199.703 432.568,200 456.528,200 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="399.836,199.703 430.418,199.703 430.418,200 456.528,200 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="448.764,205 458.764,200 448.764,195 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="615.45,200 647.252,200 647.252,200.055 674.583,200.055 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="666.819,205.055 676.819,200.055 666.819,195.055 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="615.45,200 642.252,200 642.252,200.055 664.582,200.055 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="656.818,205.055 666.818,200.055 656.818,195.055 "/>
   </g>
   <g>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="467.377" y="252.46" width="141.718" height="177.311"/>
-    <image x="468.377" y="253.46" width="139.718" height="175.311" xlink:href="file:///home/def/Research/master-thesis/figures/TEO-2.png"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="467.376" y="249.46" width="141.718" height="177.311"/>
+    <image x="468.376" y="250.46" width="139.718" height="175.311" xlink:href="file:///home/def/Research/master-thesis/figures/TEO-2.png"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="468.377,341.115 468.377,340.586 318.986,340.586 318.986,222.175 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="323.986,229.939 318.986,219.939 313.986,229.939 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="382.137" y="359.876">Sensor Data</text>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="468.376,338.116 468.376,340.586 344.836,340.586 344.836,230.175 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="349.836,237.939 344.836,227.939 339.836,237.939 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="400" y="361">Sensor Data</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="765.03,226.055 765.03,341.115 612.567,341.115 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="620.331,336.115 610.331,341.115 620.331,346.115 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="711.534" y="360.849">Manipulation Trajectories</text>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="735.979,226.055 735.979,338.116 612.567,338.116 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="620.331,333.116 610.331,338.116 620.331,343.116 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="703" y="358.5">Manipulation Trajectories</text>
   </g>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="344.836" y="199.703">
+    <tspan x="344.836" y="199.703"></tspan>
+  </text>
 </svg>

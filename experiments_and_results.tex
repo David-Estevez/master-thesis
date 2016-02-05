@@ -28,10 +28,30 @@ The starting point for testing our algorithm is the data adquisition process. Da
 
 This conversion is done by simply using the z component of each point as the depth value for each pixel of the depth image. If there were a known deviation from the surface (affecting perpendicularity), the depth image could be recovered from the point cloud using the instrinsic and extrinsic parameters of the sensor instead. As the sensor is placed on top of the garment, perpendicular to the surface on which the clothing article rests, both methods yield very similar results, as shown in figure \ref{fig:point_cloud_and_depth_image}.
 
-\begin{figure}[thpb]
-    \centering
-    \includegraphics[width=0.7
-    \textwidth]{figures/placeholder2.png}
+%\begin{figure}[thpb]
+%    \centering
+%    \includegraphics[width=0.7
+%    \textwidth]{figures/placeholder2.png}
+%    \caption{\comment{Here I should put a nice figure of the point cloud and the depth image}}
+%    \label{fig:point_cloud_and_depth_image}
+%\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering
+    \begin{subfigure}[l]{0.74\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/point-cloud-01.png}
+    	\caption{3D Point cloud}
+	\end{subfigure}
+	~
+    \begin{subfigure}[r]{0.64\textwidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/point-cloud-projection.png}
+    	\caption{Depth Map}
+	\end{subfigure}
     \caption{\comment{Here I should put a nice figure of the point cloud and the depth image}}
     \label{fig:point_cloud_and_depth_image}
 \end{figure}
@@ -51,7 +71,8 @@ A final demonstration of the current algorithm has been performed using the full
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/directions_several.png}
+    \includegraphics[width=\textwidth]
+    {figures/directions_several.png}
     \caption{Best directions calculated for each garment provided to the system. The direction with the smallest bumpiness value is shown in blue. The second best direction is shown in yellow. The bisector is shown in green. The arrows are for demonstrative purpose only, and their starting and ending point do not represent the pick and place point. The watershed computed regions are additionally overlaid upon the original image.}
     \label{directions_several}
 \end{figure}

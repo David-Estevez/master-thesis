@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="23cm" height="41cm" viewBox="306 -186 456 805" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="23cm" height="45cm" viewBox="306 -235 456 887" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #ffa1a1" x="308" y="-68.2279" width="453.695" height="541.278" rx="40" ry="40"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="308" y="-68.2279" width="453.695" height="541.278" rx="40" ry="40"/>
+    <rect style="fill: #ffa1a1" x="308" y="-68.228" width="453.695" height="541.278" rx="40" ry="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="308" y="-68.228" width="453.695" height="541.278" rx="40" ry="40"/>
   </g>
   <g>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="487.763" y="-165.832" width="102" height="77.0001"/>
-    <image x="488.763" y="-164.832" width="100" height="75.0001" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_original.png"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="454.941" y="-217.106" width="167.92" height="126.44"/>
+    <image x="455.941" y="-216.106" width="165.92" height="124.44" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_original.png"/>
   </g>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539.5" y="-173.757">
-    <tspan x="539.5" y="-173.757">RGB image</tspan>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="540.71" y="-222.774">
+    <tspan x="540.71" y="-222.774">RGB image</tspan>
   </text>
-  <image x="472.5" y="494.1" width="133.5" height="100.125" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_mask.png"/>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="487.5" y="600">
-    <tspan x="487.5" y="600"></tspan>
-    <tspan x="487.5" y="616">Segmentation mask</tspan>
+  <image x="448.811" y="496.134" width="179.991" height="134.993" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_mask.png"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.48" y="633.025">
+    <tspan x="538.48" y="633.025"></tspan>
+    <tspan x="538.48" y="649.025">Segmentation mask</tspan>
   </text>
   <g>
     <rect style="fill: #ffffff" x="495" y="-43" width="87.55" height="52" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="495" y="-43" width="87.55" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.775" y="-21.1">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.775" y="-21.1">
       <tspan x="538.775" y="-21.1">Convert to</tspan>
       <tspan x="538.775" y="-5.1">HSV</tspan>
     </text>
@@ -28,7 +28,7 @@
   <g>
     <rect style="fill: #ffffff" x="424.5" y="74.1" width="94.75" height="52" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="424.5" y="74.1" width="94.75" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="471.875" y="96">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="471.875" y="96">
       <tspan x="471.875" y="96">Filter </tspan>
       <tspan x="471.875" y="112">(Channel S)</tspan>
     </text>
@@ -36,7 +36,7 @@
   <g>
     <rect style="fill: #ffffff" x="563.5" y="74.1" width="95.35" height="52" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="563.5" y="74.1" width="95.35" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="611.175" y="96">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="611.175" y="96">
       <tspan x="611.175" y="96">Filter </tspan>
       <tspan x="611.175" y="112">(Channel V)</tspan>
     </text>
@@ -44,7 +44,7 @@
   <g>
     <rect style="fill: #ffffff" x="424.5" y="168.1" width="94.75" height="52" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="424.5" y="168.1" width="94.75" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="471.875" y="190">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="471.875" y="190">
       <tspan x="471.875" y="190">Threshold </tspan>
       <tspan x="471.875" y="206">(Channel S)</tspan>
     </text>
@@ -52,7 +52,7 @@
   <g>
     <rect style="fill: #ffffff" x="563.5" y="168.1" width="95.35" height="52" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="563.5" y="168.1" width="95.35" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="611.175" y="190">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="611.175" y="190">
       <tspan x="611.175" y="190">Threshold </tspan>
       <tspan x="611.175" y="206">(Channel V)</tspan>
     </text>
@@ -90,14 +90,14 @@
   <g>
     <rect style="fill: #ffffff" x="499" y="321.95" width="80" height="36" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="499" y="321.95" width="80" height="36" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539" y="343.85">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539" y="343.85">
       <tspan x="539" y="343.85">Closing</tspan>
     </text>
   </g>
   <g>
     <rect style="fill: #ffffff" x="499" y="384.95" width="80" height="36" rx="10" ry="10"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="499" y="384.95" width="80" height="36" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539" y="406.85">
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="539" y="406.85">
       <tspan x="539" y="406.85">Opening</tspan>
     </text>
   </g>
@@ -109,17 +109,17 @@
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="539,357.95 539,375.05 539,375.05 539,380.478 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534,372.714 539,382.714 544,372.714 "/>
   </g>
-  <text font-size="20.3197" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="323.832" y="407.235">
-    <tspan x="323.832" y="407.235">Garment </tspan>
-    <tspan x="323.832" y="432.635">Segmentation </tspan>
-    <tspan x="323.832" y="458.035">Process</tspan>
+  <text font-size="20.32" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="323.832" y="407.236">
+    <tspan x="323.832" y="407.236">Garment </tspan>
+    <tspan x="323.832" y="432.636">Segmentation </tspan>
+    <tspan x="323.832" y="458.036">Process</tspan>
   </text>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="538.763,-89.8316 538.763,-77.55 538.775,-77.55 538.775,-47.4721 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="533.775,-55.2361 538.775,-45.2361 543.775,-55.2361 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="538.901,-91.6659 538.901,-77.55 538.774,-77.55 538.774,-47.4721 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="533.774,-55.2361 538.774,-45.2361 543.774,-55.2361 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="539,420.95 539,456.025 539.25,456.025 539.25,489.628 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.25,481.864 539.25,491.864 544.25,481.864 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="539,420.95 539,456.024 538.806,456.024 538.806,491.662 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="533.806,483.898 538.806,493.898 543.806,483.898 "/>
   </g>
 </svg>
