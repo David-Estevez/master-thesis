@@ -22,7 +22,7 @@ The RGB-D image obtained from the robot sensor contains both the clothing articl
     \centering
     \includegraphics[width=0.6\textwidth]
     {figures/Garment-segmentation-process-diagram.pdf}
-    \caption{Block diagram showing the different Garment Approximated Polygon Calculation Process}
+    \caption{Block diagram showing the different processes performed in the Garment Segmentation step. Left branch of the diagram corresponds to operations performed over the Saturation (S) channel, whereas the right branch of the diagram corresponds to operations over the Value (V) channel. The Hue (H) channel of the HSV image is not used. The results of the two threshold processes are merged together with a bitwise AND operation before applying the morphological operations.}
     \label{fig:background_subtration_processes}
 \end{figure}
 or this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background subtraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 
@@ -75,7 +75,7 @@ From the binary mask obtained in the previous step (section \ref{background_subt
     \centering
     \includegraphics[width=\textwidth]
     {figures/Garment-polygon-diagram.pdf}
-    \caption{\comment{Garment Polygon calculation processes}}
+    \caption{Block diagram showing the different processes performed in the Garment Approximated Polygon Calculation step. The garment contour is obtained in the first process, and it is then simplified in the next processes to yield an Approximated Polygon that describes the garment.}
     \label{fig:garment_polygon_processes}
 \end{figure}
 
@@ -119,6 +119,6 @@ Figure \ref{fig:contour_and_simplified_contour} shows a comparison between the g
     	{figures/polygon-approx-01.png}
     	\caption{Garment Approximated Polygon}
 	\end{subfigure} 
-    \caption{\comment{Contour vs outline vs polygon}}
+    \caption{Garment Contour, Garment Outline and Garment Appoximated Polygon. The Garment Contour contains all the points obtained from the segmentation mask. In the Garment Outline, points belonging to the same straight line are simplified and only the start and end points of the segment are used to represent it. After the Ramer-Douglas-Peucker algorithm is applied, a polygon with a low number of edges is obtained, which is used as Garment Approximated Polygon. }
     \label{fig:contour_and_simplified_contour}
 \end{figure}
