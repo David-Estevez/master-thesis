@@ -22,7 +22,7 @@ The RGB-D image obtained from the robot sensor contains both the clothing articl
     \centering
     \includegraphics[width=0.6\textwidth]
     {figures/Garment-segmentation-process-diagram.pdf}
-    \caption{\comment{Background subtraction processes}}
+    \caption{Block diagram showing the different Garment Approximated Polygon Calculation Process}
     \label{fig:background_subtration_processes}
 \end{figure}
 or this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background subtraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 

@@ -38,7 +38,7 @@
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="612.764,262 622.764,257 612.764,252 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="323.001,256.5 340,256.5 340,257 367.528,257 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="323,256.5 340,256.5 340,257 367.528,257 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="359.764,262 369.764,257 359.764,252 "/>
   </g>
   <g>
@@ -46,13 +46,13 @@
     <image x="840.5" y="209.1" width="127" height="95.25" xlink:href="file:///home/def/Research/master-thesis/figures/polygon-approx-01.png"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="795.25,257 814,257 814,256.725 836.028,256.725 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="828.264,261.725 838.264,256.725 828.264,251.725 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="795.25,257 814,257 814,256.724 836.028,256.724 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="828.264,261.724 838.264,256.724 828.264,251.724 "/>
   </g>
   <image x="204.334" y="212" width="118.667" height="89" xlink:href="file:///home/def/Research/master-thesis/figures/polygon-mask-01.png"/>
   <text font-size="20.32" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="584" y="355">
     <tspan x="584" y="355">Garment Approximated Polygon </tspan>
-    <tspan x="584" y="380.4">Calculation Process</tspan>
+    <tspan x="584" y="380.4">Calculation Step</tspan>
   </text>
   <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="201" y="315">
     <tspan x="201" y="315">Segmentation mask</tspan>
@@ -61,7 +61,7 @@
     <tspan x="904" y="324">Garment Approximated</tspan>
     <tspan x="904" y="340">Polygon</tspan>
   </text>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="414.675" y="257">
-    <tspan x="414.675" y="257"></tspan>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="414.674" y="257">
+    <tspan x="414.674" y="257"></tspan>
   </text>
 </svg>

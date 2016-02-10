@@ -1,68 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="35cm" height="15cm" viewBox="221 154 700 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="41cm" height="17cm" viewBox="205 155 804 327" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #ffa1a1" x="347.002" y="156" width="379.004" height="297" rx="40" ry="40"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="347.002" y="156" width="379.004" height="297" rx="40" ry="40"/>
+    <rect style="fill: #ffa1a1" x="341.002" y="184" width="488.004" height="297" rx="40" ry="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="341.002" y="184" width="488.004" height="297" rx="40" ry="40"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="372" y="218" width="96.4" height="52" rx="10" ry="10"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="372" y="218" width="96.4" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420.2" y="239.9">
-      <tspan x="420.2" y="239.9">Background</tspan>
-      <tspan x="420.2" y="255.9">Subtraction</tspan>
+    <rect style="fill: #ffffff" x="383" y="226" width="174.5" height="36" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="383" y="226" width="174.5" height="36" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="470.25" y="247.9">
+      <tspan x="470.25" y="247.9">Background Subtraction</tspan>
     </text>
   </g>
   <g>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="222" y="207" width="102" height="77.0001"/>
-    <image x="223" y="208" width="100" height="75.0001" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_original.png"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="206" y="207" width="102" height="77.0001"/>
+    <image x="207" y="208" width="100" height="75.0001" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_original.png"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="323,245.5 323,244 367.528,244 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="359.764,249 369.764,244 359.764,239 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="307,245.5 307,244 378.528,244 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="370.764,249 380.764,244 370.764,239 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="468.4,244 505.006,244 505.006,244 521.528,244 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="513.764,249 523.764,244 513.764,239 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="557.5,244 604.006,244 604.006,244 612.528,244 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="604.764,249 614.764,244 604.764,239 "/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="526" y="218" width="170.25" height="52" rx="10" ry="10"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="526" y="218" width="170.25" height="52" rx="10" ry="10"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="611.125" y="239.9">
-      <tspan x="611.125" y="239.9">Garment Approximated</tspan>
-      <tspan x="611.125" y="255.9">Polygon Calculation</tspan>
+    <rect style="fill: #ffffff" x="617" y="218" width="170.25" height="52" rx="10" ry="10"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="617" y="218" width="170.25" height="52" rx="10" ry="10"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="702.125" y="239.9">
+      <tspan x="702.125" y="239.9">Garment Approximated</tspan>
+      <tspan x="702.125" y="255.9">Polygon Calculation</tspan>
     </text>
   </g>
   <g>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="758" y="192.75" width="137" height="103.25"/>
-    <image x="759" y="193.75" width="135" height="101.25" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation-approx-2.png"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="861" y="192.75" width="137" height="103.25"/>
+    <image x="862" y="193.75" width="135" height="101.25" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation-approx-2.png"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="696.25,244 696.25,244.375 754.528,244.375 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="746.764,249.375 756.764,244.375 746.764,239.375 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="787.25,244 787.25,244.374 857.528,244.374 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="849.764,249.374 859.764,244.374 849.764,239.374 "/>
   </g>
-  <image x="761.504" y="316.1" width="133.5" height="100.125" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_mask.png"/>
+  <image x="862.504" y="316.1" width="133.5" height="100.125" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_mask.png"/>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="468.4,244 492.006,244 492.006,366.163 757.032,366.163 "/>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="749.268,371.163 759.268,366.163 749.268,361.163 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="557.5,244 580.006,244 580.006,366.162 858.032,366.162 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="850.268,371.162 860.268,366.162 850.268,361.162 "/>
   </g>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="236.004" y="302">
-    <tspan x="236.004" y="302">RGB image</tspan>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="224.004" y="306">
+    <tspan x="224.004" y="306">RGB image</tspan>
   </text>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="768.004" y="435">
-    <tspan x="768.004" y="435">segmentation mask</tspan>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="867.004" y="434">
+    <tspan x="867.004" y="434">Segmentation Mask</tspan>
   </text>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="827.004" y="167">
-    <tspan x="827.004" y="167">Garment Approximated</tspan>
-    <tspan x="827.004" y="183"> Polygon</tspan>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="931.004" y="167">
+    <tspan x="931.004" y="167">Garment Approximated</tspan>
+    <tspan x="931.004" y="183"> Polygon</tspan>
   </text>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="536.504" y="304.5">
-    <tspan x="536.504" y="304.5"></tspan>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="585.004" y="332.5">
+    <tspan x="585.004" y="332.5"></tspan>
   </text>
-  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="536.504" y="304.5">
-    <tspan x="536.504" y="304.5"></tspan>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="585.004" y="332.5">
+    <tspan x="585.004" y="332.5"></tspan>
   </text>
-  <text font-size="20.32" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="384.004" y="435">
-    <tspan x="384.004" y="435">Garment Segmentation Stage</tspan>
+  <text font-size="20.32" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="401.004" y="451">
+    <tspan x="401.004" y="451">Garment Segmentation</tspan>
   </text>
 </svg>
