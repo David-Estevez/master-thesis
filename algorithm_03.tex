@@ -6,7 +6,7 @@ This chapter explains the last stage of our algorithm, in which the pick and pla
     \centering
     \includegraphics[width=\textwidth]
     {figures/Garment-pnp-points-diagram.pdf}
-    \caption{\comment{(Block diagram for Garment Depth Map Clustering chapter)}}
+    \caption{Block diagram showing an overview of the Garment Pick and Place Points stage and its different steps. The inputs for this stage are the garment approximated polygon, obtained in the Garment Segmentation stage, and the labeled cluster regions, obtained in the Garment Depth Map Clustering stage. After the analysis of these inputs, the most suitable manipulation trajectories are output to the robot to perform the unfolding action.}
     \label{fig:garment_pnp_points_blocks}
 \end{figure}
 
@@ -37,7 +37,7 @@ These paths are checked so that they are located entirely inside the garment. Pa
     	{figures/paths_valid.png}
     	\caption{Set of valid paths}
 	\end{subfigure} 
-    \caption{\comment{(Figure that shows both the initial path candidate set and the candidate set without the invalid paths)}}
+    \caption{The left image displays the set of initial candidate paths (green lines) to be used as unfolding directions. These paths are generated from the centroid of the highest region, represented with a magenta circle, and end in the midpoint of each of the edges of the approximated garment polygon, shown in red lines. These paths are filtered, and the resulting valid paths, that do not cross the outer approximated polygon, are shown in the right figure.}
     \label{fig:candidate_paths}
 \end{figure}
 
@@ -90,7 +90,7 @@ The other point is used as axis for a point reflection. To find the placing poin
     \centering
     \includegraphics[width=\textwidth]
     {figures/directions.pdf}
-    \caption{Final directions calculated for each garment provided to the system. Each arrow departs where the robot should pick the fold and arrives where it should be placed.}
+    \caption{Final directions calculated for each garment provided to the system. Each arrow departs where the robot should pick the fold and arrives where it should be placed. Darker regions represent regions that are closer to the camera, whereas lighter regions represent regions of the garment being further from the camera.}
     \label{fig:directions}
 \end{figure}
 

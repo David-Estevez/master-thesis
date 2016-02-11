@@ -7,7 +7,7 @@ This chapter explains in detail the garment depth map clustering stage that our 
     \centering
     \includegraphics[width=\textwidth]
     {figures/Garment-depthmap-diagram.pdf}
-    \caption{\comment{(Block diagram for Garment Depth Map Clustering chapter)}}
+    \caption{Block diagram showing an overview of the Garment Depth Map Clustering stage and its different steps. The inputs of this stage are the depth map image and the segmentation mask obtained in the previous stage. These inputs are combined and preprocessed in order to apply the clustering step. The output of this stage are the labels of the different cluster regions.}
     \label{fig:garment_clustering_blocks}
 \end{figure}
 
@@ -78,7 +78,7 @@ The Watershed transform is a segmentation algorithm that considers a greyscale i
     	\includegraphics[width=\textwidth]
     	{figures/Watershed-example-03.png}
 	\end{subfigure} 
-    \caption{Several steps on segmenting coins with the Watershed Transform algorithm. First and second images correspond to the erosion and dilatation of the binary mask, representing sure foreground and sure background, respectively. After those images are combined and used as markers for Watershed segmentation. \comment{[...]}}
+    \caption[dummy]{Several steps on segmenting coins with the Watershed Transform algorithm\footnotemark. First and second images correspond to the erosion and dilatation of the thresholded coin image, representing sure foreground and sure background, respectively. Then, those images are combined and used as markers for Watershed segmentation. The result of this segmentation process is shown in the rightmost images, where each coin is labeled with a different color in the third image, and then marked with a circle in the fourth image. }
     \label{fig:watershed_example}
 \end{figure}
 
@@ -86,8 +86,9 @@ The Watershed transform is a segmentation algorithm that considers a greyscale i
 A denoising process is performed before applying the Watershed transform, which is the actual clustering process. We use a Total Variation filter \reftodo{\comment{[chambolle]}} to produce a smoother image while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
 
 The Watershed segmentation algorithm is then applied to the depth image of the garment to locate the different parts that are overlapping each other. These regions are related to folded parts, that rest on top of other parts of the garment. 
-%
-As, in practice, flooding using local minima as markers \juansays{(Revisar "markers")} leads to over-segmentation, an enhanced version\footnote{\url{http://scikit-image.org/docs/dev/auto_examples/segmentation/plot_marked_watershed.html}} of this algorithm  allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image is computed, and regions where the gradient has a low value are selected as these seed points. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
+\footnotetext{Source:\stdurl{http://docs.opencv.org/master/d3/db4/tutorial_py_watershed.html} , last accessed: \today}
+As, in practice, flooding using local minima as markers \juansays{(Revisar "markers")} leads to over-segmentation, an enhanced version\footnote{\stdurl{http://scikit-image.org/docs/dev/auto_examples/segmentation/plot_marked_watershed.html}} of this algorithm  allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image is computed, and regions where the gradient has a low value are selected as these seed points. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
+
 
 The different garment regions obtained with Watershed were labeled and used as input for the next step. Figure \ref{fig:watershed_labels} shows the result of this process.
 

@@ -7,7 +7,7 @@ This chapter is devoted to the first stage of our algorithm, segmenting the garm
     \centering
     \includegraphics[width=\textwidth]
     {figures/Garment-segmentation-diagram.pdf}
-    \caption{\comment{(Block diagram for Garment Segmentation chapter)}}
+    \caption{Block diagram showing an overview of the Garment Segmentation stage and its different steps. The input of this stage is an RGB image of the garment, and the outputs are the segmentation mask and the garment approximated polygon. The segmentation mask is also used as a by-product to obtain the approximated polygon.}
     \label{fig:garment_segmentation_blocks}
 \end{figure}
 
@@ -25,7 +25,8 @@ The RGB-D image obtained from the robot sensor contains both the clothing articl
     \caption{Block diagram showing the different processes performed in the Garment Segmentation step. Left branch of the diagram corresponds to operations performed over the Saturation (S) channel, whereas the right branch of the diagram corresponds to operations over the Value (V) channel. The Hue (H) channel of the HSV image is not used. The results of the two threshold processes are merged together with a bitwise AND operation before applying the morphological operations.}
     \label{fig:background_subtration_processes}
 \end{figure}
-or this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background subtraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 
+
+For this purpose, many methods could have been chosen, based on both color and depth information, as discussed in section \ref{architecture:garment_segmentation}. For instance, GrabCut \reftodo was discarded for background subtraction as it requires user input to select background and foreground samples. Furthermore, it is computationally expensive compared with simple thresholding methods. As the main focus of our work is unfolding clothes, a simple color-based method was selected instead. 
 
 
 We work under the assumption that the garment has been placed over a flat white surface, as opposed to the garment which is much more colorful (higher Saturation). Therefore, the RGB image is converted to the HSV space. Working in the HSV space gives us direct information about our magnitudes of interest: Saturation (S) and Value (V). We are not interested in detecting a particular color, but to detect a colored item, so HSV is a more sensible choice of color space than RGB. 
