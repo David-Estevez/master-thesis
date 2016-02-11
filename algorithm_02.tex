@@ -43,7 +43,7 @@ Figure \ref{fig:depth_map_preprocessing} \comment{[...]}
     	{figures/Depthmap-Normalized-Depthmap-with-colorbar.png}
     	\caption{After}
     	\end{subfigure} 
-    \caption{\comment{(Figure representing this preprocessing step)}}
+    \caption{Depth image before and after preprocessing. On the left image, a red bar is shown in the leftmost part of the image, corresponding to some values captured by the sensor with errors. Points closer to the camera are shown lighter, whereas points futher from the camera are shown with darker gray levels. Units of the left image are mm. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range}, coded as an 8-bit unsigned char.}
     \label{fig:depth_map_preprocessing}
 \end{figure}
 
@@ -78,7 +78,7 @@ The Watershed transform is a segmentation algorithm that considers a greyscale i
     	\includegraphics[width=\textwidth]
     	{figures/Watershed-example-03.png}
 	\end{subfigure} 
-    \caption{\comment{(Here it would be great to add a figure of the example, such as opencv's coins)}}
+    \caption{Several steps on segmenting coins with the Watershed Transform algorithm. First and second images correspond to the erosion and dilatation of the binary mask, representing sure foreground and sure background, respectively. After those images are combined and used as markers for Watershed segmentation. \comment{[...]}}
     \label{fig:watershed_example}
 \end{figure}
 

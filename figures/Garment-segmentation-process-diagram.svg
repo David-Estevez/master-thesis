@@ -6,16 +6,16 @@
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000" x="308" y="-68.228" width="453.695" height="541.278" rx="40" ry="40"/>
   </g>
   <g>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="454.941" y="-217.106" width="167.92" height="126.44"/>
-    <image x="455.941" y="-216.106" width="165.92" height="124.44" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_original.png"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="454.94" y="-217.106" width="167.92" height="126.44"/>
+    <image x="455.94" y="-216.106" width="165.92" height="124.44" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_original.png"/>
   </g>
   <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="540.71" y="-222.774">
     <tspan x="540.71" y="-222.774">RGB image</tspan>
   </text>
-  <image x="448.811" y="496.134" width="179.991" height="134.993" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_mask.png"/>
-  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.48" y="633.025">
-    <tspan x="538.48" y="633.025"></tspan>
-    <tspan x="538.48" y="649.025">Segmentation mask</tspan>
+  <image x="448.81" y="496.134" width="179.991" height="134.993" xlink:href="file:///home/def/Research/master-thesis/figures/segmentation_mask.png"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="538.48" y="632.277">
+    <tspan x="538.48" y="632.277"></tspan>
+    <tspan x="538.48" y="648.277">Segmentation Mask</tspan>
   </text>
   <g>
     <rect style="fill: #ffffff" x="495" y="-43" width="87.55" height="52" rx="10" ry="10"/>
@@ -112,10 +112,10 @@
   <text font-size="20.32" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="323.832" y="407.236">
     <tspan x="323.832" y="407.236">Garment </tspan>
     <tspan x="323.832" y="432.636">Segmentation </tspan>
-    <tspan x="323.832" y="458.036">Process</tspan>
+    <tspan x="323.832" y="458.036">Step</tspan>
   </text>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="538.901,-91.6659 538.901,-77.55 538.774,-77.55 538.774,-47.4721 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="538.9,-91.666 538.9,-77.55 538.774,-77.55 538.774,-47.4721 "/>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="533.774,-55.2361 538.774,-45.2361 543.774,-55.2361 "/>
   </g>
   <g>
