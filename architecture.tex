@@ -13,7 +13,7 @@ The algorithm has been open sourced and is available online\footnote{\url{https:
     \centering
     \includegraphics[width=\textwidth]
     {figures/Main_diagram.pdf}
-    \caption{Garment Unfolding pipeline. The pipeline takes RGB and depth images from the robot sensors and process them in three consecutive stages. This process is iterative, and it is applied until the garment is fully unfolded.}
+    \caption{Garment Unfolding pipeline. The pipeline uses RGB and depth images captured from the robot sensors as inputs and process them in 3 consecutive stages. This process is iterative, and it is applied until the garment is fully unfolded.}
     \label{fig:pipeline_block_diagram}
 \end{figure}
 
@@ -45,7 +45,7 @@ The objective of this garment segmentation stage is to substract the background 
     		\includegraphics[width=\textwidth]
     		{figures/Background-segmentation-02.jpg}
 		\end{subfigure} 
-    \caption{\comment{A nice figure of a generic Background subtraction and contour extraction}}
+    \caption[dummy]{Two examples of background segmentation. In the left image \cite{ren2013image}, the foreground objects contour is highlighted in red. In the right image\cite{nieuwenhuis-cremers-pami12_2}, the foreground object (the tiger) is highlighted in red, and the background is highlighted in green.}
     \label{fig:generic_garment_segmentation}
 \end{figure}
 
@@ -82,15 +82,16 @@ A particular case of clustering algorithms are those which are applied to obtain
         \centering
     	\includegraphics[width=\textwidth]
     	{figures/Superpixels-02.jpg}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[r]{0.47\textwidth}
-	        \centering
-    		\includegraphics[width=\textwidth]
-    		{figures/Superpixels-03.png}
-		\end{subfigure} 
-    \caption{\comment{A nice figure of a generic Background subtraction and contour extraction}}
-    \label{fig:generic_garment_segmentation}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[r]{0.47\textwidth}
+	    \centering
+   		\includegraphics[width=\textwidth]
+    	{figures/Superpixels-03.png}
+	\end{subfigure}
+	\caption[dummy]{Several examples of Superpixel clustering algorithms. Left image \cite{mori2005guiding} corresponds to a Normalized Cut algorithm with two different average cluster sizes, 100 pixels in the case of the upper left part of the image, and 300 in the lower right part. Right image \cite{achanta2012slic}
+	 corresponds to a SLIC (Simple Linear Iterative Clustering) algorithm applied to obtain average sizes of 64, 256 and 1024 pixels, from top to bottom.}
+    \label{fig:generic_superpixels}
 \end{figure}
 
 When working with images, the clustering process of finding regions both compact and with homogeneous characteristics is known as segmentation. Many image segmentation algorithms exist based on similar regions and closed contours. One of these algorithms, widely used, is the Watershed transform algorithm \reftodo, which interprets the image as a topological surface, filling the image with water from several point sources until they merge, and creating walls in those intersection contours. The regions isolated by these walls are the segmented regions.
