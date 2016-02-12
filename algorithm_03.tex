@@ -37,7 +37,7 @@ These paths are checked so that they are located entirely inside the garment. Pa
     	{figures/paths_valid.png}
     	\caption{Set of valid paths}
 	\end{subfigure} 
-    \caption{The left image displays the set of initial candidate paths (green lines) to be used as unfolding directions. These paths are generated from the centroid of the highest region, represented with a magenta circle, and end in the midpoint of each of the edges of the approximated garment polygon, shown in red lines. These paths are filtered, and the resulting valid paths, that do not cross the outer approximated polygon, are shown in the right figure.}
+    \caption{The left image displays the set of initial candidate paths (green lines) to be used as unfolding directions. These paths are generated starting at the centroid of the highest region, represented with a magenta circle, and ending at the midpoint of each of the edges of the approximated garment polygon, shown in red lines. These paths are filtered, and the resulting valid paths, that do not cross the outer approximated polygon, are shown in the right figure.}
     \label{fig:candidate_paths}
 \end{figure}
 
@@ -74,7 +74,7 @@ The candidate set with the lowest bumpiness value, which corresponds to the path
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]{figures/candidate_paths.pdf}
-    \caption{On the left side, the candidate paths are shown. On the right side, the height profile of each path is shown. Notice that the depth sensor computes the distance to the object from itself, so that a low value in the bar plot means a closer object to the sensor, so it is a region with more height with respect to the table. The highlighted path is the one with the lowest value of bumpiness, and it is selected as suitable unfolding path.}
+    \caption{On the left side, the candidate paths are shown. On the right side, the height profile of each path is shown. Note that the depth sensor computes the distance to the object from itself, so that a low value in the bar plot means a closer object to the sensor, and therefore it is a region with more height with respect to the table. The highlighted path is the one with the lowest value of bumpiness, and it is selected as suitable unfolding path.}
     \label{fig:paths_with_bumpiness}
 \end{figure}
 
@@ -90,7 +90,7 @@ The other point is used as axis for a point reflection. To find the placing poin
     \centering
     \includegraphics[width=\textwidth]
     {figures/directions.pdf}
-    \caption{Final directions calculated for each garment provided to the system. Each arrow departs where the robot should pick the fold and arrives where it should be placed. Darker regions represent regions that are closer to the camera, whereas lighter regions represent regions of the garment being further from the camera.}
+    \caption{Final directions calculated for each garment provided to the system. Each arrow departs where the robot should pick the fold and arrives where it should be placed. Darker regions represent regions that are closer to the camera, whereas lighter regions represent regions of the garment further from the camera.}
     \label{fig:directions}
 \end{figure}
 

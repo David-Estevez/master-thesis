@@ -1,4 +1,4 @@
-\chapter{\MyTitle}
+\chapter{A Garment-Agnostic Unfolding Algorithm}
 \label{architecture}
 
 This chapter presents an overview of a garment-agnostic algorithm to unfold clothes using depth sensor data, that will be extended in later chapters. The pipeline for folding clothes followed throughout robotic literature is based on how it is performed by humans. This allows these tasks to be executed in the same environments as humans, aiming towards a fully-automated or collaborative fashion. Garments are extracted from the washing or drying machine forming a pile, and an iterative process begins. First, an individual clothing article is picked from the pile. Then, the garment is extended in the air or assisted by a flat surface, during which unfolding and wrinkle removing procedures may be performed for aiding the posterior classification and manipulation of the garment. A classification procedure is applied to fit clothing article within a certain garment category. Finally, a standard manipulation sequence specific to its category is applied to fold the garment for storage. This iterative process is repeated until there are no clothes left on the pile.
@@ -13,7 +13,7 @@ The algorithm has been open sourced and is available online\footnote{\url{https:
     \centering
     \includegraphics[width=\textwidth]
     {figures/Main_diagram.pdf}
-    \caption{Garment Unfolding pipeline. The pipeline uses RGB and depth images captured from the robot sensors as inputs and process them in 3 consecutive stages. This process is iterative, and it is applied until the garment is fully unfolded.}
+    \caption{Block diagram showing the Garment Unfolding algorithm  pipeline. The pipeline uses RGB and depth images captured from the robot sensors as inputs and process them in 3 consecutive stages. This process is iterative, and it is applied until the garment is fully unfolded.}
     \label{fig:pipeline_block_diagram}
 \end{figure}
 
@@ -45,7 +45,8 @@ The objective of this garment segmentation stage is to substract the background 
     		\includegraphics[width=\textwidth]
     		{figures/Background-segmentation-02.jpg}
 		\end{subfigure} 
-    \caption[dummy]{Two examples of background segmentation. In the left image \cite{ren2013image}, the foreground objects contour is highlighted in red. In the right image\cite{nieuwenhuis-cremers-pami12_2}, the foreground object (the tiger) is highlighted in red, and the background is highlighted in green.}
+    \caption[Two examples of background segmentation.]
+    {Two examples of background segmentation. In the left image \cite{ren2013image}, the foreground objects contour is highlighted in red. In the right image \cite{nieuwenhuis-cremers-pami12_2}, the foreground object (the tiger) is highlighted in red, and the background is highlighted in green.}
     \label{fig:generic_garment_segmentation}
 \end{figure}
 
@@ -66,7 +67,7 @@ When the garment has been identified, garment regions with similar height points
 
 For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means, Mean Shift \cite{comaniciu2002mean} or DBSCAN \cite{ester1996density} are some examples of clustering algorithms that can be applied to group pixels with similar depth.
 
-A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \cite{ren2003learning} is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC \cite{achanta2010slic}, Quickshift \cite{vedaldi2008quick}, Turbopixels \cite{levinshtein2009turbopixels} and Normalized Cuts \cite{mori2005guiding}.
+A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \cite{ren2003learning} is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC (Simple Linear Iterative Clustering \cite{achanta2010slic}, Quickshift \cite{vedaldi2008quick}, Turbopixels \cite{levinshtein2009turbopixels} and Normalized Cuts \cite{mori2005guiding}.
 
 %\begin{figure}[thpb]
 %    \centering
@@ -89,8 +90,9 @@ A particular case of clustering algorithms are those which are applied to obtain
    		\includegraphics[width=\textwidth]
     	{figures/Superpixels-03.png}
 	\end{subfigure}
-	\caption[dummy]{Several examples of Superpixel clustering algorithms. Left image \cite{mori2005guiding} corresponds to a Normalized Cut algorithm with two different average cluster sizes, 100 pixels in the case of the upper left part of the image, and 300 in the lower right part. Right image \cite{achanta2012slic}
-	 corresponds to a SLIC (Simple Linear Iterative Clustering) algorithm \cite{achanta2010slic} applied to obtain average sizes of 64, 256 and 1024 pixels.}
+	\caption[Several examples of Superpixel clustering algorithms.]
+	{Several examples of Superpixel clustering algorithms. The left image \cite{mori2005guiding} corresponds to a Normalized Cut algorithm with two different average cluster sizes: 100 pixels in the case of the upper left part of the image, and 300 in the lower right part. The right image \cite{achanta2012slic}
+	 corresponds to a SLIC algorithm \cite{achanta2010slic} applied to obtain average sizes of 64, 256 and 1024 pixels.}
     \label{fig:generic_superpixels}
 \end{figure}
 
@@ -107,7 +109,7 @@ Once we have clustered the depth image in regions of similar height, we can proc
     \centering
     \includegraphics[width=0.8
     \textwidth]{figures/teo-pick-and-place.pdf}
-    \caption{An example of an unfolding operation. The figure shows the humanoid robot manipulating a garment. The folded part that is being manipulated, the sleeve, is highlighted with a green dashed line. The green arrow line represents the unfolding trajectory, with the pick and place points at the beginning and the end of it, respectively.}
+    \caption{An example of an unfolding operation, showing the humanoid robot and the unfolding trajectory to perform. The folded part that is being manipulated, the sleeve, is highlighted with a green dashed line. The green arrow line represents the unfolding trajectory, with the pick and place points at the beginning and the end of it, respectively.}
     \label{fig:picking_points}
 \end{figure}
 

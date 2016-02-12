@@ -22,7 +22,7 @@ The RGB-D image obtained from the robot sensor contains both the clothing articl
     \centering
     \includegraphics[width=0.6\textwidth]
     {figures/Garment-segmentation-process-diagram.pdf}
-    \caption{Block diagram showing the different processes performed in the Garment Segmentation step. Left branch of the diagram corresponds to operations performed over the Saturation (S) channel, whereas the right branch of the diagram corresponds to operations over the Value (V) channel. The Hue (H) channel of the HSV image is not used. The results of the two threshold processes are merged together with a bitwise AND operation before applying the morphological operations.}
+    \caption{Block diagram showing the different processes performed in the Garment Segmentation step. The left branch of the diagram corresponds to operations performed over the Saturation (S) channel, whereas the right branch of the diagram corresponds to operations over the Value (V) channel. The Hue (H) channel of the HSV image is not used. The results of the two threshold processes are merged together with a bitwise AND operation before applying the morphological operations.}
     \label{fig:background_subtration_processes}
 \end{figure}
 
@@ -62,7 +62,7 @@ The output of this background subtraction step, a binary mask with background pi
     	{figures/segmentation_mask.png}
     	\caption{Segmentation mask}
 	\end{subfigure} 
-    \caption{Original RGB image captured by the robot sensor vs the binary segmentation mask obtained after the background subtraction process. Black pixels represent the background, whereas white pixels represent pixels belonging to the garment.}
+    \caption{Original RGB image captured by the robot sensor versus the binary segmentation mask obtained after the background subtraction process. Black pixels represent the background, whereas white pixels represent pixels belonging to the garment.}
     \label{fig:segmentation_mask}
 \end{figure}
 

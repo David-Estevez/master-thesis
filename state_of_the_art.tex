@@ -11,6 +11,8 @@ Finally, the european project CloPeMa (Clothes Perception and Manipulation), dev
 
 \section{Garment Modeling-Based Approaches}
 \label{sota:garment_model_based}
+
+\juansays{Referenciar figuras}
 A significant amount of work conducted in this topic has been focused on modeling the different garment categories for both unfolded, extended garments and for grasped garments. The computer graphics community has also contributed with extensive work on the specifics of clothes modeling due to their need for realistic representation of fabrics and garments. A review of these modeling methods can be found in \cite{Chen2009}. 
 
 Kita et al. propose a method that uses a deformable model to calculate the state of hanging clothes based on 3D observed data \cite{Kita2004, Kita2009}. This calculation is performed by generating a set of candidate shapes predicted by physical simulations of hanging clothes and later comparison of them with the observed data. To fit the observed 3D data better, each generated shape is further deformed and the shape that is more consistent with the observed data is selected. 
@@ -19,7 +21,7 @@ Kita et al. propose a method that uses a deformable model to calculate the state
     \centering
     \includegraphics[width=0.95
     \textwidth]{figures/SOTA_Kita_2009.png}
-    \caption[dummy]{Basic action and model-driven strategy presented by Kita \cite{Kita2009} \comment{(?)}. The garment is held by a point with a robotic arm and different deformable models are tested against the garment data. The model that explains the best the data is selected to calculate the second grasping point. }
+    \caption[Basic action and model-driven strategy presented by Kita et al.]{Basic action and model-driven strategy presented in \cite{Kita2009}. The garment is held by a point with a robotic arm and different deformable models are tested against the garment data. The model that best explains the data is selected to calculate the second grasping point. }
     \label{fig:SOTA_Kita_2009}
 \end{figure}
 
@@ -46,7 +48,7 @@ Miller et al. present an approach to modeling the clothes when already spread ou
 		\includegraphics[width=\textwidth]
 		{figures/SOTA_Miller_2011-2.png}
 	\end{subfigure} 
-   	\caption[dummy]{Models proposed by Miller in \cite{Miller2011} \comment{(?)}. The points shown in red are the skeletal points selected to fit the model to the garment data obtained by the vision system. Using those points and the parameters represented by the red segments the rest of the key points and dimensions are calculated to complete the model.}
+   	\caption[Models proposed by Miller et al.]{Models proposed in \cite{Miller2011}. The points shown in red are the skeletal points selected to fit the model to the garment data obtained by the vision system. Using those points and the parameters represented by the red segments the rest of the key points and dimensions are calculated to complete the model.}
    	\label{fig:SOTA_Miller_2011}
 \end{figure}
 
@@ -57,7 +59,7 @@ The previous method was improved in \cite{Li2014IROS}, by extracting the feature
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]{figures/SOTA_Li_2014-2.png}
-    \caption[dummy]{Sample result from experiments carried out by Li in \cite{Li2014IROS} \comment{(?)}. Each row corresponds to a different garment, grouped into 2 different views of each garment (columns 1-6 and 7-12). The first and second pictures of each group correspond to color and depth images captured with the Kinect sensor. Third picture shows the reconstucted model for each garment. The remaining pictures show, from left to right, the predicted simulated model, the ground truth simulated model and the predicted and ground truth grasping points, overlaid over a 3D view of the unfolded garment.
+    \caption[Sample result from experiments performed by Li et al.]{Sample result from experiments performed in \cite{Li2014IROS}. Each row corresponds to a different garment, grouped into 2 different views of each garment (columns 1-6 and 7-12). The first and second pictures of each group correspond to color and depth images captured with the Kinect sensor. Third picture shows the reconstucted model for each garment. The remaining pictures show, from left to right, the predicted simulated model, the ground truth simulated model and the predicted and ground truth grasping points, overlaid over a 3D view of the unfolded garment.
     }
     \label{fig:SOTA_Li_2014}
 \end{figure}
@@ -69,7 +71,8 @@ Clothing article manipulation is another field in which extensive work has been 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]{figures/SOTA_Li_2015.png}
-    \caption[dummy]{The complete pipeline of dexterous manipulation of deformable objects presented by Li in \cite{Li2015ICRA} \comment{(?)}. The pipeline of a robot folding a garment from a random state spans initial grasping, pose estimation, regrasping and placing the garment on a table. Actions indicated in the red rectangle, regrasp the object and repeat the pose estimation step, will be performed by the the robot in case that the recognition is not successful.}
+    \caption[The complete pipeline of dexterous manipulation of deformable objects presented by Li et al.]
+    {The complete pipeline of dexterous manipulation of deformable objects presented in \cite{Li2015ICRA}. The pipeline of a robot folding a garment from a random state spans initial grasping, pose estimation, regrasping and placing the garment on a table. Actions indicated in the red rectangle, regrasp the object and repeat the pose estimation step, are performed by the the robot in case that the recognition is not successful.}
     \label{fig:SOTA_Li_2015}
 \end{figure}
 
@@ -97,7 +100,7 @@ CloPeMa\footnote{\url{http://www.clopema.eu/}} is a recent EU-FP7 research proje
     \centering
     \includegraphics[width=0.7
     \textwidth]{figures/SOTA_CloPeMa_logo.png}
-    \caption{CloPeMa European Project logo.}
+    \caption{CloPeMa FP7 European Project logo.}
     \label{fig:SOTA_CloPeMa_logo}
 \end{figure}
 
@@ -106,7 +109,8 @@ CloPeMa\footnote{\url{http://www.clopema.eu/}} is a recent EU-FP7 research proje
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]{figures/SOTA_Mariolis_2015.png}
-    \caption[dummy]{Block diagram of the method proposed by Mariolis in \cite{Mariolis2015}. This method performs shape matching of folded garments and unfolded templates. In the first stages the garment and the unfolded template are matched and transformed to generate an hypothesis. An Inner Distance Shape Contexts (IDSC) algorithm is then applied to test the hypotheses and find the best match for the folding axis on the template.}
+    \caption[Block diagram of the method proposed by Mariolis et al.]
+    {Block diagram of the method proposed in \cite{Mariolis2015}. This method performs shape matching of folded garments and unfolded templates. In the first stages, the garment and the unfolded template are matched and transformed to generate an hypothesis. An Inner Distance Shape Contexts (IDSC) algorithm is then applied to test the hypotheses and find the best match for the folding axis on the template.}
     \label{fig:SOTA_Mariolis_2015}
 \end{figure}
 
@@ -115,7 +119,8 @@ Stria et al. propose in \cite{Stria2014, Stria2014IROS} a polygon-based model fo
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]{figures/SOTA_Stria_2014-3.png}
-    \caption[dummy]{Polygonal models proposed by Stria et al. in \cite{Stria2014} for several categories of clothes. The upper figures show the different angular parameters that comprise the model of each garment category. Beneath each one of them, the circular distribution of each of the angles of the model occurring in real garments.}
+    \caption[Polygonal models proposed by Stria et al.]
+    {Polygonal models proposed in \cite{Stria2014} for several categories of clothes. The upper figures show the different angular parameters that comprise the model of each garment category. Beneath each one of them, the circular distribution of each of the angles of the model occurring in real garments.}
     \label{fig:SOTA_Stria_2014}
 \end{figure}
 
@@ -127,9 +132,10 @@ Doumanoglou et al. follow in \cite{Doumanoglou2014ECCV} an approach based on Act
     \centering
     \includegraphics[width=0.95
     \textwidth]{figures/SOTA_Doumanoglou_2014.png}
-    \caption[dummy]{CloPeMa's bimanipulator robot manipulating a garment using the approach presented by Doumanoglou et al. in \cite{Doumanoglou2014ECCV}. The robot is made of two industrial robotic MA1400 arms, used in the welding industry, and has a binocular system composed of two Nikon DSLR cameras (D5100). Other sensors, such as force or photometric close-rande sensors are also integrated in the robot. The robot is using Active Rando Forests to perform garment recognition, changing the garment pose if disambiguation is required.}
+    \caption[CloPeMa's bimanipulator robot manipulating a garment using the approach presented by Doumanoglou et al.]
+    {CloPeMa's bimanipulator robot manipulating a garment using the approach presented in \cite{Doumanoglou2014ECCV}. The robot is made of two industrial robotic MA1400 arms, used in the welding industry, and has a binocular system composed of two Nikon DSLR cameras (D5100). Other sensors, such as force or photometric close-range sensors are also integrated in the robot. Active Random Forests are applied by the robotic system to perform garment recognition, changing the garment pose if disambiguation is required.}
     \label{fig:SOTA_Doumanoglou_2014}
 \end{figure}
 
 
-%Some work on wrinkles removal has been made by Sun et al. \cite{Sun2015} with a stereo vision system and a dual manipulator robot. Wrinkles are first identified  using a depth map of the cloth, which is later B-spline smoothed and parsed by shape and topology into different wrikle structures, that are later ranked by size and removed.
+Within the context of the CloPeMa project, some work on wrinkles removal has been made by Sun et al. \cite{Sun2015} with a stereo vision system and a dual manipulator robot. Wrinkles are first identified  using a depth map of the cloth, which is later B-spline smoothed and parsed by shape and topology into different wrikle structures, that are later ranked by size and removed.
