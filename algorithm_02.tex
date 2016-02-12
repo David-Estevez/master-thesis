@@ -53,7 +53,7 @@ Figure \ref{fig:depth_map_preprocessing} \comment{[...]}
 
 Once the garment depth data is separated from the table depth data and normalized in the previous step, similar-height regions must be identified and labeled.
 
-Grouping points according to a common feature such as height is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. Some of the superpixel segmentation algorithms were tested during the development of this work, but finally a Watershed \reftodo algorithm was selected to perform the clustering. This algorithm is faster than other superpixel approaches, \comment{[...]}
+Grouping points according to a common feature such as height is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. Some of the superpixel segmentation algorithms were tested during the development of this work, but finally a Watershed \cite{digabel1978iterative} algorithm was selected to perform the clustering. This algorithm is faster than other superpixel approaches, \comment{[...]}
 
 The Watershed transform is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item. Figure \ref{fig:watershed_example} shows an example of applying the Watershed algorithm to segment coins.
 
@@ -84,7 +84,7 @@ The Watershed transform is a segmentation algorithm that considers a greyscale i
 
 \footnotetext{Source:\stdurl{http://docs.opencv.org/master/d3/db4/tutorial_py_watershed.html} , last accessed: \today}
 
-A denoising process is performed before applying the Watershed transform, which is the actual clustering process. We use a Total Variation filter \reftodo{\comment{[chambolle]}} to produce a smoother image while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
+A denoising process is performed before applying the Watershed transform, which is the actual clustering process. We use a Total Variation filter \cite{chambolle2004algorithm} to produce a smoother image while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
 
 The Watershed segmentation algorithm is then applied to the depth image of the garment to locate the different parts that are overlapping each other. These regions are related to folded parts, that rest on top of other parts of the garment. 
 

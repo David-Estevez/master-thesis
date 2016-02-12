@@ -50,13 +50,13 @@ The objective of this garment segmentation stage is to substract the background 
 \end{figure}
 
 
-Prior to any further analysis, a background subtraction step has to be performed in order to remove all information not related to the garment. Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \reftodo, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
+Prior to any further analysis, a background subtraction step has to be performed in order to remove all information not related to the garment. Based on the assumption that the clothing article is placed on top of a flat white surface, the garment can be segmented by color. This can be performed by threshold operations on the red, green and blue channels of the RGB space, or on the hue, saturation and value channels of the HSV space. Other color spaces could also be used. GrabCut \cite{rother2004grabcut}, that uses gaussian mixture models (GMMs) and iterative energy minimization, is another available method to separate the background and foreground based on color.
 
 Another potential approach is to remove the horizontal plane of the table using depth information. This approach can be further improved by combining the results obtained by the depth-based segmentation with a color segmentation, in case the garment color and the background are dissimilar enough.
 
-Once the background is extracted, the contour of the garment has to be determined. Several methods exist for this purpose. The Topological Analysis by Border Following algorithm developed by Suzuki and Abe \reftodo \comment{(suzuki85)} is a widely used algorithm for connected-component labeling and countour finding. A Marching Squares \reftodo algorithm can be also applied to find constant valued contours in an image.
+Once the background is extracted, the contour of the garment has to be determined. Several methods exist for this purpose. The Topological Analysis by Border Following algorithm developed by Suzuki and Abe \cite{suzuki1985topological} is a widely used algorithm for connected-component labeling and countour finding. A Marching Squares algorithm, a variation of the Marching Cubes algorithm \cite{lorensen1987marching}, can be also applied to find constant valued contours in an image.
 
-After the contour is extracted, it is then approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \reftodo. Alternative algorithms exist, such as the Teh-Chin algorithm to find Dominant Points \reftodo \comment{(Teh-Chin89)}. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
+After the contour is extracted, it is then approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \cite{ramer1972iterative, douglas1973algorithms}. Alternative algorithms exist, such as the Teh-Chin algorithm to find Dominant Points \cite{teh1989detection}. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
 
 The garment segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
@@ -64,9 +64,9 @@ The garment segmentation process used in this thesis is further explained in cha
 \label{architecture:depth_map_clustering}
 When the garment has been identified, garment regions with similar height points must be clustered and labeled. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments. Many algorithms exist to perform this clustering step.
 
-For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means, Mean Shift \reftodo or DBSCAN \reftodo are some examples of clustering algorithms that can be applied to group pixels with similar depth.
+For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means, Mean Shift \cite{comaniciu2002mean} or DBSCAN \cite{ester1996density} are some examples of clustering algorithms that can be applied to group pixels with similar depth.
 
-A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \reftodo is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC \reftodo, Quickshift \reftodo, Turbopixels \reftodo and Normalized Cuts \reftodo.
+A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \reftodo is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC \cite{achanta2010slic}, Quickshift \cite{vedaldi2008quick}, Turbopixels \cite{levinshtein2009turbopixels} and Normalized Cuts \cite{mori2005guiding}.
 
 %\begin{figure}[thpb]
 %    \centering
@@ -90,11 +90,11 @@ A particular case of clustering algorithms are those which are applied to obtain
     	{figures/Superpixels-03.png}
 	\end{subfigure}
 	\caption[dummy]{Several examples of Superpixel clustering algorithms. Left image \cite{mori2005guiding} corresponds to a Normalized Cut algorithm with two different average cluster sizes, 100 pixels in the case of the upper left part of the image, and 300 in the lower right part. Right image \cite{achanta2012slic}
-	 corresponds to a SLIC (Simple Linear Iterative Clustering) algorithm applied to obtain average sizes of 64, 256 and 1024 pixels.}
+	 corresponds to a SLIC (Simple Linear Iterative Clustering) algorithm \cite{achanta2010slic} applied to obtain average sizes of 64, 256 and 1024 pixels.}
     \label{fig:generic_superpixels}
 \end{figure}
 
-When working with images, the clustering process of finding regions both compact and with homogeneous characteristics is known as segmentation. Many image segmentation algorithms exist based on similar regions and closed contours. One of these algorithms, widely used, is the Watershed transform algorithm \reftodo, which interprets the image as a topological surface, filling the image with water from several point sources until they merge, and creating walls in those intersection contours. The regions isolated by these walls are the segmented regions.
+When working with images, the clustering process of finding regions both compact and with homogeneous characteristics is known as segmentation. Many image segmentation algorithms exist based on similar regions and closed contours. One of these algorithms, widely used, is the Watershed transform algorithm \cite{digabel1978iterative}, which interprets the image as a topological surface, filling the image with water from several point sources until they merge, and creating walls in those intersection contours. The regions isolated by these walls are the segmented regions.
 
 The garment depth map clustering process used in this thesis is developed in more detail in chapter \ref{garment_clustering}.
 
