@@ -82,11 +82,12 @@ The Watershed transform is a segmentation algorithm that considers a greyscale i
     \label{fig:watershed_example}
 \end{figure}
 
+\footnotetext{Source:\stdurl{http://docs.opencv.org/master/d3/db4/tutorial_py_watershed.html} , last accessed: \today}
 
 A denoising process is performed before applying the Watershed transform, which is the actual clustering process. We use a Total Variation filter \reftodo{\comment{[chambolle]}} to produce a smoother image while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
 
 The Watershed segmentation algorithm is then applied to the depth image of the garment to locate the different parts that are overlapping each other. These regions are related to folded parts, that rest on top of other parts of the garment. 
-\footnotetext{Source:\stdurl{http://docs.opencv.org/master/d3/db4/tutorial_py_watershed.html} , last accessed: \today}
+
 As, in practice, flooding using local minima as markers \juansays{(Revisar "markers")} leads to over-segmentation, an enhanced version\footnote{\stdurl{http://scikit-image.org/docs/dev/auto_examples/segmentation/plot_marked_watershed.html}} of this algorithm  allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image is computed, and regions where the gradient has a low value are selected as these seed points. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
 
 
@@ -130,7 +131,7 @@ The different garment regions obtained with Watershed were labeled and used as i
     	\includegraphics[width=\textwidth]
     	{figures/watershed-06.pdf}
 	\end{subfigure} 
-    \caption{On the left side, the grayscale images are shown. The grey level is related to the height of the point as detected by the RGB-D sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
+    \caption{On the left side, the normalized depth images for different clothes are shown. The grey level is related to the height of the point as detected by the RGB-D sensor, a darker grey level means the points are closer to the sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
     \label{fig:watershed_labels}
 \end{figure}
 
