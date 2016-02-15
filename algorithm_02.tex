@@ -1,7 +1,7 @@
 \chapter{Garment Depth Map Clustering}
 \label{garment_clustering}
 
-This chapter explains in detail the garment depth map clustering stage that our algorithm performs to the garment data previously segmented, as seen in Figure \ref{fig:garment_clustering_blocks}.
+This chapter explains in detail the Garment Depth Map Clustering stage that our algorithm performs to the garment data previously segmented to group similar height regions of the garment. Some of these clusters represent overlapped regions of the garment. The block diagram of this stage can be seen in Figure \ref{fig:garment_clustering_blocks}.
 
 \begin{figure}[thpb]
     \centering
@@ -11,17 +11,22 @@ This chapter explains in detail the garment depth map clustering stage that our 
     \label{fig:garment_clustering_blocks}
 \end{figure}
 
-In this stage, the depth image data is preprocessed using the segmentation results from the previous stage to remove all depth data not related to the garment. Then, it applies a Watershed transform algorithm to find the different similar-height regions, that will be analyzed in the last stage to select the most suitable manipulation points to unfold the garment.
+In this stage, the depth image data is preprocessed using the segmentation results from the previous stage to remove all depth data not related to the garment. Then, it applies a Watershed transform algorithm to find the different similar-height regions, that will be analyzed in the last stage to select the most suitable manipulation points to unfold the garment. 
 
+As mentioned before, some of these regions of similar height correspond to overlappìng regions of the garment, whose order can be determined using the average depth value of the pixels in each region. The garment region with the lowerst height value then corresponds to the region of the garment underneath those overlapping regions.
+
+Once the different regions are labeled, those labeled clusters are passed to the next stage in order to determine the \comment{uppermost }fold and the most suitable unfolding direction.
 
 \section{Depth Image Preprocessing}
 \label{depth_image_preprocessing}
 
-The raw depth image data obtained from the robot sensor requires some treatment before it can be processed in the next step (section \ref{garment_clustering_watershed}). This step takes the garment mask calculated in the previous stage, and applies it to the depth image of the garment. The objective is to discard the information related to the table. 
+This step prepares the input depth data from the sensors to be used in later steps. The raw depth image data obtained from the robot sensors cannot be used directly, as it contains data related to outliers and noise. The data coming from the table on which the garment lies is also present in this image. Therefore, this data requires some treatment before it can be processed in the next step (section \ref{garment_clustering_watershed}). 
 
-As the next step will treat the depth data as a greyscale image, the remaining garment depth data is normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
+For that purpose, a required input of this step, the garment mask calculated in the previous stage, is applied to the depth image of the garment. The objective is to discard the information related to the table. After this process only information about the garment is present on the depth image.
 
-Figure \ref{fig:depth_map_preprocessing} \comment{[...]}
+The depth input data comes as a distance from the sensor to each pixel. As the next step will treat the depth data as a greyscale image, the remaining garment depth data needs to be normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
+
+Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. \comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.}
 
 %\begin{figure}[thpb]
 %    \centering
@@ -33,14 +38,14 @@ Figure \ref{fig:depth_map_preprocessing} \comment{[...]}
 
 \begin{figure}[htbp]
 	\centering
-    \begin{subfigure}[l]{0.49\textwidth}
+    \begin{subfigure}[l]{0.495\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
     	{figures/Depthmap-Raw-Depthmap-with-colorbar.png}
     	\caption{Before}
 	\end{subfigure}
 	~
-    \begin{subfigure}[r]{0.49\textwidth}
+    \begin{subfigure}[r]{0.485\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
     	{figures/Depthmap-Normalized-Depthmap-with-colorbar.png}
@@ -179,3 +184,5 @@ The different garment regions obtained with Watershed were labeled and used as i
 %    \caption{On the left side, the grayscale images are shown. The grey level is related to the height of the point as detected by the RGB-D sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
 %    \label{fig:watershed_labels}
 %\end{figure}
+
+\comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.}
