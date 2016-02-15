@@ -11,7 +11,7 @@ This chapter explains the last stage of our algorithm, in which the pick and pla
 \end{figure}
 
 \section{Candidate Unfold Paths}
-\label{unfold_paths}
+\label{pnp:unfold_paths}
 
 Based on the assumption that when a garment has an overlapping fold, the fold line will rest on the garment contour, and the folded surface will have lower depth values (i.e. closer to the depth sensor), the next step in our algorithm is to create a set of paths from the highest point of the garment to the midpoint of each contour segment. These paths will be later analyzed using the clusters previously found in the depth image to select the path with less height variation.
 
@@ -43,7 +43,7 @@ These paths are checked so that they are located entirely inside the garment. Pa
 
 
 \section{Bumpiness}
-\label{bumpiness}
+\label{pnp:bumpiness}
 Each of the candidate paths calculated using the method explained in the previous section has to be analyzed in this step to determine the best unfolding path. 
 
 We can represent each of the $n$ candidate paths obtained as a 2D parametric line ($\mathbb{R} \to \mathbb{R}^2$) depending on a parameter $r$, the radial distance to the highest point:
@@ -79,7 +79,7 @@ The candidate set with the lowest bumpiness value, which corresponds to the path
 \end{figure}
 
 \section{Pick and Place Points}
-\label{pick_and_place}
+\label{pnp:pick_and_place}
 Once the most promising path for unfolding has been identified, the last step is to obtain pick and place points for the robot to perform the unfold action. Due to the absence of a cuantitative metric for determining the suitability of those points, the point selection criteria has been selected using intuition from all possible choices.
 
 The selected grasping point for the picking action is located at the intersection between the unfolding path direction line and the highest garment region border. This point is obtained by calculating the intersection between the selected path line and the highest region contour. This operation results in two intersection points, from which the furthest to the garment border is selected.
