@@ -11,6 +11,13 @@ The second one is the implementation of the unfolding algorithm. This implementa
 
 The whole unfolding algorithm implementation is Open Source, and is available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
 
+\section{Garment Dataset}
+\label{experiments:dataset}
+
+\comment{Explanation of the dataset is supposed to go here}
+
+\comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.}
+
 \section{Experimental Setup}
 \label{experiments:expermimental_setup}
 
@@ -80,13 +87,87 @@ The RGB values are also recorded for each depth image, obtaining an RGB-D image.
 \section{Experiments}
 \label{experiments:experiments}
 
-The final experiments using the current algorithm have been performed using an ASUS Xtion PRO LIVE at 640x480 RGB and depth streams (30 fps).
+To test the computer vision algorithm, a garment dataset was crafted\footnote{\url{http://tinyurl.com/garments-birdsEye-zip}}. Other garment datasets already existed, such as the ones provided by the CloPeMa project\footnote{\url{http://clopema.felk.cvut.cz/public_data.html}}, but they were not suitable to test our algorithm, since these datasets are mainly focused on modeling and folding garments once they are already extended. 
 
-In the present work we are using thick blankets and towels, to cope with the limitations of the resolution of the depth sensor. A set of six samples with one or two folds were presented to the system for analysis. The results are shown in Figure \ref{directions}.
+Our dataset is composed of 120 samples of different folds in garments from 6 different categories: skirt, jacket, pants, polo, robe and hoodie. Each category set is composed by 20 samples, 10 of which present one fold and 10 of which present two folds in the garment. This data was obtained using an ASUS Xtion PRO LIVE with RGB and depth channels set at 640x480 resolution. The sensor is placed on top of the working surface providing a bird's eye view over the garment folding environment, with its image plane almost parallel to the working surface. Fig. \ref{fig:results} shows the final output of the algorithm and the computed unfolding directions for 4 garments of each of the 6 categories.
 
-When analyzing the experimental results, one can see that the candidate paths for unfolding are created using the garment contour segment midpoint. This fact can warp the most intuitive direction, which would be the closest between the highest region and the garment contour. Currently, the direction with the smallest bumpiness value is selected. In some cases, several directions share a very small value. This fact make us think that an interpolation between these directions may improve the final result. Figure \ref{directions_several} shows the best directions for the set of clothes, and the arrow's directions make us believe that a combined directions by averaging them could provide better results.
+For evaluating the algorithm, a scoring metric has been established. The criteria for the scoring is qualitative, due to the lack of an objective ground truth to provide quantitative comparisons. The output of each stage is manually classified into one of the following categories: \fail{}, \good{}, \great{} and \discarded{}. Results from one stage that prevent the next one to work properly are classified as \fail{}, and the next stages for that item are classified as \discarded{} and skipped. Results that are not perfect, but allow the next stage to compute its output are classified as \good{}. Note that the \good{} score in the last stage means that the robot could unfold it, but it is not the optimal path. Finally, perfect results for a stage are given the \great{} score. Table \ref{table:table} shows the raw data of this scoring, indicating the amount of samples that received each score at a given stage for each category.
 
-A final demonstration of the current algorithm has been performed using the full-size humanoid robot TEO. Depth sensor coordinates are converted to the robot root frame, and a standard pick and place operation is performed with the given points. Figure \ref{setup} depicts this scenario.
+\begin{table}[t]
+\centering
+\begin{tabular}{|r|rrrr|rrrr|}
+\hline
+	& \multicolumn{4}{|c|}{Skirt} &\multicolumn{4}{|c|}{Jacket}  \\
+\hline
+   Stage   & \fail & \good & \great & \discarded & \fail & \good & \great & \discarded \\
+\hline
+   Segmentation         &  0 & 0 & 20 &  0 &    0 & 9 & 11 &  0 \\
+   Clustering           &  3 & 6 & 11 &  0 &    8 & 8 &  4 &  0 \\
+   Pick \& Place Points &  5 & 5 &  7 &  3 &    3 & 3 &  6 &  8 \\
+\hline
+\end{tabular}
+\vspace{1em}
+
+\begin{tabular}{|r|rrrr|rrrr|}
+\hline
+	&\multicolumn{4}{|c|}{Pants} & \multicolumn{4}{|c|}{Polo}  \\
+\hline
+   Stage   &     \fail & \good & \great & \discarded & \fail & \good & \great & \discarded  \\
+\hline
+   Segmentation         &  1 & 1 & 18 &  0   & 0 & 17 &  3 &  0 \\
+   Clustering           &  7 & 5 &  7 &  1   & 3 & 13 &  4 &  0 \\
+   Pick \& Place Points &  8 & 1 &  3 &  8   & 1 &  4 & 12 &  3 \\
+\hline
+\end{tabular}
+
+\vspace{1em}
+\begin{tabular}{|r|rrrr|rrrr|}
+\hline
+	 &\multicolumn{4}{|c|}{Robe} &\multicolumn{4}{|c|}{Hoodie}   \\
+\hline
+   Stage   & \fail & \good & \great & \discarded & \fail & \good & \great & \discarded \\
+\hline
+   Segmentation         &   0 & 0 & 20 & 0 &   11 &  3 &  6 &  0\\
+   Clustering           &   5 & 7 &  8 & 0 &    6 &  2 &  1 & 11\\
+   Pick \& Place Points &   3 & 3 &  8 & 6 &    3 &  0 &  0 & 17\\
+\hline
+\end{tabular}
+\caption{Raw data results of the established scoring metric for each garment category and algorithm stage}
+\label{table:table}
+\end{table}
+
+
+A stage by stage analysis is provided in Table \ref{table:table2}. Each cell represents the percent of \good{} and \great{} qualified samples with respect to the amount of samples that actually reached the given stage:
+
+\begin{equation}
+cell = \frac{\good + \great}{\fail + \good + \great} \cdot 100 \%
+\end{equation}
+
+The Overall performance included in the last row shows the percent of \good{} and \great{} samples taking into account all the samples, including the ones scored as \discarded{}, and corresponds to the product of the percentages of each individual stage, since they are independent events.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|r||r|r|r|r|r|r||r|}
+\hline
+	Stage \slash{} Category & Skirt & Jacket & Pants & Polo & Robe & Hoodie & All \\
+\hline\hline
+   Segmentation         & 100   & 100 &  95   & 100   & 100   & 45   & \textbf{90}\\
+   Clustering           &  85   &  60 &  63.2 &  85   &  75   & 33.3 & \textbf{70.4}\\
+   Pick \& Place Points &  70.6 &  75 &  33.3 &  94.1 &  78.6 &  0   & \textbf{69.3}\\
+   \hline\hline
+   Overall              &  60   &  45 &  20   &  80   &    55 &  0   & \textbf{43.3} \\ 
+\hline
+\end{tabular}
+\caption{Results analysis per stage and garment category, expressed in percentage (\%)}
+\label{table:table2}
+\end{table}
+
+For instance, the Segmentation stage was evaluated as having performed correctly (which includes \good{} and \great{} samples) for 100\% of the Skirt category. With the remaining samples, the Clustering stage performance was evaluated. In this case, within the Skirt category, all of the Skirt samples were evaluated, because they had all passed the previous stage. In this evaluation, 85\% achieved a passing score (\good{} and \great{}). This set of samples was passed on to the Pick \& Place points stage, and for these samples, 70.6\% achieved a passing score within the Skirt category. The Overall algorithm performance for the category is computed as the product of the percentages of three stages: $1 \cdot 0.85 \cdot 0.70 = 60\%$ based on the 20 skirt samples. Table \ref{table:table2} includes an additional column which applies this process based on the evaluation of All the 120 samples of the dataset.
+
+A final set of laboratory experiments to validate the unfolding algorithm have been performed using the full-size humanoid robot TEO \cite{martinez2012teo}. The robot's gripper, designed with passive compliance and relatively large objects in mind (e.g. fruit, bottles, etc), was substituted by a gripper for garment manipulation actuated with hobby servomotors. The garment data was obtained using the ASUS RGB-D sensor in the same configuration (at the ceiling) as for the dataset generation. 
+
+Once the unfolding pick and place points are computed, depth sensor coordinates are converted to the robot root frame. A standard pick and place operation is performed with the final obtained points.
+
 
 
 \begin{figure}[htbp]
@@ -254,8 +335,5 @@ A final demonstration of the current algorithm has been performed using the full
     \label{fig:results3}
 \end{figure}
 
-The final results show that the algorithm generates acceptable unfolding directions.
-
-This system has been tested with thick pieces of cloth such as towels and blankets. These results can be extrapolated to thinner garments provided the depth sensor provides sufficient resolution.
 
 \comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.}
