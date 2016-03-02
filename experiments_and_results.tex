@@ -93,8 +93,10 @@ Our dataset is composed of 120 samples of different folds in garments from 6 dif
 
 For evaluating the algorithm, a scoring metric has been established. The criteria for the scoring is qualitative, due to the lack of an objective ground truth to provide quantitative comparisons. The output of each stage is manually classified into one of the following categories: \fail{}, \good{}, \great{} and \discarded{}. Results from one stage that prevent the next one to work properly are classified as \fail{}, and the next stages for that item are classified as \discarded{} and skipped. Results that are not perfect, but allow the next stage to compute its output are classified as \good{}. Note that the \good{} score in the last stage means that the robot could unfold it, but it is not the optimal path. Finally, perfect results for a stage are given the \great{} score. Table \ref{table:table} shows the raw data of this scoring, indicating the amount of samples that received each score at a given stage for each category.
 
+
 \begin{table}[t]
 \centering
+\hspace*{-1.25em}
 \begin{tabular}{|r|rrrr|rrrr|}
 \hline
 	& \multicolumn{4}{|c|}{Skirt} &\multicolumn{4}{|c|}{Jacket}  \\
@@ -103,11 +105,12 @@ For evaluating the algorithm, a scoring metric has been established. The criteri
 \hline
    Segmentation         &  0 & 0 & 20 &  0 &    0 & 9 & 11 &  0 \\
    Clustering           &  3 & 6 & 11 &  0 &    8 & 8 &  4 &  0 \\
-   Pick \& Place Points &  5 & 5 &  7 &  3 &    3 & 3 &  6 &  8 \\
+   Pick \& Place        &  5 & 5 &  7 &  3 &    3 & 3 &  6 &  8 \\
 \hline
 \end{tabular}
-\vspace{1em}
 
+\vspace{1em}
+\hspace*{-1.25em}
 \begin{tabular}{|r|rrrr|rrrr|}
 \hline
 	&\multicolumn{4}{|c|}{Pants} & \multicolumn{4}{|c|}{Polo}  \\
@@ -116,11 +119,12 @@ For evaluating the algorithm, a scoring metric has been established. The criteri
 \hline
    Segmentation         &  1 & 1 & 18 &  0   & 0 & 17 &  3 &  0 \\
    Clustering           &  7 & 5 &  7 &  1   & 3 & 13 &  4 &  0 \\
-   Pick \& Place Points &  8 & 1 &  3 &  8   & 1 &  4 & 12 &  3 \\
+   Pick \& Place        &  8 & 1 &  3 &  8   & 1 &  4 & 12 &  3 \\
 \hline
 \end{tabular}
 
 \vspace{1em}
+\hspace*{-1.25em}
 \begin{tabular}{|r|rrrr|rrrr|}
 \hline
 	 &\multicolumn{4}{|c|}{Robe} &\multicolumn{4}{|c|}{Hoodie}   \\
@@ -129,7 +133,7 @@ For evaluating the algorithm, a scoring metric has been established. The criteri
 \hline
    Segmentation         &   0 & 0 & 20 & 0 &   11 &  3 &  6 &  0\\
    Clustering           &   5 & 7 &  8 & 0 &    6 &  2 &  1 & 11\\
-   Pick \& Place Points &   3 & 3 &  8 & 6 &    3 &  0 &  0 & 17\\
+   Pick \& Place        &   3 & 3 &  8 & 6 &    3 &  0 &  0 & 17\\
 \hline
 \end{tabular}
 \caption{Raw data results of the established scoring metric for each garment category and algorithm stage}
