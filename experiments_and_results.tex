@@ -18,8 +18,8 @@ For the evaluation of the results a Graphical User Interface (GUI) was created u
     \centering
     \includegraphics[width=0.7\textwidth]
     {figures/evaluation-gui.png}
-    \caption[GUI]
-    {GUI}
+    \caption[\comment{GUI}]
+    {\comment{GUI}}
     \label{fig:gui}
 \end{figure}
 
@@ -29,14 +29,14 @@ Some extra information is also provided in the bottom part of the GUI, such as t
 \section{Algorithm Evaluation}
 \label{experiments:evaluation}
 
-\comment{Bla, bla, bla... evaluation, bla, bla, bla}
+Previously to testing on the real robot, the algorithm was evaluated using a garment dataset presenting folded garment samples from several different garment categories. These results are later scored with a qualitative metric and then analyzed. This section addresses the garment dataset, the qualitative metric developed and the analysis of these results.
 
 \subsection{Garment Dataset}
 \label{experiments:dataset}
 
-To test the computer vision algorithm, a garment dataset was crafted\footnote{\url{http://tinyurl.com/garments-birdsEye-zip}}. Other garment datasets already existed, such as the ones provided by the CloPeMa project\footnote{\url{http://clopema.felk.cvut.cz/public_data.html}}, but they were not suitable to test our algorithm, since these datasets are mainly focused on modeling and folding garments once they are already extended. 
+To test the computer vision algorithm, a garment dataset was required. A few garment datasets meant for garment manipulation with robots already exist, and the CloPeMa project has made all of them publicly available\footnote{\url{http://clopema.felk.cvut.cz/public_data.html}} to foment algorithm benchmarking. These garment datasets are made of different types of sensor information (e.g. stereo pairs, depth images) from different kinds of garment samples. There are 4 main datasets, which include samples of spread garments, garments in different stage  on but they were not suitable to test our algorithm, since these datasets are mainly focused on modeling and folding garments once they are already extended. 
 
-Our dataset is composed of 120 samples of different folds in garments from 6 different categories: skirt, jacket, pants, polo, robe and hoodie. Each category set is composed by 20 samples, 10 of which present one fold and 10 of which present two folds in the garment. This data was obtained using an ASUS Xtion PRO LIVE with RGB and depth channels set at 640x480 resolution. The sensor is placed on top of the working surface providing a bird's eye view over the garment folding environment, with its image plane almost parallel to the working surface.
+None of them fit the algorithm developed in this work, so a new folded garment dataset was crafted\footnote{\url{http://tinyurl.com/garments-birdsEye-zip}}. Our dataset is composed of 120 samples of different folds in garments from 6 different categories: skirt, jacket, pants, polo, robe and hoodie. Each category set is composed by 20 samples, 10 of which present one fold and 10 of which present two folds in the garment. This data was obtained using an ASUS Xtion PRO LIVE with RGB and depth channels set at 640x480 resolution. The sensor is placed on top of the working surface providing a bird's eye view over the garment folding environment, with its image plane almost parallel to the working surface.
 
 \comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.}
 
@@ -210,8 +210,9 @@ Fig. \ref{fig:results} shows the final output of the algorithm and the computed 
     \label{fig:results3}
 \end{figure}
 
-For evaluating the algorithm, a scoring metric has been established. The criteria for the scoring is qualitative, due to the lack of an objective ground truth to provide quantitative comparisons. The output of each stage is manually classified into one of the following categories: \fail{}, \good{}, \great{} and \discarded{}. Results from one stage that prevent the next one to work properly are classified as \fail{}, and the next stages for that item are classified as \discarded{} and skipped. Results that are not perfect, but allow the next stage to compute its output are classified as \good{}. Note that the \good{} score in the last stage means that the robot could unfold it, but it is not the optimal path. Finally, perfect results for a stage are given the \great{} score. Table \ref{table:table} shows the raw data of this scoring, indicating the amount of samples that received each score at a given stage for each category.
+For evaluating the algorithm, a scoring metric has been established. The criteria for the scoring is qualitative, due to the lack of an objective ground truth to provide quantitative comparisons. The output of each stage is manually classified into one of the following categories: \fail{}, \good{}, \great{} and \discarded{}. Results from one stage that prevent the next one to work properly are classified as \fail{}, and the next stages for that item are classified as \discarded{} and skipped. Results that are not perfect, but allow the next stage to compute its output are classified as \good{}. Note that the \good{} score in the last stage means that the robot could unfold it, but it is not the optimal path. Finally, perfect results for a stage are given the \great{} score. \comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue.}
 
+Table \ref{table:table} shows the raw data of this scoring, indicating the amount of samples that received each score at a given stage for each category.
 
 \begin{table}[htbp]
 \centering
@@ -247,6 +248,8 @@ Hoodie & Clustering & 6 & 2 & 1 & 11 \\
 \caption{Raw data results of the established scoring metric for each garment category and algorithm stage}
 \label{table:table}
 \end{table}
+
+\comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue.}
 
 A stage by stage analysis is provided in Table \ref{table:table2}. Each cell represents the percent of \good{} and \great{} qualified samples with respect to the amount of samples that actually reached the given stage:
 
