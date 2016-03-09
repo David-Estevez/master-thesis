@@ -13,7 +13,8 @@ The algorithm has been open sourced and is available online\footnote{\url{https:
     \centering
     \includegraphics[width=\textwidth]
     {figures/Main_diagram.pdf}
-    \caption{Block diagram showing the Garment Unfolding algorithm  pipeline. The pipeline uses RGB and depth images captured from the robot sensors as inputs and process them in 3 consecutive stages. This process is iterative, and it is applied until the garment is fully unfolded.}
+    \caption[Block diagram showing the Garment Unfolding algorithm  pipeline.]
+    {Block diagram showing the Garment Unfolding algorithm pipeline. The pipeline uses RGB and depth images captured from the robot sensors as inputs and process them in 3 consecutive stages. This process is iterative, and it is applied until the garment is fully unfolded.}
     \label{fig:pipeline_block_diagram}
 \end{figure}
 
@@ -69,14 +70,6 @@ For general purpose clustering over any set of unlabeled data we can find severa
 
 A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \cite{ren2003learning} is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC (Simple Linear Iterative Clustering \cite{achanta2010slic}, Quickshift \cite{vedaldi2008quick}, Turbopixels \cite{levinshtein2009turbopixels} and Normalized Cuts \cite{mori2005guiding}.
 
-%\begin{figure}[thpb]
-%    \centering
-%    \includegraphics[width=\textwidth]{figures/Superpixels-01.png}
-%    \caption{\comment{A nice figure of a generic Superpixels}}
-%    \label{fig:generic_superpixels}
-%\end{figure}
-
-
 \begin{figure}[htbp]
 	\centering
     \begin{subfigure}[l]{0.51\textwidth}
@@ -109,7 +102,8 @@ Once we have clustered the depth image in regions of similar height, we can proc
     \centering
     \includegraphics[width=0.8
     \textwidth]{figures/teo-pick-and-place.pdf}
-    \caption{An example of an unfolding operation, showing the humanoid robot and the unfolding trajectory to perform. The folded part that is being manipulated, the sleeve, is highlighted with a green dashed line. The green arrow line represents the unfolding trajectory, with the pick and place points at the beginning and the end of it, respectively.}
+    \caption[An example of an unfolding operation, showing the humanoid robot and the unfolding trajectory to perform.]
+    {An example of an unfolding operation, showing the humanoid robot and the unfolding trajectory to perform. The folded part that is being manipulated, the sleeve, is highlighted with a green dashed line. The green arrow line represents the unfolding trajectory, with the pick and place points at the beginning and the end of it, respectively.}
     \label{fig:picking_points}
 \end{figure}
 

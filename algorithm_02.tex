@@ -7,7 +7,8 @@ This chapter explains in detail the Garment Depth Map Clustering stage that our 
     \centering
     \includegraphics[width=\textwidth]
     {figures/Garment-depthmap-diagram.pdf}
-    \caption{Block diagram showing an overview of the Garment Depth Map Clustering stage and its different steps. The inputs of this stage are the depth map image and the segmentation mask obtained in the previous stage. These inputs are combined and preprocessed in order to apply the clustering step. The output of this stage are the labels of the different cluster regions.}
+    \caption[Block diagram showing an overview of the Garment Depth Map Clustering stage and its different steps.]
+    {Block diagram showing an overview of the Garment Depth Map Clustering stage and its different steps. The inputs of this stage are the depth map image and the segmentation mask obtained in the previous stage. These inputs are combined and preprocessed in order to apply the clustering step. The output of this stage are the labels of the different cluster regions.}
     \label{fig:garment_clustering_blocks}
 \end{figure}
 
@@ -28,14 +29,6 @@ The depth input data comes as a distance from the sensor to each pixel. As the n
 
 Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. \comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.}
 
-%\begin{figure}[thpb]
-%    \centering
-%    \includegraphics[width=0.7
-%    \textwidth]{figures/placeholder2.png}
-%    \caption{\comment{(Figure representing this preprocessing step)}}
-%    \label{fig:depth_map_preprocessing}
-%\end{figure}
-
 \begin{figure}[htbp]
 	\centering
     \begin{subfigure}[l]{0.495\textwidth}
@@ -51,7 +44,8 @@ Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw inp
     	{figures/Depthmap-Normalized-Depthmap-with-colorbar.png}
     	\caption{After}
     	\end{subfigure} 
-    \caption{Depth image before and after preprocessing. \juansays{Note that (barras) indicate close are red, far are grey. //} \juansays{Mayoría imagen izquierda en grises, despues nota sobre franja roja}  On the left image, a red bar is shown in the leftmost part of the image, corresponding to some values captured by the sensor with errors. Points closer to the camera are shown lighter, whereas points futher from the camera are shown with darker gray levels. Units of the left image are mm. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range}, coded as an 8-bit unsigned char.}
+    \caption[Depth image before and after preprocessing.]
+    {Depth image before and after preprocessing. \juansays{Note that (barras) indicate close are red, far are grey. //} \juansays{Mayoría imagen izquierda en grises, despues nota sobre franja roja}  On the left image, a red bar is shown in the leftmost part of the image, corresponding to some values captured by the sensor with errors. Points closer to the camera are shown lighter, whereas points futher from the camera are shown with darker gray levels. Units of the left image are mm. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range}, coded as an 8-bit unsigned char.}
     \label{fig:depth_map_preprocessing}
 \end{figure}
 
@@ -64,14 +58,6 @@ Once the garment depth data is separated from the table depth data and normalize
 Grouping points according to a common feature such as height is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. Some of the superpixel segmentation algorithms were tested during the development of this work, but finally a Watershed \cite{digabel1978iterative} algorithm was selected to perform the clustering. This algorithm is faster than other superpixel approaches, \comment{[...]}
 
 The Watershed transform is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed correspond to a segmented item. Figure \ref{fig:watershed_example} shows an example of applying the Watershed algorithm to segment coins.
-
-%\begin{figure}[thpb]
-%    \centering
-%    \includegraphics[width=0.7
-%    \textwidth]{figures/placeholder2.png}
-%    \caption{\comment{(Here it would be great to add a figure of the example, such as opencv's coins)}}
-%    \label{fig:watershed_example}
-%\end{figure}
 
 \begin{figure}[htbp]
 	\centering
@@ -105,84 +91,44 @@ The different garment regions obtained with Watershed were labeled and used as i
 
 \begin{figure}[htbp]
 	\centering
-    \begin{subfigure}[c]{0.7\textwidth}
+    \begin{subfigure}[l]{0.49\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
-    	{figures/watershed-01.pdf}
+    	{figures/clustering/hoodie13-clustering.pdf}
 	\end{subfigure}
 	~
-    \begin{subfigure}[c]{0.7\textwidth}
+    \begin{subfigure}[r]{0.49\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
-    	{figures/watershed-02.pdf}
+    	{figures/clustering/jacket7-clustering.pdf}
 	\end{subfigure} 
 	~
-	\begin{subfigure}[c]{0.7\textwidth}
+	\begin{subfigure}[l]{0.49\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
-    	{figures/watershed-03.pdf}
+    	{figures/clustering/pants3-clustering.pdf}
 	\end{subfigure}
 	~
-    \begin{subfigure}[c]{0.7\textwidth}
+    \begin{subfigure}[r]{0.49\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
-    	{figures/watershed-04.pdf}
+    	{figures/clustering/polo6-clustering.pdf}
 	\end{subfigure}
 	~
-	\begin{subfigure}[c]{0.7\textwidth}
+	\begin{subfigure}[l]{0.49\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
-    	{figures/watershed-05.pdf}
+    	{figures/clustering/robe19-clustering.pdf}
 	\end{subfigure}
 	~
-    \begin{subfigure}[c]{0.7\textwidth}
+    \begin{subfigure}[r]{0.49\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
-    	{figures/watershed-06.pdf}
+    	{figures/clustering/skirt17-clustering.pdf}
 	\end{subfigure} 
-    \caption{The normalized depth images for different clothes are shown on the left side. The grey level is related to the height of the point as detected by the RGB-D sensor. A darker grey level indicates the points are closer to the sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
+    \caption[The normalized depth images for different clothes are shown on the left side.]
+    {The normalized depth images for different clothes are shown on the left side. The grey level is related to the height of the point as detected by the RGB-D sensor. A darker grey level indicates the points are closer to the sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
     \label{fig:watershed_labels}
 \end{figure}
-
-%\begin{figure}[htbp]
-%	\centering
-%    \begin{subfigure}[l]{0.49\textwidth}
-%	    \centering
-%    	\includegraphics[width=\textwidth]
-%    	{figures/watershed-01.pdf}
-%	\end{subfigure}
-%	~
-%    \begin{subfigure}[r]{0.49\textwidth}
-%	    \centering
-%    	\includegraphics[width=\textwidth]
-%    	{figures/watershed-02.pdf}
-%	\end{subfigure} 
-%	~
-%	\begin{subfigure}[l]{0.49\textwidth}
-%	    \centering
-%    	\includegraphics[width=\textwidth]
-%    	{figures/watershed-03.pdf}
-%	\end{subfigure}
-%	~
-%    \begin{subfigure}[r]{0.49\textwidth}
-%	    \centering
-%    	\includegraphics[width=\textwidth]
-%    	{figures/watershed-04.pdf}
-%	\end{subfigure}
-%	~
-%	\begin{subfigure}[l]{0.49\textwidth}
-%	    \centering
-%    	\includegraphics[width=\textwidth]
-%    	{figures/watershed-05.pdf}
-%	\end{subfigure}
-%	~
-%    \begin{subfigure}[r]{0.49\textwidth}
-%	    \centering
-%    	\includegraphics[width=\textwidth]
-%    	{figures/watershed-06.pdf}
-%	\end{subfigure} 
-%    \caption{On the left side, the grayscale images are shown. The grey level is related to the height of the point as detected by the RGB-D sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
-%    \label{fig:watershed_labels}
-%\end{figure}
 
 \comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.}
