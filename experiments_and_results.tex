@@ -12,14 +12,14 @@ The first part is in charge of communication with the sensor with the objective 
 The second main part is the implementation of the unfolding algorithm. This implementation was executed using Python\footnote{\url{http://www.python.org}} as our language of choice. Python is a programming language that allows a quick development of prototype software, and counts with a large collection of external modules to perform several tasks, from math calculations to computer vision. The implementation is divided into 3 consecutive stages, and within each of the stages, each step is also isolated and executed consecutively, to avoid tight coupling between the different stages and steps of the algorithm. This will allow the authors to quickly explore and test alternative implementations for each of the stages, or even for a single step within any stage, and check whether they improve the performance of the algorithm or they do not cause any significant improvement. Our current implementation is based on two different computer vision libraries: OpenCV\footnote{\url{http://www.opencv.org}} and Scikit-image\footnote{\url{http://scikit-image.org}}. We chose to use both since during the development of this work several algorithms were tested, and each library contains only a subset of those algorithms. In the latest version, OpenCV is used for basic computer vision and Scikit-image for more advanced algorithms such as Watershed \footnote{\url{http://scikit-image.org/docs/dev/auto_examples/plot_watershed.html}} and other superpixel-based clustering methods. The implementation also relies heavily on Numpy\footnote{\url{http://www.numpy.org/}}. Numpy is the \textit{de facto} Python library for scientific computing, and all the operations with trajectories and unfolding paths required in our work, such as line intersections or line perpendicularity, were implemented using the mathematical functions present on Numpy. We are releasing our unfolding algorithm implementation to the public with an Open Source license, and it is already available online\footnote{\url{https://github.com/roboticslab-uc3m/textiles}}.
 
 
-For the evaluation of the results a Graphical User Interface (GUI) was created using Python and PySide\footnote{\url{https://wiki.qt.io/PySide}} (LGPL Qt bindings for Python). As it is shown in figure \ref{fig:gui}, this GUI is composed of a main view where results are presented and 3 buttons to indicate the 3 possible evaluations that each result can be given (\fail{}, \good{} and \great{}). These evaluations will be explained in further detail later in this chapter, in section \comment{\ref{}.} 
+For the evaluation of the results a Graphical User Interface (GUI) was created using Python and PySide\footnote{\url{https://wiki.qt.io/PySide}} (LGPL Qt bindings for Python). As it is shown in figure \ref{fig:gui}, this GUI is composed of a main view where results are presented and 3 buttons to indicate the 3 possible evaluations that each result can be given (\fail{}, \good{} and \great{}). These evaluations will be explained in further detail later in this chapter, in section \ref{experiments:evaluation}. 
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=0.7\textwidth]
     {figures/evaluation-gui.png}
-    \caption[\comment{GUI}]
-    {\comment{GUI}}
+    \caption[GUI developed in PySide to semi-automate the evaluation of the algorithm]
+    {GUI developed in PySide to semi-automate the evaluation of the algorithm}
     \label{fig:gui}
 \end{figure}
 
@@ -336,4 +336,59 @@ The RGB values are also recorded for each depth image, obtaining an RGB-D image.
 
 Then, the 3 stages of the unfolding algorithm presented in this work are applied consecutively, obtaining the most suitable pick and place points to manipulate the garment. Once the unfolding pick and place points are computed, depth sensor coordinates are converted to the robot root frame. A standard pick and place operation is performed by the robot with the final obtained points.
 
-Figure \ref{} shows the robot performing the unfolding operation.
+Figure \ref{fig:video} shows the robot performing the unfolding operation. \comment{Add more chicha}
+
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-01.png}
+	\end{subfigure}
+	~
+    \begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-02.png}
+	\end{subfigure}
+	~
+    \begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-03.png}
+	\end{subfigure}
+	~
+    \begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-04.png}
+	\end{subfigure} 
+	~
+	\begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-05.png}
+	\end{subfigure}
+	~
+    \begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-06.png}  	
+	\end{subfigure}
+	~
+    \begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-07.png}
+	\end{subfigure}
+	~
+    \begin{subfigure}[c]{\videofigurewidth}
+	    \centering
+    	\includegraphics[width=\textwidth]
+    	{figures/folding-video/frame-08.png}
+	\end{subfigure} 
+    \caption[Garment unfolding operation being performed by the Teo humanoid robot]
+    {Garment unfolding operation being performed by the Teo humanoid robot. Frames are time-ordered from left to right and from top to bottom.}
+    \label{fig:video}
+\end{figure}
