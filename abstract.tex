@@ -1,0 +1,8 @@
+\comment{Current approaches for robotic garment folding require a full view of an extended garment, in order to successfully apply a model-based folding sequence.
+In this paper, we present a garment-agnostic algorithm that requires no model to unfold clothes and works using a single view from an RGB-D sensor. Once the garment is unfolded, state of the art approaches for folding may be applied.}
+
+\comment{
+The algorithm presented is divided into 3 main stages. First, a Segmentation stage extracts the garment data from the background, and approximates its contour into a polygon. Then, a Clustering stage groups similar-height regions of the garment corresponding to different overlapped regions. Finally, a Pick and Place Points stage finds the most suitable points for grasping and releasing the garment for the unfolding process, based on a \textit{bumpiness} value defined as the accumulated difference in height along selected candidate paths.}
+
+\comment{
+Experiments for evaluation of the algorithm have been performed over a dataset of 120 samples from a total of 6 different garment categories with one and two folds. Results have been analyzed, and present high scores for each of the stages that compose the algorithm. The unfolding algorithm also has been validated through experiments with a humanoid robot platform.}
