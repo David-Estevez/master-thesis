@@ -23,11 +23,11 @@ Once the different regions are labeled, those labeled clusters are passed to the
 
 This step prepares the input depth data from the sensors to be used in later steps. The raw depth image data obtained from the robot sensors cannot be used directly, as it contains data related to outliers and noise. The data coming from the table on which the garment lies is also present in this image. Therefore, this data requires some treatment before it can be processed in the next step (section \ref{garment_clustering_watershed}). 
 
-For that purpose, a required input of this step, the garment mask calculated in the previous stage, is applied to the depth image of the garment. The objective is to discard the information related to the table. After this process only information about the garment is present on the depth image.
+For that purpose, the garment mask calculated in the previous stage, a required input of this step, is applied to the depth image of the garment. The objective is to discard the information related to the table. After this process only information about the garment is present on the depth image.
 
-The depth input data comes as a distance from the sensor to each pixel. As the next step will treat the depth data as a greyscale image, the remaining garment depth data needs to be normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
+The depth input data is read expressed as a distance from the sensor to each pixel. As the next step will treat the depth data as a greyscale image, the remaining garment depth data needs to be normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
 
-Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. \comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.}
+Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. Left image pixel values correspond to distances to the sensor expressed in mm, and right image pixel values are those distances normalized to a 8-bit unsigned integer (256 values).
 
 \begin{figure}[htbp]
 	\centering
@@ -45,7 +45,7 @@ Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw inp
     	\caption{After}
     	\end{subfigure} 
     \caption[Depth image before and after preprocessing.]
-    {Depth image before and after preprocessing. \juansays{Note that (barras) indicate close are red, far are grey. //} \juansays{Mayoría imagen izquierda en grises, despues nota sobre franja roja}  On the left image, a red bar is shown in the leftmost part of the image, corresponding to some values captured by the sensor with errors. Points closer to the camera are shown lighter, whereas points futher from the camera are shown with darker gray levels. Units of the left image are mm. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range}, coded as an 8-bit unsigned char.}
+    {Depth image before and after preprocessing. Note that pixels closer to the sensor are shown in red, and pixels further from the sensor are displayed in grey. White values are intermediate values. The correspondence between colors and distance is explained in the colorbar beneath each figure. The image on the left is shown mostly in grey shades, except from a thin red line seen on the left part of the image, corresponding to values \comment{whaaat}. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range} availabe by the encoding as an 8-bit unsigned char.}
     \label{fig:depth_map_preprocessing}
 \end{figure}
 
@@ -55,24 +55,26 @@ Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw inp
 
 Once the garment depth data is separated from the table depth data and normalized in the previous step, similar-height regions must be identified and labeled.
 
-Grouping points according to a common feature such as height is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. Some of the superpixel segmentation algorithms were tested during the development of this work, but finally a Watershed \cite{digabel1978iterative} algorithm was selected to perform the clustering. This algorithm is faster than other superpixel approaches, \comment{[...]}
+Grouping points according to a common feature, such as height, is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. Some of the superpixel segmentation algorithms were tested during the development of this work, but finally a Watershed \cite{digabel1978iterative} algorithm was selected to perform the clustering. This algorithm is faster than other superpixel approaches, and usually returns a single cluster per overlapping region, removing the need for a later merging step. This step is frequently required when working with superpixels to aggregate superpixels corresponding to similar regions, as they are conceived to divide the image in relatively small clusters of similar characteristics.
+
+The Watershed Transform algorithm is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation result, where each region enclosed corresponds to a segmented item. 
+
+Figure \ref{fig:watershed_example} shows an example of applying the Watershed algorithm. The grey area represents a cross section of the image along a given image axis. Subfigure A shows the segmentation results when all local minima are selected as flooding sources (i.e. markers), and subfigure B shows the same results when one of those sources is omitted. Dotted lines on the right-hand side of the figure represent the catchment basins resulting from the Watershed Transform, and the colored regions are the different segments obtained.
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]
     {figures/watershed-example.png}
-    \caption[\comment{Watershed}]
-    {\comment{Watershed}. Figure extracted from \cite{rs6010776}.}
-    \label{fig:garment_clustering_blocks}
+    \caption[Example of application of the Watershed Tranform algorithm]
+    {Example of application of the Watershed Tranform algorithm. The grey area, marked as signal, represents the the pixel intensity along a given image direction, as if it was a cross section of the image. Figure extracted from \cite{rs6010776}.}
+    \label{fig:watershed_example}
 \end{figure}
 
-\footnotetext{Source:\stdurl{http://docs.opencv.org/master/d3/db4/tutorial_py_watershed.html} , last accessed: \today}
+A denoising process is performed before applying the Watershed transform, which is the actual clustering process. We use a Total Variation filter \cite{chambolle2004algorithm} to produce a smoother image while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained. This denoising process is required when using the Watershed transform algorithm, as it is an algorithm highly sensitive to local minima, which can be present due to noise or irregularities in the image. 
 
-A denoising process is performed before applying the Watershed transform, which is the actual clustering process. We use a Total Variation filter \cite{chambolle2004algorithm} to produce a smoother image while maintaining the edges sharp. The Total Variation filter works by minimizing the integral of the norm of the image gradient. As a result of this filter, piecewise-constant images (``cartoon-like'' images) are obtained.
+The Watershed Transform segmentation algorithm is then applied to the depth image of the garment to locate the different parts that are overlapping each other. These regions are related to folded parts, that rest on top of other parts of the garment. 
 
-The Watershed segmentation algorithm is then applied to the depth image of the garment to locate the different parts that are overlapping each other. These regions are related to folded parts, that rest on top of other parts of the garment. 
-
-As, in practice, flooding using local minima as markers \juansays{(Revisar "markers")} leads to over-segmentation, an enhanced version\footnote{\stdurl{http://scikit-image.org/docs/dev/auto_examples/segmentation/plot_marked_watershed.html}} of this algorithm  allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image is computed, and regions where the gradient has a low value are selected as these seed points. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
+As said before, Watershed is very sensitive to local minima. Therefore, in practice, using local minima as sources for flooding leads to over-segmentation of regions. An enhanced version\footnote{\stdurl{http://scikit-image.org/docs/dev/auto_examples/segmentation/plot_marked_watershed.html}} of this algorithm allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image is computed, and regions where the gradient has a low value are selected as these seed points. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
 
 
 The different garment regions obtained with Watershed were labeled and used as input for the next step. Figure \ref{fig:watershed_labels} shows the result of this process.
@@ -119,5 +121,3 @@ The different garment regions obtained with Watershed were labeled and used as i
     {The normalized depth images for different clothes are shown on the left side. The grey level is related to the height of the point as detected by the RGB-D sensor. A darker grey level indicates the points are closer to the sensor. On the right side, the labeled image returned by watershed algorithm is presented, where each color represents a region of similar height.}
     \label{fig:watershed_labels}
 \end{figure}
-
-\comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.}
