@@ -27,7 +27,7 @@ For that purpose, the garment mask calculated in the previous stage, a required 
 
 The depth input data is read expressed as a distance from the sensor to each pixel. As the next step will treat the depth data as a greyscale image, the remaining garment depth data needs to be normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
 
-Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. Left image pixel values correspond to distances to the sensor expressed in mm, and right image pixel values are those distances normalized to a 8-bit unsigned integer (256 values).
+Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. Left image pixel values correspond to distances to the sensor expressed in mm, and right image pixel values are those distances normalized to a 8-bit unsigned integer (256 values). The image on the left is shown mostly in grey shades, except from a thin red line seen on the left part of the image, corresponding to values \comment{whaaat}. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range} availabe by the encoding as an 8-bit unsigned char.
 
 \begin{figure}[htbp]
 	\centering
@@ -45,7 +45,7 @@ Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw inp
     	\caption{After}
     	\end{subfigure} 
     \caption[Depth image before and after preprocessing.]
-    {Depth image before and after preprocessing. Note that pixels closer to the sensor are shown in red, and pixels further from the sensor are displayed in grey. White values are intermediate values. The correspondence between colors and distance is explained in the colorbar beneath each figure. The image on the left is shown mostly in grey shades, except from a thin red line seen on the left part of the image, corresponding to values \comment{whaaat}. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range} availabe by the encoding as an 8-bit unsigned char.}
+    {Depth image before and after preprocessing. Note that pixels closer to the sensor are shown in red, and pixels further from the sensor are displayed in grey. White values are intermediate values. The correspondence between colors and distance is explained in the colorbar beneath each figure.} 
     \label{fig:depth_map_preprocessing}
 \end{figure}
 
