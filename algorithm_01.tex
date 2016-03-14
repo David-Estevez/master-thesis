@@ -37,7 +37,9 @@ A filtering process is added to increase robustness and reduce the effect of the
 
 Once the image is converted to the HSV color space and filtered, a thresholding operation is then applied to the filtered image, using Otsu's algorithm \cite{otsu1975threshold} to obtain the optimal threshold values. Pixels with low amount of Saturation, and high Value are classified as being part of the table, as opposed to saturated or dark pixels.
 
-Finally, some morphological transformations are applied to the resulting mask to reduce noise due to false positives/negatives. A 5x5 square kernel is used in several closing operations, followed by a similar number of opening operations. \juansays{"Ya veremos si explicarlo"}
+Finally, some morphological transformations are applied to the resulting mask to reduce noise due to false positives/negatives. A 5x5 square kernel is used in several closing operations, followed by a similar number of opening operations.
+
+\juansays{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan.}
 
 The output of this background subtraction step, a binary mask with background pixels represented as black and garment pixels represented as white, can be seen in Figure \ref{fig:segmentation_mask}.
 
