@@ -58,7 +58,7 @@ Another potential approach is to remove the horizontal plane of the table using 
 
 Once the background is extracted, the contour of the garment has to be determined. Several methods exist for this purpose. The Topological Analysis by Border Following algorithm developed by Suzuki and Abe \cite{suzuki1985topological} is a widely used algorithm for connected-component labeling and countour finding. A Marching Squares algorithm, a variation of the Marching Cubes algorithm \cite{lorensen1987marching}, can be also applied to find constant valued contours in an image.
 
-After the contour is extracted, it is then approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \cite{ramer1972iterative, douglas1973algorithms}. Alternative algorithms exist, such as the Teh-Chin algorithm to find Dominant Points \cite{teh1989detection}. Each of the segments obtained is a candidate for being a fold axis. The midpoints of those fold axis candidates are calculated to be used in the following steps.
+After the contour is extracted, it is then approximated to a polygon, e.g. using the Ramer-Douglas-Peucker algorithm \cite{ramer1972iterative, douglas1973algorithms}. Alternative algorithms exist, such as the Teh-Chin algorithm to find Dominant Points \cite{teh1989detection}. Each of the segments obtained is a candidate for being a fold axis.
 
 The garment segmentation process used in this thesis is further explained in chapter \ref{garment_segmentation}.
 
@@ -66,7 +66,7 @@ The garment segmentation process used in this thesis is further explained in cha
 \label{architecture:depth_map_clustering}
 When the garment has been identified, garment regions with similar height points must be clustered and labeled. By using only depth information, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments. Many algorithms exist to perform this clustering step.
 
-For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means, Mean Shift \cite{comaniciu2002mean} or DBSCAN \cite{ester1996density} are some examples of clustering algorithms that can be applied to group pixels with similar depth.
+For general purpose clustering over any set of unlabeled data we can find several algorithms that can be also applied to images. K-means \cite{macqueen1967some}, Mean Shift \cite{comaniciu2002mean} or DBSCAN \cite{ester1996density} are some examples of clustering algorithms that can be applied to group pixels with similar depth.
 
 A particular case of clustering algorithms are those which are applied to obtain superpixels. A superpixel \cite{ren2003learning} is a local region of the image with similar characteristics, such as color, texture, etc. Several examples of superpixel can be seen in Figure \ref{fig:generic_superpixels}. This reduces the number of pixels to regions that are local and coherent, preserving most of the structure of the diferent items at the scale of interest. Many algorithms exist to perform superpixel clustering, such as SLIC (Simple Linear Iterative Clustering \cite{achanta2010slic}, Quickshift \cite{vedaldi2008quick}, Turbopixels \cite{levinshtein2009turbopixels} and Normalized Cuts \cite{mori2005guiding}.
 
@@ -91,6 +91,8 @@ A particular case of clustering algorithms are those which are applied to obtain
 
 When working with images, the clustering process of finding regions both compact and with homogeneous characteristics is known as segmentation. Many image segmentation algorithms exist based on similar regions and closed contours. One of these algorithms, widely used, is the Watershed transform algorithm \cite{digabel1978iterative}, which interprets the image as a topological surface, filling the image with water from several point sources until they merge, and creating walls in those intersection contours. The regions isolated by these walls are the segmented regions.
 
+\pagebreak
+
 The garment depth map clustering process used in this thesis is developed in more detail in chapter \ref{garment_clustering}.
 
 \section{Garment Pick and Place Points}
@@ -113,4 +115,4 @@ If grouping of certain segmented regions is required, i.e. there are small super
 
 Once the overlapping fold is identified, and the fold line is known, we select pick and place points for performing the unfold operation. This operation, that will be executed by a robot, has to take the garment from the original state to a more ``unfolded'' state.
 
-Several choices exist for pick points, as well as for place points. To pick the garment, one can assume that the highest points in the overlapped region are good candidates, as they probably are easier for the robot to grasp, and they will be separated from the underlying garment. Other potential choices are the points that belong to the border of the overlapping region, except for those which belong to the fold line. These approaches are typically followed by humans when performing unfolding tasks. For place points, the points should be far enough from the garment to completely unfold the overlapping region, but not far enough for the garment to be dragged with the movement. It is also convenient to choose points that lie on the oposite side of the folding line with respect to the pick point, otherwise is almost impossible to perform the unfold operation.
+Several choices exist for pick points, as well as for place points. To pick the garment, one can assume that the highest points in the overlapped region are good candidates, as they probably are easier for the robot to grasp, and they will be separated from the underlying garment. Other potential choices are the points that belong to the border of the overlapping region, except for those which belong to the fold line. These approaches are typically followed by humans when performing unfolding tasks. For place points, the points should be far enough from the garment to completely unfold the overlapping region, but not far enough for the garment to be dragged with the movement. It is also convenient to choose points that lie on the opposite side of the folding line with respect to the pick point, otherwise is almost impossible to perform the unfold operation.

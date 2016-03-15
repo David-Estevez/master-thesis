@@ -1,20 +1,20 @@
 \chapter{State of the Art}
 \label{state_of_the_art}
 
-In this chapter, the current state of the art regarding garment folding is presented. Different approaches when working with garments can be found in the literature, and they will be described in this chapter.
+In this chapter, the current state of the art regarding garment folding is presented. Different approaches when working with garments can be found in the literature, and they will be described in detail.
 
-Some approaches use 3D computer vision algorithms to create models of the garments or to fit captured gament data to a predefined model. These garment models are used then to apply folding algorithms or to select the best points for manipulation. Some of these models are borrowed from the Computer Graphics community, where garment representation and simulation has been widely studied to achieve realistic clothes behavior in Computer Graphics scenes. This will be covered in section \ref{sota:garment_model_based}.
+Some approaches use 3D computer vision algorithms to create models of the garments or to fit captured gament data to a predefined model. These garment models are used then to apply folding algorithms or to select the best points for manipulation. Part of these models are borrowed from the Computer Graphics community, where garment representation and simulation has been widely studied to achieve realistic clothes behavior in Computer Graphics scenes. This will be covered in section \ref{sota:garment_model_based}.
 
 In other approaches, the problem of garment folding is solved through robot interaction with the garment. By regrasping and changing the garment configuration, the garment category and current pose is detected, and the garment can be led to a target pose. These approaches will be seen in section \ref{sota:garment_manipulation_based}.
 
-Finally, the european project CloPeMa (Clothes Perception and Manipulation), devoted to perception and manipulation of fabric, textiles and garments, is described. Their research most relevant to this thesis is explained in the last section \ref{sota:clopema}.
+Finally, the european project CloPeMa (Clothes Perception and Manipulation), devoted to perception and manipulation of fabric, textiles and garments, is described. Their research most relevant to this thesis is explained in the last section of this chapter, section \ref{sota:clopema}.
 
 \section{Garment Modeling-Based Approaches}
 \label{sota:garment_model_based}
 
-A significant amount of work conducted in this topic has been focused on modeling the different garment categories for both unfolded, extended garments and for grasped garments. The computer graphics community has also contributed with extensive work on the specifics of clothes modeling due to their need for realistic representation of fabrics and garments. A review of these modeling methods can be found in \cite{Chen2009}. 
+A significant amount of work conducted in this topic has been focused on modeling the different garment categories for both unfolded extended garments and for grasped garments. The computer graphics community has also contributed with extensive work on the specifics of clothes modeling due to their need for realistic representation of fabrics and garments. A review of these modeling methods can be found in \cite{Chen2009}. 
 
-Kita et al. propose a method that uses a deformable model to calculate the state of hanging clothes based on 3D observed data \cite{Kita2004, Kita2009}. This calculation is performed by generating a set of candidate shapes predicted by physical simulations of hanging clothes and later comparison of them with the observed data. To fit the observed 3D data better, each generated shape is further deformed and the shape that is more consistent with the observed data is selected. This basic action and model-driven startegy presented by Kita et al. is depicted in Figure \ref{fig:SOTA_Kita_2009}. The garment is held by a point with a robotic arm and different deformable models are tested against the garment data. The model that best explains the data is selected to calculate the second grasping point. 
+Kita et al. propose a method that uses a deformable model to calculate the state of hanging clothes based on 3D observed data \cite{Kita2004, Kita2009}. This calculation is performed by generating a set of candidate shapes predicted by physical simulations of hanging clothes and later comparison of them with the observed data. To fit the observed 3D data better, each generated shape is further deformed and the shape that is more consistent with the observed data is selected. This basic action and model-driven startegy presented by Kita et al. is depicted in Figure \ref{fig:SOTA_Kita_2009}, in which the garment is held by a point with a robotic arm and different deformable models are tested against the garment data. The model that best explains the data is selected to calculate the second grasping point. 
 
 \begin{figure}[thpb]
     \centering
@@ -53,7 +53,7 @@ The previous method was improved in \cite{Li2014IROS}, by extracting the feature
     \centering
     \includegraphics[width=\textwidth]{figures/SOTA_Li_2014-2.png}
     \caption[Sample result from experiments performed by Li et al.]
-    {Sample result from experiments performed in \cite{Li2014IROS}. Each row corresponds to a different garment, grouped into 2 different views of each garment (columns 1-6 and 7-12). The first and second pictures of each group correspond to color and depth images captured with the Kinect sensor. Third picture shows the reconstucted model for each garment. The remaining pictures show, from left to right, the predicted simulated model, the ground truth simulated model and the predicted and ground truth grasping points, overlaid over a 3D view of the unfolded garment.}
+    {Sample result from experiments performed in \cite{Li2014IROS}. Each row corresponds to a different garment, grouped into 2 different views of each garment (columns 1-6 and 7-12). The first and second pictures of each group correspond to color and depth images captured with the Kinect sensor. The third picture shows the reconstucted model for each garment. The remaining pictures show, from left to right, the predicted simulated model, the ground truth simulated model and the predicted and ground truth grasping points, overlaid over a 3D view of the unfolded garment.}
     \label{fig:SOTA_Li_2014}
 \end{figure}
 
@@ -77,7 +77,7 @@ The method introduced by Cusumano-Towner et al. in \cite{Cusumano-Towner2011} al
     \centering
     \includegraphics[width=\textwidth]{figures/SOTA_Cusumano_PR2.png}
     \caption[PR2 robot during the manipulation of a pair of pants in order to reconfigure their pose.]
-    {PR2 robot during the manipulation of a pair of pants in order to reconfigure their pose. \comment{add stuff here}}
+    {PR2 robot in an intermediate state during the manipulation of a pair of pants in order to reconfigure their pose.}
     \label{fig:SOTA_Cusumano_2011}
 \end{figure}
 
@@ -85,7 +85,7 @@ Osawa et al. propose in \cite{Osawa2006} a method to unfold garments in order to
 
 To detect the best grasping points for a clothing article, Ramisa \cite{Ramisa2012} performs the identification in a single step, even with highly wrinkled clothes. This detector is based in a Bag of Features detector, using as input a combination of appearance and 3D geometric features.
 
-The most similar work we can find in the related literature is the method for unfolding clothes presented by Willimon et al. in \cite{Willimon2011}. Their method, which also focuses in clothes unfolding prior to automated folding, use several features obtained from a depth image, such as peak regions and corners location, to determine the location and orientation most suitable for interaction with the garment. Two main steps are performed: first, the clothing article is flattened using RGB information from the camera and, then, depth information is used to extract the features used to estimate how to unfold the garment.
+The most similar work we can find in the related literature is the method for unfolding clothes presented by Willimon et al. in \cite{Willimon2011}. Their method, which also focuses in clothes unfolding prior to automated folding, uses several features obtained from a depth image, such as peak regions and corners location, to determine the location and orientation most suitable for interaction with the garment. Two main steps are performed: first, the clothing article is flattened using RGB information from the camera and, then, depth information is used to extract the features used to estimate how to unfold the garment.
 
 \section{CloPeMa European Project}
 \label{sota:clopema}
@@ -94,13 +94,15 @@ CloPeMa\footnote{\url{http://www.clopema.eu/}} is a recent EU-FP7 research proje
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.7
+    \includegraphics[width=0.85
     \textwidth]{figures/SOTA_CloPeMa_logo.png}
     \caption{CloPeMa FP7 European Project logo.}
     \label{fig:SOTA_CloPeMa_logo}
 \end{figure}
 
- As part of the CloPeMa project, a method to detect single folds has been presented by Mariolis et al. in \cite{Mariolis2013, Mariolis2015}. In order to detect such folds, a database of unfolded clothes templates is built in the first place. These templates are later used to perform a shape matching between the folded garment shape, obtained by the camera, and the unfolded garment model. This process is iterative, and the initial results are feedbacked to adapt the model for a better fit. A block diagram of this method is portrayed in Figure \ref{fig:SOTA_Mariolis_2015}.
+ As part of the CloPeMa project, a method to detect single folds has been presented by Mariolis et al. in \cite{Mariolis2013, Mariolis2015}. In order to detect such folds, first, a database of unfolded clothes templates is built. These templates are later used to perform a shape matching between the folded garment shape, obtained by the camera, and the unfolded garment model. This process is iterative, and the initial results are feedbacked to adapt the model for a better fit. A block diagram of this method is portrayed in Figure \ref{fig:SOTA_Mariolis_2015}.
+ 
+\pagebreak
 
 \begin{figure}[thpb]
     \centering
@@ -116,7 +118,7 @@ Stria et al. propose in \cite{Stria2014, Stria2014IROS} a polygon-based model fo
     \centering
     \includegraphics[width=\textwidth]{figures/SOTA_Stria_2014-3.png}
     \caption[Polygonal models proposed by Stria et al.]
-    {Polygonal models proposed in \cite{Stria2014} for several categories of clothes. }
+    {Polygonal models proposed in \cite{Stria2014} for several categories of clothes. Beneath each model the angular distribution for each angle is shown.}
     \label{fig:SOTA_Stria_2014}
 \end{figure}
 
@@ -126,7 +128,7 @@ Doumanoglou et al. follow in \cite{Doumanoglou2014ECCV} an approach based on Act
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=0.95
+    \includegraphics[width=0.98
     \textwidth]{figures/SOTA_Doumanoglou_2014.png}
     \caption[CloPeMa's bimanipulator robot manipulating a garment using the approach presented by Doumanoglou et al.]
     {CloPeMa's bimanipulator robot manipulating a garment using the approach presented in \cite{Doumanoglou2014ECCV}.}
