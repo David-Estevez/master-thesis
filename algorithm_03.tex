@@ -56,9 +56,10 @@ We can represent each of the $n$ candidate paths obtained as a 2D parametric lin
 
 Where $u$ and $v$ are pixel coordinates in the image frame of reference.
 
-Prior to the analysis, each of the paths of length $L$ is discretized in segments with a constant length $l$. The depth image $\mathcal{D}(u,v)$ is sampled at those discrete points. This results in $n$ ordered sets $S=\{ s_1,...,s_m\}$ of depth samples to be analyzed, where:
+Prior to the analysis, each of the paths of length $L$ is discretized in segments with a constant length $l$. The depth image $\mathcal{D}(u,v)$ is sampled at those discrete points. 
 
-
+\pagebreak
+This results in $n$ ordered sets $S=\{ s_1,...,s_m\}$ of depth samples to be analyzed, where:
 \begin{equation}
 s_i = \mathcal{D}(path(i \cdot l)), \quad  i=0,1,2,..., m
 \end{equation}
@@ -71,23 +72,25 @@ The differences in depth between the overlapping fold region and the rest of the
 B = \sum_{i=2}^{m} | s_i- s_{i-1} | 
 \end{equation}
 
-The candidate set with the lowest bumpiness value, which corresponds to the path with the least and smallest height changes, is selected as the unfold direction, as shown in Figure \ref{fig:paths_with_bumpiness}.
+The candidate set with the lowest bumpiness value, which corresponds to the path with the least and smallest height changes, is selected as the unfold direction. Figure \ref{fig:paths_with_bumpiness} shows the candidate paths with their corresponding height profiles, calculated over a blanket in early stages of the development of the algorithm.
 
 \begin{figure}[thpb]
     \centering
     \includegraphics[width=\textwidth]{figures/candidate_paths.pdf}
     \caption[Bumpiness along several candidate paths.]
-    {On the left side, the candidate paths are shown. On the right side, the height profile of each path is shown. Note that the depth sensor computes the distance to the object from itself, so that a low value in the bar plot means a closer object to the sensor, and therefore it is a region with more height with respect to the table. The highlighted path is the one with the lowest value of bumpiness, and it is selected as suitable unfolding path.}
+    {On the left side, the candidate paths are shown. On the right side, the height profile of each path is shown. Note that the depth sensor computes the distance to the object from itself, so that a low value in the bar plot means a closer object to the sensor, and therefore it is a region with more height with respect to the table. The highlighted path is the one with the lowest value of bumpiness, and it is selected as suitable unfolding path. These values were calculated over a blanket in early stages of the development of the algorithm.}
     \label{fig:paths_with_bumpiness}
 \end{figure}
+
+As an example of the computation of this \textit{bumpiness} value, let us imagine a simple garment with a single overlapping fold. The Garment Clustering Stage may reveal two clusters: the fold overlapping the garment, with a median height value of 2cm, and the rest of the garment beneath the fold, with a median height value of 1cm. in the depth map, the overlapping cluster would be surrounded by pixels corresponding to the garment region in all its edges but the one corresponding with the folding edge so, after the formula is applied to all candidate paths, a \textit{bumpiness} value of $B = |2 - 1| = 1$ is obtained in all paths except the one arriving to the folding line, whose \textit{bumpiness} value is $B=0$, as no height changes occur. The path with $B=0$ is the one selected as unfolding direction.
 
 \section{Pick and Place Points}
 \label{pnp:pick_and_place}
 Once the most promising path for unfolding has been identified, the last step is to obtain pick and place points for the robot to perform the unfold action. Due to the absence of a cuantitative metric for determining the suitability of those points, the point selection criteria has been selected using intuition from all possible choices.
 
-The selected grasping point for the picking action is located at the intersection between the unfolding path direction line and the highest garment region border. This point is obtained by calculating the intersection between the selected path line and the highest region contour. This operation results in two intersection points, from which the furthest to the garment border is selected.
+The selected grasping point for the picking action is located at the intersection between the unfolding path direction line and the highest garment region border. This point is obtained by calculating the intersection between the selected path line and the highest region contour. The operation results in two intersection points, from which the furthest to the garment border is selected.
 
-The other point is used as axis for a point reflection. To find the placing point, a reflection transformation is applied to the picking point using the aforementioned point as axis. Figure \ref{fig:directions} shows the unfold directions for several clothes, departing at the picking points and arriving to the placing points.
+The other intersection point is used as axis for a point reflection. To find the placing point, a reflection transformation is applied to the picking point using the aforementioned point as axis. Figure \ref{fig:directions} shows the unfold directions for several clothes, departing at the picking points and arriving to the placing points.
 
 
 \begin{figure}[htbp]
@@ -131,7 +134,3 @@ The other point is used as axis for a point reflection. To find the placing poin
     {Final directions calculated for each garment provided to the system. Each arrow departs where the robot should pick the fold and arrives where it should be placed.}
     \label{fig:directions}
 \end{figure}
-
-
-\comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.}
-
