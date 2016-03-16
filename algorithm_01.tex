@@ -1,7 +1,7 @@
 \chapter{Garment Segmentation}
 \label{garment_segmentation}
 
-This chapter is devoted to the first stage of our algorithm, segmenting the garment data from the whole sensor data. The input data is an RGB image with depth information (RGB-D image). Garment segmentation is perfomed over this image, and the garment contour is then extracted and simplified, ready to be used in later stages. The block diagram for this stage is shown in Figure \ref{fig:garment_segmentation_blocks}.
+This chapter is devoted to the first stage of our algorithm, segmenting the garment data from the raw sensor data. The input data is an RGB image from the RGB-D data stream. Garment segmentation is perfomed over this image, and the garment contour is then extracted and simplified, ready to be used in posterior stages. The block diagram for this stage is shown in Figure \ref{fig:garment_segmentation_blocks}.
 
 \begin{figure}[thpb]
     \centering
@@ -16,7 +16,7 @@ This chapter is devoted to the first stage of our algorithm, segmenting the garm
 \section{Background Subtraction}
 \label{background_subtraction}
 
-The RGB-D image obtained from the robot sensor contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a background subtraction step is required to classify whether a pixel represents the garment or the table. Figure \ref{fig:background_subtration_processes} shows an overview of the different processes involved in this step.
+The RGB image obtained from the robot sensor contains both the clothing article and the table on which it rests. Therefore, after retrieving the data, a background subtraction step is required to classify whether a pixel represents the garment or the table. Figure \ref{fig:background_subtration_processes} shows an overview of the different processes involved in this step.
 
 
 \begin{figure}[thpb]
@@ -80,7 +80,7 @@ The contour extraction method used is the Topological Analysis by Border Followi
 
 Due to noise, sometimes some small blobs appear in segmentation masks, so the outline with the largest area is selected as the garment outline. This way, those small blobs are discarded.
 
-After obtaining the garment outline, it is futher processed, as we want to obtain a simplified description of the garment outline. This simplified description is the garment approximated polygon. We assume the fold line has a very high probability of lying in the garment polygon and, therefore, this polygon will represent all the candidate segments to be a fold. To obtain the approximated polygon, the Ramer–Douglas–Peucker algorithm \cite{ramer1972iterative, douglas1973algorithms} is applied. It is selected as it is efficient and a reliable implementation is available in the OpenCV\footnote{http://opencv.org/} libraries used to implement this work. This algorithm recursively divides the outline in segments by choosing the first and last points of the curve and drawing a line. Then, it checks whether that point is closer to that line than a threshold $\epsilon > 0$ or not. If it is closer, all points not marked to be kept can be discarded; otherwise, if it is greater than $\epsilon$, that point is marked to be kept and the procedure is repeated considering the last marked point as ending point. If there are no points left to process, the last point of the outline becomes the ending point again. The previous ending point becomes then the new starting point.
+After obtaining the garment outline, it is futher processed, as we want to obtain a simplified description of the garment outline. This simplified description is the garment approximated polygon. We assume the fold line has a very high probability of lying in the garment polygon and, therefore, this polygon will represent all the candidate segments to be a fold. To obtain the approximated polygon, the Ramer–Douglas–Peucker algorithm \cite{ramer1972iterative, douglas1973algorithms} is applied. It is selected as it is efficient and a reliable implementation is available in the OpenCV\footnote{\stdurl{http://docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html\#approxpolydp}} libraries used to implement this work. This algorithm recursively divides the outline in segments by choosing the first and last points of the curve and drawing a line. Then, it checks whether that point is closer to that line than a threshold $\epsilon > 0$ or not. If it is closer, all points not marked to be kept can be discarded; otherwise, if it is greater than $\epsilon$, that point is marked to be kept and the procedure is repeated considering the last marked point as ending point. If there are no points left to process, the last point of the outline becomes the ending point again. The previous ending point becomes then the new starting point.
 
 The parameter $\epsilon$ is calculated from the magnitude of the outline perimeter, considering it to be 1\% of that value. The greater this value is, the more simplified the resulting polygon will be.
 

@@ -1,11 +1,11 @@
 \chapter{Garment Depth Map Clustering}
 \label{garment_clustering}
 
-This chapter explains in detail the Garment Depth Map Clustering stage that our algorithm performs to the garment data previously segmented to group similar height regions of the garment. Some of these clusters represent overlapped regions of the garment. The block diagram of this stage can be seen in Figure \ref{fig:garment_clustering_blocks}.
+This chapter explains in detail the Garment Depth Map Clustering stage that our algorithm performs to the garment data that has been previously segmented to group similar height regions of the garment. Some of these clusters represent overlapped regions of the garment. The block diagram of this stage can be seen in Figure \ref{fig:garment_clustering_blocks}.
 
 \begin{figure}[thpb]
     \centering
-    \includegraphics[width=\textwidth]
+    \includegraphics[width=0.98\textwidth]
     {figures/Garment-depthmap-diagram.pdf}
     \caption[Block diagram showing an overview of the Garment Depth Map Clustering stage and its different steps.]
     {Block diagram showing an overview of the Garment Depth Map Clustering stage and its different steps. The inputs of this stage are the depth map image and the segmentation mask obtained in the previous stage. These inputs are combined and preprocessed in order to apply the clustering step. The output of this stage are the labels of the different cluster regions.}
@@ -16,18 +16,18 @@ In this stage, the depth image data is preprocessed using the segmentation resul
 
 As mentioned before, some of these regions of similar height correspond to overlappìng regions of the garment, whose order can be determined using the average depth value of the pixels in each region. The garment region with the lowerst height value then corresponds to the region of the garment underneath those overlapping regions.
 
-Once the different regions are labeled, those labeled clusters are passed to the next stage in order to determine the \comment{uppermost }fold and the most suitable unfolding direction.
+Once the different regions are labeled, the labeled clusters are passed to the next stage in order to determine the uppermost fold and the most suitable unfolding direction.
 
 \section{Depth Image Preprocessing}
 \label{depth_image_preprocessing}
 
-This step prepares the input depth data from the sensors to be used in later steps. The raw depth image data obtained from the robot sensors cannot be used directly, as it contains data related to outliers and noise. The data coming from the table on which the garment lies is also present in this image. Therefore, this data requires some treatment before it can be processed in the next step (section \ref{garment_clustering_watershed}). 
+This step prepares the input depth data from the sensors to be used in later steps. The raw depth image data obtained from the robot RBG-D sensor cannot be used directly, as it contains data related to outliers and noise. The data coming from the table on which the garment lies is also present in this image. Therefore, this data requires some treatment before it can be processed in the next step (section \ref{garment_clustering_watershed}). 
 
 For that purpose, the garment mask calculated in the previous stage, a required input of this step, is applied to the depth image of the garment. The objective is to discard the information related to the table. After this process only information about the garment is present on the depth image.
 
-The depth input data is read expressed as a distance from the sensor to each pixel. As the next step will treat the depth data as a greyscale image, the remaining garment depth data needs to be normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find similar-height regions more accurately.
+The depth input data is read expressed as a distance from the sensor to each pixel. As the next step will treat the depth data as a greyscale image, the remaining garment depth data needs to be normalized to the 8-bit range of a typical greyscale image. By normalizing the data we ensure that we are using the maximum resolution available (256 grey levels) to represent all the depth variability in the depth image. This helps the next step to find regions of similar height more accurately.
 
-Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. Left image pixel values correspond to distances to the sensor expressed in mm, and right image pixel values are those distances normalized to a 8-bit unsigned integer (256 values). The image on the left is shown mostly in grey shades, except from a thin red line seen on the left part of the image, corresponding to values \comment{whaaat}. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the \comment{dynamic range} availabe by the encoding as an 8-bit unsigned char.
+Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw input depth data and the data after this processing step. The left image pixel values correspond to distances to the sensor expressed in mm, and the right image pixel values are those distances normalized to a 8-bit unsigned integer (256 values). The image on the left is shown mostly in grey shades, except from a thin red line seen on the left part of the image, corresponding to values out of sensor range. On the right image, representing the depth image after the preprocessing stage, it can be observed that the depth image now uses all the range available by the encoding as an 8-bit unsigned char.
 
 \begin{figure}[htbp]
 	\centering
@@ -35,14 +35,14 @@ Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw inp
 	    \centering
     	\includegraphics[width=\textwidth]
     	{figures/Depthmap-Raw-Depthmap-with-colorbar.png}
-    	\caption{Before}
+    	\caption{Before preprocessing}
 	\end{subfigure}
 	~
     \begin{subfigure}[r]{0.485\textwidth}
 	    \centering
     	\includegraphics[width=\textwidth]
     	{figures/Depthmap-Normalized-Depthmap-with-colorbar.png}
-    	\caption{After}
+    	\caption{After preprocessing}
     	\end{subfigure} 
     \caption[Depth image before and after preprocessing.]
     {Depth image before and after preprocessing. Note that pixels closer to the sensor are shown in red, and pixels further from the sensor are displayed in grey. White values are intermediate values. The correspondence between colors and distance is explained in the colorbar beneath each figure.} 
@@ -53,15 +53,17 @@ Figure \ref{fig:depth_map_preprocessing}  shows a comparison between the raw inp
 \section{Similar-Height Region Clustering}
 \label{garment_clustering_watershed}
 
-Once the garment depth data is separated from the table depth data and normalized in the previous step, similar-height regions must be identified and labeled.
+Once the garment depth data is separated from the table depth data and normalized in the previous step, regions of similar height must be identified and labeled.
 
-Grouping points according to a common feature, such as height, is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. Some of the superpixel segmentation algorithms were tested during the development of this work, but finally a Watershed \cite{digabel1978iterative} algorithm was selected to perform the clustering. This algorithm is faster than other superpixel approaches, and usually returns a single cluster per overlapping region, removing the need for a later merging step. This step is frequently required when working with superpixels to aggregate superpixels corresponding to similar regions, as they are conceived to divide the image in relatively small clusters of similar characteristics.
+Grouping points according to a common feature, such as height, is a clustering problem, and several clustering methods and alternatives were described in section \ref{architecture:depth_map_clustering}. A Watershed Transform \cite{digabel1978iterative} segmentation algorithm was selected to perform the clustering. This algorithm is faster than other superpixel approaches, and usually returns a single cluster per overlapping region, removing the need for a later merging step. This step is frequently required when working with superpixels to aggregate superpixels corresponding to similar regions, as they are conceived to divide the image in relatively small clusters of similar characteristics.
 
 The Watershed Transform algorithm is a segmentation algorithm that considers a greyscale image as a topological surface where high intensity pixels correspond to peaks and hills, and low intensity pixels are equivalent to valleys. The algorithm fills the surface pouring water at each isolated valley. As the water level rises, the water from different sources will start to merge. To prevent them from merging, the algorithm constructs barriers at the merging regions, and continues this process of adding water and building barriers until all the peaks have been flooded. The resulting barriers are the segmentation regions border, and all the pixels within each region enclosed  by these borders correspond to a different segmented item. 
 
-Figure \ref{fig:watershed_example} shows an example of applying the Watershed algorithm. The grey area represents a cross section of the image along a given image axis. Subfigure A shows the segmentation results when all local minima are selected as flooding sources (i.e. markers), and subfigure B shows the same results when one of those sources is omitted. Dotted lines on the right-hand side of the figure represent the catchment basins resulting from the Watershed Transform, and the colored regions are the different segments obtained.
+Figure \ref{fig:watershed_example} shows an example of applying the Watershed algorithm. The grey area represents a cross section of the image along a given image axis. Subfigure A shows the segmentation results when all local minima are selected as flooding sources (i.e. markers), and subfigure B shows the same results when one of those sources is omitted. The dotted lines on the right-hand side of the figure represent \pagebreak
 
-\begin{figure}[thpb]
+\noindent the catchment basins resulting from the Watershed Transform, and the colored regions are the different segments obtained.
+
+\begin{figure}[thbp]
     \centering
     \includegraphics[width=\textwidth]
     {figures/watershed-example.png}
@@ -74,6 +76,7 @@ A denoising process is performed before applying the Watershed transform, which 
 
 The Watershed Transform segmentation algorithm is then applied to the depth image of the garment to locate the different parts that are overlapping each other. These regions are related to folded parts, that rest on top of other parts of the garment. 
 
+\pagebreak
 As said before, Watershed is very sensitive to local minima. Therefore, in practice, using local minima as sources for flooding leads to over-segmentation of regions. An enhanced version\footnote{\stdurl{http://scikit-image.org/docs/dev/auto_examples/segmentation/plot_marked_watershed.html}} of this algorithm allows the user to specify other criteria for selecting the seed points. The gradient of the greyscale depth-image is computed, and regions where the gradient has a low value are selected as these seed points. These regions correspond to homogeneous and continous regions, which are good candidates to be used as markers.
 
 
