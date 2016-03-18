@@ -1,6 +1,6 @@
 \chapter{Garment Pick and Place Points}
 \label{pick_and_place}
-This chapter explains the last stage of our algorithm, in which the pick and place points required for unfolding the current fold are determined. These points will be later sent to the humanoid robot to perform the unfolding operation. This stage has as input the clustered depth map obtained in the clustering stage (described in chapter \ref{garment_clustering}), and the garment approximated polygon (calculated in section \ref{segmentation_approximated_polygon}). Figure \ref{fig:garment_pnp_points_blocks} shows the block diagram of the different steps that are performed in this stage.
+This chapter explains the last stage of the algorithm, in which the pick and place points required for unfolding the current fold are determined. These points will be later used by the humanoid robot to perform the unfolding operation. This stage has as input the clustered depth map obtained in the clustering stage (described in chapter \ref{garment_clustering}), and the garment approximated polygon (calculated in section \ref{segmentation_approximated_polygon}). Figure \ref{fig:garment_pnp_points_blocks} shows the block diagram of the different steps that are performed in this stage.
 
 \begin{figure}[thpb]
     \centering
@@ -18,7 +18,7 @@ Based on the assumption that when a garment has an overlapping fold, the fold li
 
 To find the highest point in the garment, the clusters previously found with the Watershed algorithm are averaged using the median value for each cluster. Then, the region with the lowest depth value, which is closest to the camera and therefore highest in the garment, is selected as overlapping fold based on the previous assumption. The centroid of the selected cluster is the point selected as the highest point. Using this method instead of selecting directly the highest point from the depth image increases the robustness of the algorithm against outliers and noise present in the depth image.
 
-The midpoint of each segment of the garment approximated polygon is then calculated, and a set of paths departing from the highest point and arriving to the midpoints is created.
+The midpoint of each segment of the garment approximated polygon is then computed, and a set of paths departing from the highest point and arriving to the midpoints is created.
 
 These paths are checked so that they are located entirely inside the garment. Paths that go outside the garment approximated polygon are considered invalid. Figure \ref{fig:candidate_paths} shows both the initial paths set and the unfold candidate paths set, without the invalid paths.
 
@@ -46,7 +46,7 @@ These paths are checked so that they are located entirely inside the garment. Pa
 
 \section{Bumpiness}
 \label{pnp:bumpiness}
-Each of the candidate paths calculated using the method explained in the previous section has to be analyzed in this step to determine the best unfolding path. 
+Each of the candidate paths computed using the method explained in the previous section has to be analyzed in this step to determine the best unfolding path. 
 
 We can represent each of the $n$ candidate paths obtained as a 2D parametric line ($\mathbb{R} \to \mathbb{R}^2$) depending on a parameter $r$, the radial distance to the highest point:
 
@@ -64,7 +64,7 @@ This results in $n$ ordered sets $S=\{ s_1,...,s_m\}$ of depth samples to be ana
 s_i = \mathcal{D}(path(i \cdot l)), \quad  i=0,1,2,..., m
 \end{equation}
 
-As the different paths may differ in length $L$, the amount of sampled points ($m=${\Large$\lfloor\frac{L}{l}\rfloor$}) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample set $S$ corresponding to each candidate path for a certain garment example.
+As the different paths may differ in length $L$, the amount of sampled points ($m=${\Large$\lfloor\frac{L}{l}\rfloor$}) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample set $S$ corresponding to all of the candidate paths for a certain garment example.
 
 The differences in depth between the overlapping fold region and the rest of the clothing article are assumed to be greater than the diferences in depth within the fold region points. Under that assumption, the metric to evaluate the best path is a \textit{bumpiness} value \textit{B}, which is calculated by penalizing the changes in depth along each of the $n$ candidate sample sets $S$, as shown in Equation \ref{eq:bumpiness}.
 
