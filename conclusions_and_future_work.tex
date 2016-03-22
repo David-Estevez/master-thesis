@@ -1,45 +1,54 @@
 \chapter{Conclusions and future work}
 \label{conclusions_and_future_work}
 
-This chapter will describe the main contributions made to the state of the art by this work. Along the development of this work and during the experiments some challenges appeared. They will be covered after the main contributions along with future work lines that address those challenges and  further improve the state of the art.
+This chapter will describe the main contributions made to the state of the art by this work. Along the development of this work and during the experiments some challenges appeared. They will be covered after the main contributions along with future work lines that address those challenges and further improve the state of the art.
 
 
 \section {Main contributions}
 \label{conclusions:contributions}
 
-This section is dedicated to explain the main contributions of this work, and develop them in detail according to the different steps in our unfolding algorithm.
+This section is dedicated to explain the main contributions of this work, and develop them in detail according to the different steps in the unfolding algorithm.
 
-The main contribution of our work is that its analysis of the garment is not dependent of a prior model. Using only depth information for detecting overlapped regions, as opposed to using RGB images, makes our algorithm independent of the colors and patterns present in the garments. 
+%The main contribution of this work is that its analysis of the garment is not dependent of a prior model. Using only depth information for detecting overlapped regions, as opposed to using RGB images, makes the algorithm independent of the colors and patterns present in the garments. 
 
-\comment{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.}
+The main contribution of our work is a model-free garment-agnostic algorithm that can compute the pick and place points for a manipulator robot to iteratively unfold a garment, so that other algorithms can then determine the garment category and apply the folding sequence. This algorithm presents the following advantages:
 
+\begin{itemize}
+	\item It provides a general method for detecting folds in deformable objects without a prior model of the garment to be unfolded.
+	\item It computes the best position of the pick point, direction of movement, and place point in order to unfold the detected fold.
+	\item As it uses depth data, it is independent of the color or patterns present in the garment, except for background extraction.
+\end{itemize}
+
+Listed by their corresponding stage, the main contributions of this work are:
 \begin{enumerate}
-	\item \textbf{Garment Segmentation:} Regarding garment segmentation, our main contribution is a segmentation stage that is independent of the shape and color of the garment. This stage works as long as the table that holds the garment is white or grey and the garment is more colorful than the table, which is a reasonable assumption for the lab environment used to evaluate this work. The segmentation stage, additionally, requires no user input to label background/foreground samples, so the unfolding process can be applied autonomously, without any human operator.
-	\item \textbf{Garment Depth Map Clustering:} Our algorithm improves existing approaches by using Watershed as clustering algoritm. Using Watershed allows our algorithm to obtain the different contiguous regions directly, without the merging step that it is required when using other superpixel-based clustering methods. For the same reason, it also removes the need for a threshold value for labelling contiguous superpixel regions. The absence of a threshold value avoids breaking similar height regions into different label regions due to large wrinkles, so that later unwrinkling stages are not required either. 
+	\item \textbf{Garment Segmentation:} Regarding garment segmentation, he main contribution is a segmentation stage that is independent of the shape and color of the garment. This stage works as long as the table that holds the garment is white or grey and the garment is more colorful than the table, which is a reasonable assumption for the lab environment used to evaluate this work. The segmentation stage, additionally, requires no user input to label background/foreground samples, so the unfolding process can be applied autonomously, without any human operator.
+	\item \textbf{Garment Depth Map Clustering:} The algorithm improves existing approaches by using Watershed as clustering algoritm. Using Watershed allows our algorithm to obtain the different contiguous regions directly, without the merging step that it is required when using other superpixel-based clustering methods. For the same reason, it also removes the need for a threshold value for labelling contiguous superpixel regions. The absence of a threshold value avoids breaking similar height regions into different label regions due to large wrinkles, so that later unwrinkling stages are not required either. 
 	\item \textbf{Garment Pick and Place Points:} The main contribution of this work regarding choosing pick and place points is that the selection of those points is independent of the garment category. Previous work found in the literature required the garment category or model to be specified or learnt to have a prior knowledge of the most suitable grasping points.
 \end{enumerate}
 
-According to the evaluation of the algorithm with our garment dataset, suitable pick and place points were generated successfully for 43.3\% of the garments in the dataset, \comment{which improves the current state of the art because of reasons}.
+According to the evaluation of the algorithm with our garment dataset, suitable pick and place points were generated successfully for 43.3\% of all the garments in the dataset, with a 90\% of success in the Garment Segmentation stage, a 70.4\% of sucess in the Garment Clustering stage and a 69.3\% of success in the Garment Pick \& Place Points stage.
 
 \section{Future Work}
 \label{conclusions:future_work}
-During the development and evaluation of this work some challenges arised, providing the authors opportunities to further develop and improve their work. This section will introduce the challenges and the opportunities to find solutions to address them, regarding each of the stages that compose our algorithm.
+During the development and evaluation of this work some challenges arised, providing the author opportunities to further develop and improve this work. This section will introduce the challenges and the opportunities to find solutions to address them, regarding each of the stages that compose the algorithm.
 
 \begin{enumerate}
-	\item \textbf{Garment Segmentation:} As stated in the chapter devoted to experiments and results, our  Garment Segmentation stage performs correctly for most cases, with the exception of black garments. In the HSV color space being used the representation of black pixels is unstable for the saturation channel, as a black pixel can have saturation value. This confuses our current segmentation algorithm, based on the saturation channel. Future works can address this problem in several ways, for example, with more complex rules for thresholding the HSV channels. Using a segmentation stage based only in depth data, therefore eliminating all need for color information is another potential approach, that would also increase the robustness of the Garment Segmentation stage against changes in light conditions.
+	\item \textbf{Garment Segmentation:} As stated in the chapter devoted to experiments and results, the Garment Segmentation stage performs correctly for most cases, with the exception of black garments. In the HSV color space being used the representation of black pixels is unstable for the saturation channel, as a black pixel can have any saturation value. This confuses the current segmentation algorithm, based on the saturation channel. Future works can address this problem in several ways, for example, with more complex rules for thresholding the HSV channels. Using a segmentation stage based only in depth data, therefore eliminating all need for color information is another potential approach, that would also increase the robustness of the Garment Segmentation stage against changes in light conditions.
 	
-	\item \textbf{Garment Depth Map Clustering:} The results obtained with our garment dataset indicate that in some cases the regions found with the Watershed Transform algorithm do not exactly overlap with the underlying garment regions. Fine-tuning of the Watershed parameters, as well as the filters applied on this stage are likely to increase the accuracy of the labeled overlapping regions. Moreover, in general we have found that working with a single point of view is a very limiting factor, as occlusions sometimes make folds ambiguous. As our approach does not depend on garment models, dissambiguating those situations is very challenging. For that reason, the author strongly believes that moving to an approach that uses a 3D point cloud of the garment as input data would have more information available to solve those ambiguous situations in a better way.
+	\item \textbf{Garment Depth Map Clustering:} The results obtained with the garment dataset indicate that in some cases the regions found with the Watershed Transform algorithm do not exactly overlap with the underlying garment regions. Fine-tuning of the Watershed parameters, as well as the filters applied on this stage are likely to increase the accuracy of the labeled overlapping regions. Moreover, in general we have found that working with a single point of view is a very limiting factor, as occlusions sometimes make folds ambiguous. As the presented approach does not depend on garment models, dissambiguating these situations is very challenging. For that reason, the author strongly believes that moving to an approach that uses a 3D point cloud of the garment as input data would have more information available to solve those ambiguous situations in a better way. Being able to use 3D information would also remove the current limitation of this approach to folds with the fold edge coincident with the surrounding garment approximated polygon.
 
-	\item \textbf{Garment Pick and Place Points:} While the selected points may serve as a rule-of-thumb for robotic system developers, there is no clear metric for evaluating cuantitatively the suitability of the selected points. Therefore, experimental validation through further experiments with robotic systems is required to determine whether a better pick and place strategy exists:
+	\item \textbf{Garment Pick and Place Points:} While the selected points may serve as a rule-of-thumb for robotic system developers, there is no clear metric for cuantitatively evaluating the suitability of the selected points. Therefore, experimental validation through further experiments with robotic systems is required to determine whether a better pick and place strategy exists:
 	
 \begin{itemize}
-\item For instance, the highest garment point or highest region centroid could be used as alternative to the current pick point, \comment{under the assumption that that point would correspond to an overlapped garment region not attached to the garment regions underneath}.
+\item For instance, the highest garment point or highest region centroid could be used as alternative to the current pick point, under the assumption that that point would correspond to an overlapped garment region not attached to the garment regions underneath.
 
 \item Other place points could also be chosen depending on a different criteria. For example, the place point could be calculated using the fold line as axis of symmetry, or determined based on the unfolding trajectory selected.	
 
-\item The trajectory used to unfold the garment is a simple one, which follows a straight line connecting the pick point, a point above the pick point, a point above the place point and the place point. More elaborated trajectories, such as splines or curves, could be used instead, such the one Li et al. present in their method for folding deformable objects \cite{Li2015IROS}.
+\item The trajectory used to unfold the garment is a simple one, which follows a straight line connecting the pick point, a point above the pick point, a point above the place point and the place point. More elaborated trajectories, 
+\pagebreak
+such as splines or curves, could be used instead, such the one Li et al. present in their method for folding deformable objects \cite{Li2015IROS}.
 
 \end{itemize}
 \end{enumerate}
 
-Finally, as the validation experiments were performed using a limited set of garments in our laboratory, we would like to perform extensive testing of the algorithm on a wider set of garments with both our full-body humanoid robot and more traditional industrial manipulators, to leverage the disponibility of humanoid robots in current industrial environments.
+Finally, as the validation experiments were performed using a limited set of garments in our laboratory, we would like to perform extensive testing of the algorithm on a wider set of garments with both our full-body humanoid robot and more traditional industrial manipulators, to compensate for the lack of disponibility of humanoid robots in current industrial environments.

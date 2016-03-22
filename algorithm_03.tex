@@ -64,7 +64,7 @@ This results in $n$ ordered sets $S=\{ s_1,...,s_m\}$ of depth samples to be ana
 s_i = \mathcal{D}(path(i \cdot l)), \quad  i=0,1,2,..., m
 \end{equation}
 
-As the different paths may differ in length $L$, the amount of sampled points ($m=${\Large$\lfloor\frac{L}{l}\rfloor$}) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows the sample set $S$ corresponding to all of the candidate paths for a certain garment example.
+As the different paths may differ in length $L$, the amount of sampled points ($m=${\Large$\lfloor\frac{L}{l}\rfloor$}) will be different for each path. Figure \ref{fig:paths_with_bumpiness} shows $n$ sample sets $S_j$ corresponding to all of the candidate paths for a certain garment example.
 
 The differences in depth between the overlapping fold region and the rest of the clothing article are assumed to be greater than the diferences in depth within the fold region points. Under that assumption, the metric to evaluate the best path is a \textit{bumpiness} value \textit{B}, which is calculated by penalizing the changes in depth along each of the $n$ candidate sample sets $S$, as shown in Equation \ref{eq:bumpiness}.
 
@@ -82,7 +82,7 @@ The candidate set with the lowest bumpiness value, which corresponds to the path
     \label{fig:paths_with_bumpiness}
 \end{figure}
 
-As an example of the computation of this \textit{bumpiness} value, let us imagine a simple garment with a single overlapping fold. The Garment Clustering Stage may reveal two clusters: the fold overlapping the garment, with a median height value of 2cm, and the rest of the garment beneath the fold, with a median height value of 1cm. in the depth map, the overlapping cluster would be surrounded by pixels corresponding to the garment region in all its edges but the one corresponding with the folding edge so, after the formula is applied to all candidate paths, a \textit{bumpiness} value of $B = |2 - 1| = 1$ is obtained in all paths except the one arriving to the folding line, whose \textit{bumpiness} value is $B=0$, as no height changes occur. The path with $B=0$ is the one selected as unfolding direction.
+As an example of the computation of this \textit{bumpiness} value, let us imagine a simple garment with a single overlapping fold. The Garment Clustering Stage may reveal two clusters: the fold overlapping the garment, with a median height value of 2 cm, and the rest of the garment beneath the fold, with a median height value of 1 cm. In the depth map, the overlapping cluster would be surrounded by pixels corresponding to the garment region in all its edges but the one corresponding with the folding edge. After the formula is applied to all candidate paths, a \textit{bumpiness} value of $B = |2 - 1| = 1$ is obtained in all paths except the one arriving to the folding line, whose \textit{bumpiness} value is $B=0$, as no height changes occur. The path with minimum $B$ ($B=0$) is the one selected as unfolding direction.
 
 \section{Pick and Place Points}
 \label{pnp:pick_and_place}
