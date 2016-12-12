@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="52cm"
+   height="15cm"
+   viewBox="86 80 1035 298"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="Garment-segmentation-process-diagram-landscape.svg"
+   inkscape:export-filename="/home/def/Research/master-thesis/figures/Garment-segmentation-process-diagram-landscape.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <metadata
+     id="metadata186">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs184" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1029"
+     id="namedview182"
+     showgrid="false"
+     inkscape:zoom="0.58181197"
+     inkscape:cx="853.13783"
+     inkscape:cy="322.02245"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <g
+     id="g4">
+    <rect
+       style="fill: #ffa1a1"
+       x="268.147"
+       y="81.995"
+       width="648.94"
+       height="296"
+       rx="40"
+       ry="40"
+       id="rect6" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke-linejoin: round; stroke: #000000"
+       x="268.147"
+       y="81.995"
+       width="648.94"
+       height="296"
+       rx="40"
+       ry="40"
+       id="rect8" />
+  </g>
+  <g
+     id="g10">
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="86.2806"
+       y="148.439"
+       width="167.92"
+       height="126.44"
+       id="rect12" />
+    <image
+       sodipodi:absref="/home/def/Research/master-thesis/figures/segmentation_original.png"
+       xlink:href="segmentation_original.png"
+       id="image14"
+       height="124.44"
+       width="165.92"
+       y="149.439"
+       x="87.2806" />
+  </g>
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="166.956"
+     y="290.708"
+     id="text16">
+    <tspan
+       x="166.956"
+       y="290.708"
+       id="tspan18">RGB image</tspan>
+  </text>
+  <image
+     sodipodi:absref="/home/def/Research/master-thesis/figures/segmentation_mask.png"
+     xlink:href="segmentation_mask.png"
+     id="image20"
+     height="134.993"
+     width="179.991"
+     y="140.505"
+     x="939.935" />
+  <text
+     font-size="12.8"
+     style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+     x="1027.06"
+     y="272.488"
+     id="text22">
+    <tspan
+       x="1027.06"
+       y="272.488"
+       id="tspan24" />
+    <tspan
+       x="1027.06"
+       y="288.488"
+       id="tspan26">Segmentation Mask</tspan>
+  </text>
+  <g
+     id="g28">
+    <rect
+       style="fill: #ffffff"
+       x="287.613"
+       y="185.688"
+       width="87.55"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect30" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="287.613"
+       y="185.688"
+       width="87.55"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect32" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="331.388"
+       y="207.588"
+       id="text34">
+      <tspan
+         x="331.388"
+         y="207.588"
+         id="tspan36">Convert to</tspan>
+      <tspan
+         x="331.388"
+         y="223.588"
+         id="tspan38">HSV</tspan>
+    </text>
+  </g>
+  <g
+     id="g40">
+    <rect
+       style="fill: #ffffff"
+       x="417.763"
+       y="121.458"
+       width="94.75"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect42" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="417.763"
+       y="121.458"
+       width="94.75"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect44" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="465.138"
+       y="143.358"
+       id="text46">
+      <tspan
+         x="465.138"
+         y="143.358"
+         id="tspan48">Filter </tspan>
+      <tspan
+         x="465.138"
+         y="159.358"
+         id="tspan50">(Channel S)</tspan>
+    </text>
+  </g>
+  <g
+     id="g52">
+    <rect
+       style="fill: #ffffff"
+       x="418.876"
+       y="249.876"
+       width="95.35"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect54" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="418.876"
+       y="249.876"
+       width="95.35"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect56" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="466.551"
+       y="271.776"
+       id="text58">
+      <tspan
+         x="466.551"
+         y="271.776"
+         id="tspan60">Filter </tspan>
+      <tspan
+         x="466.551"
+         y="287.776"
+         id="tspan62">(Channel V)</tspan>
+    </text>
+  </g>
+  <g
+     id="g64">
+    <rect
+       style="fill: #ffffff"
+       x="540.533"
+       y="121.419"
+       width="94.75"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect66" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="540.533"
+       y="121.419"
+       width="94.75"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect68" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="587.908"
+       y="143.319"
+       id="text70">
+      <tspan
+         x="587.908"
+         y="143.319"
+         id="tspan72">Threshold </tspan>
+      <tspan
+         x="587.908"
+         y="159.319"
+         id="tspan74">(Channel S)</tspan>
+    </text>
+  </g>
+  <g
+     id="g76">
+    <rect
+       style="fill: #ffffff"
+       x="540.433"
+       y="250.031"
+       width="95.35"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect78" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="540.433"
+       y="250.031"
+       width="95.35"
+       height="52"
+       rx="10"
+       ry="10"
+       id="rect80" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="588.108"
+       y="271.931"
+       id="text82">
+      <tspan
+         x="588.108"
+         y="271.931"
+         id="tspan84">Threshold </tspan>
+      <tspan
+         x="588.108"
+         y="287.931"
+         id="tspan86">(Channel V)</tspan>
+    </text>
+  </g>
+  <g
+     id="g88">
+    <ellipse
+       style="fill: #ffffff"
+       cx="672.794"
+       cy="208.547"
+       rx="19"
+       ry="18"
+       id="ellipse90" />
+    <ellipse
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       cx="672.794"
+       cy="208.547"
+       rx="19"
+       ry="18"
+       id="ellipse92" />
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="659.359"
+       y1="195.819"
+       x2="686.228"
+       y2="221.275"
+       id="line94" />
+    <line
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x1="659.359"
+       y1="221.275"
+       x2="686.228"
+       y2="195.819"
+       id="line96" />
+  </g>
+  <g
+     id="g98">
+    <rect
+       style="fill: #ffffff"
+       x="718.564"
+       y="190.548"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect100" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="718.564"
+       y="190.548"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect102" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="758.564"
+       y="212.448"
+       id="text104">
+      <tspan
+         x="758.564"
+         y="212.448"
+         id="tspan106">Closing</tspan>
+    </text>
+  </g>
+  <g
+     id="g108">
+    <rect
+       style="fill: #ffffff"
+       x="823.591"
+       y="190.178"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect110" />
+    <rect
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       x="823.591"
+       y="190.178"
+       width="80"
+       height="36"
+       rx="10"
+       ry="10"
+       id="rect112" />
+    <text
+       font-size="12.8"
+       style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal"
+       x="863.591"
+       y="212.078"
+       id="text114">
+      <tspan
+         x="863.591"
+         y="212.078"
+         id="tspan116">Opening</tspan>
+    </text>
+  </g>
+  <text
+     font-size="20.32"
+     style="font-style:normal;font-weight:normal;font-size:20.31999969px;font-family:sans-serif;text-anchor:start;fill:#000000"
+     x="602.46057"
+     y="351.01569"
+     id="text118">
+    <tspan
+       x="602.46057"
+       y="351.01569"
+       id="tspan120">Garment Segmentation Step</tspan>
+  </text>
+  <g
+     id="g122">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="375.163,211.688 387.012,211.688 387.012,147.458 413.291,147.458 "
+       id="polyline124" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="405.527,152.458 415.527,147.458 405.527,142.458 "
+       id="polyline126" />
+  </g>
+  <g
+     id="g128">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="375.163,211.688 387.012,211.688 387.012,275.876 413.406,275.876 "
+       id="polyline130" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="405.642,280.876 415.642,275.876 405.642,270.876 "
+       id="polyline132" />
+  </g>
+  <g
+     id="g134">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="512.513,147.458 521.751,147.458 521.751,147.445 522.487,147.445 522.487,147.419 536.061,147.419 "
+       id="polyline136" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="528.297,152.419 538.297,147.419 528.297,142.419 "
+       id="polyline138" />
+  </g>
+  <g
+     id="g140">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="514.226,275.876 522.201,275.876 522.201,276.031 535.961,276.031 "
+       id="polyline142" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="528.197,281.031 538.197,276.031 528.197,271.031 "
+       id="polyline144" />
+  </g>
+  <g
+     id="g146">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="635.783,276.031 672.848,276.031 672.848,262.175 672.794,262.175 672.794,231.019 "
+       id="polyline148" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="677.794,238.783 672.794,228.783 667.794,238.783 "
+       id="polyline150" />
+  </g>
+  <g
+     id="g152">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="635.283,147.419 672.848,147.419 672.848,156.029 672.794,156.029 672.794,186.075 "
+       id="polyline154" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="667.794,178.311 672.794,188.311 677.794,178.311 "
+       id="polyline156" />
+  </g>
+  <g
+     id="g158">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="691.794,208.547 696.541,208.547 696.541,208.472 708.264,208.472 708.264,208.548 714.092,208.548 "
+       id="polyline160" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="706.328,213.548 716.328,208.548 706.328,203.548 "
+       id="polyline162" />
+  </g>
+  <g
+     id="g164">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="798.564,208.548 799.865,208.548 799.865,208.209 812.678,208.209 812.678,208.178 819.119,208.178 "
+       id="polyline166" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="811.355,213.178 821.355,208.178 811.355,203.178 "
+       id="polyline168" />
+  </g>
+  <g
+     id="g170">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="253.201,211.659 257.613,211.659 257.613,211.688 283.141,211.688 "
+       id="polyline172" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="275.377,216.688 285.377,211.688 275.377,206.688 "
+       id="polyline174" />
+  </g>
+  <g
+     id="g176">
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="903.591,208.178 917.26,208.178 917.26,208.002 935.463,208.002 "
+       id="polyline178" />
+    <polyline
+       style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000"
+       points="927.699,213.002 937.699,208.002 927.699,203.002 "
+       id="polyline180" />
+  </g>
+</svg>
