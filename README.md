@@ -1,10 +1,12 @@
 Towards Robotic Clothes Folding: A Garmente-Agnostic Unfolding Algorithm
 --------
 
-![](src/figures/teo-pick-and-place.svg)
+![Teo Unfolding Garments](src/figures/teo-pick-and-place.svg)
 
 Author: [David Estevez](https://github.com/David-Estevez)
+
 Tutor: [Juan G Victores](https://github.com/jgvictores)
+
 Director: Carlos Balaguer
 
 ## Abstract
