@@ -1,7 +1,7 @@
 Towards Robotic Clothes Folding: A Garmente-Agnostic Unfolding Algorithm
 --------
 
-![Teo Unfolding Garments](src/figures/teo-pick-and-place.svg)
+![Teo Unfolding Garments](src/figures/teo-pick-and-place.png)
 
 Author: [David Estevez](https://github.com/David-Estevez)
 
