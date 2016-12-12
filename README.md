@@ -33,8 +33,8 @@ Requirements:
 
 * To solve problems with apacite.sty missing:
     
-      $ sudo apt-get install texlive-bibtex-extra
+        $ sudo apt-get install texlive-bibtex-extra
 
 * To solve problems with xcolor missing:
     
-      $ sudo apt-get install latex-xcolor
+        $ sudo apt-get install latex-xcolor
