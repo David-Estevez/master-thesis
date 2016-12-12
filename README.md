@@ -1,4 +1,4 @@
-Towards Robotic Clothes Folding: A Garmente-Agnostic Unfolding Algorithm
+Towards Robotic Clothes Folding: A Garment-Agnostic Unfolding Algorithm
 --------
 
 ![Teo Unfolding Garments](src/figures/teo-pick-and-place.png)
